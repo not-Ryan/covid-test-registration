@@ -90,10 +90,10 @@ const dashboardRoutes = {
     name: 'Dashboard',
     icon: FeatherIcon.Home,
     header: 'Navigation',
-    badge: {
-        variant: 'success',
-        text: '1',
-    },
+    // badge: {
+    //     variant: 'success',
+    //     text: '1',
+    // },
     component: Dashboard,
     roles: ['Admin'],
     route: PrivateRoute,
