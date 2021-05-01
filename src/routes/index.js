@@ -121,6 +121,14 @@ const reservationsAppRoutes = {
     ],
 };
 
+const LocationsRoutes = {
+    path: '/dashboard',
+    name: 'Locations',
+    icon: FeatherIcon.MapPin,
+    component: Dashboard,
+    roles: ['Admin'],
+    route: PrivateRoute,
+};
 // apps
 
 const calendarAppRoutes = {
@@ -206,7 +214,14 @@ const taskAppRoutes = {
     ],
 };
 
-const appRoutes = [reservationsAppRoutes,calendarAppRoutes, emailAppRoutes, projectAppRoutes, taskAppRoutes];
+const appRoutes = [
+    reservationsAppRoutes,
+    LocationsRoutes,
+    calendarAppRoutes,
+    emailAppRoutes,
+    projectAppRoutes,
+    taskAppRoutes,
+];
 
 // pages
 const pagesRoutes = {
