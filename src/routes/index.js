@@ -107,14 +107,14 @@ const reservationsAppRoutes = {
     icon: FeatherIcon.Calendar,
     children: [
         {
-             path: '/reservations',
+             path: '/reservations/all',
             name: 'All',
             component: Reservations,
             route: PrivateRoute,
             roles: ['Admin'],
         },
         {
-             path: '/reservations',
+             path: '/reservations/today',
             name: 'Today',
             component: Reservations,
             route: PrivateRoute,
