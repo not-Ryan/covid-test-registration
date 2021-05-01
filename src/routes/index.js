@@ -14,6 +14,7 @@ const Confirm = React.lazy(() => import('../pages/auth/Confirm'));
 // dashboard
 const Dashboard = React.lazy(() => import('../pages/dashboard'));
 const Locations = React.lazy(() => import('../pages/locations'));
+const Reservations = React.lazy(() => import('../pages/reservations'));
 // apps
 const CalendarApp = React.lazy(() => import('../pages/apps/Calendar'));
 const EmailInbox = React.lazy(() => import('../pages/apps/Email/Inbox'));
@@ -101,21 +102,21 @@ const dashboardRoutes = {
 };
 
 const reservationsAppRoutes = {
-    path: '/apps/projects',
+    path: '/reservations',
     name: 'Reservations',
     icon: FeatherIcon.Calendar,
     children: [
         {
-            path: '/apps/projects/list',
+             path: '/reservations',
             name: 'All',
-            component: ProjectList,
+            component: Reservations,
             route: PrivateRoute,
             roles: ['Admin'],
         },
         {
-            path: '/apps/projects/detail',
+             path: '/reservations',
             name: 'Today',
-            component: ProjectDetail,
+            component: Reservations,
             route: PrivateRoute,
             roles: ['Admin'],
         },
