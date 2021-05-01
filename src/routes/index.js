@@ -13,6 +13,7 @@ const ForgetPassword = React.lazy(() => import('../pages/auth/ForgetPassword'));
 const Confirm = React.lazy(() => import('../pages/auth/Confirm'));
 // dashboard
 const Dashboard = React.lazy(() => import('../pages/dashboard'));
+const Locations = React.lazy(() => import('../pages/locations'));
 // apps
 const CalendarApp = React.lazy(() => import('../pages/apps/Calendar'));
 const EmailInbox = React.lazy(() => import('../pages/apps/Email/Inbox'));
@@ -122,10 +123,10 @@ const reservationsAppRoutes = {
 };
 
 const LocationsRoutes = {
-    path: '/dashboard',
+    path: '/locations',
     name: 'Locations',
     icon: FeatherIcon.MapPin,
-    component: Dashboard,
+    component: Locations,
     roles: ['Admin'],
     route: PrivateRoute,
 };
