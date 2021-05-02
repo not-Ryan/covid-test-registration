@@ -397,7 +397,7 @@ const records = [
     {
         id: 56,
         age: 37,
-        name: 'Duran',
+        name: 'Hugo',
         company: 'Gazak',
         phone: '+1 (991) 446-3820',
     },
@@ -418,7 +418,7 @@ const records = [
     {
         id: 59,
         age: 39,
-        name: 'Pearlie',
+        name: 'John',
         company: 'Progenex',
         phone: '+1 (805) 545-2585',
     },
@@ -490,6 +490,7 @@ const sizePerPageRenderer = ({ options, currSizePerPage, onSizePerPageChange }) 
 );
 
 const TableWithRowExpand = () => {
+    const { SearchBar } = Search;
     const expandRow = {
         renderer: (row) => (
             <div>
@@ -513,8 +514,40 @@ const TableWithRowExpand = () => {
             <CardBody>
                 {/* <h4 className="header-title mt-0 mb-1">All Reservations</h4> */}
                 <p className="sub-header">Expand row to see more additional details</p>
+                <ToolkitProvider bootstrap4 keyField="id" data={records} columns={columns} search>
+                    {(props) => (
+                        <React.Fragment>
+                            <Row>
+                                <Col>
+                                    <SearchBar {...props.searchProps} />
+                                </Col>
+                                <Col className="text-right">
+                                    <SearchBar {...props.searchProps} />
+                                </Col>
+                            </Row>
 
-                <BootstrapTable
+                            <BootstrapTable
+                                {...props.baseProps}
+                                bordered={false}
+                                defaultSorted={defaultSorted}
+                                pagination={paginationFactory({
+                                    sizePerPage: 15,
+                                    sizePerPageRenderer: sizePerPageRenderer,
+                                    sizePerPageList: [
+                                        { text: '15', value: 15 },
+                                        { text: '50', value: 50 },
+                                        { text: '100', value: 100 },
+                                        { text: 'All', value: records.length },
+                                    ],
+                                })}
+                                expandRow={expandRow}
+                                wrapperClasses="table-responsive"
+                            />
+                        </React.Fragment>
+                    )}
+                </ToolkitProvider>
+
+                {/* <BootstrapTable
                     bootstrap4
                     keyField="id"
                     bordered={false}
@@ -532,7 +565,7 @@ const TableWithRowExpand = () => {
                     })}
                     expandRow={expandRow}
                     wrapperClasses="table-responsive"
-                />
+                /> */}
             </CardBody>
         </Card>
     );

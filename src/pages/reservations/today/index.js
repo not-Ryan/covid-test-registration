@@ -434,27 +434,32 @@ const records = [
 const columns = [
     {
         dataField: 'id',
-        text: 'ID',
-        sort: true,
-    },
-    {
-        dataField: 'name',
-        text: 'Name',
-        sort: true,
-    },
-    {
-        dataField: 'phone',
-        text: 'Phone Number',
-        sort: false,
-    },
-    {
-        dataField: 'age',
-        text: 'Age',
+        text: '#',
         sort: true,
     },
     {
         dataField: 'company',
-        text: 'Company',
+        text: 'ID number',
+        sort: false,
+    },
+    {
+        dataField: 'name',
+        text: 'First name',
+        sort: true,
+    },
+    {
+        dataField: 'phone',
+        text: 'Last name',
+        sort: true,
+    },
+    {
+        dataField: 'age',
+        text: 'Birth day',
+        sort: true,
+    },
+    {
+        dataField: 'company',
+        text: 'Covid state',
         sort: false,
     },
 ];
@@ -506,7 +511,7 @@ const TableWithRowExpand = () => {
     return (
         <Card>
             <CardBody>
-                <h4 className="header-title mt-0 mb-1">All Reservations</h4>
+                {/* <h4 className="header-title mt-0 mb-1">All Reservations</h4> */}
                 <p className="sub-header">Expand row to see more additional details</p>
 
                 <BootstrapTable
@@ -533,14 +538,14 @@ const TableWithRowExpand = () => {
     );
 };
 
-const TodayReservations = () => {
+const AllReservations = () => {
     return (
         <React.Fragment>
             <Row className="page-title">
                 <Col md={12}>
                     <PageTitle
                         breadCrumbItems={[{ label: 'Reservations', path: '/pages/starter', active: true }]}
-                        title={'Today Reservations'}
+                        title={'All Reservations'}
                     />
                 </Col>
             </Row>
@@ -553,4 +558,4 @@ const TodayReservations = () => {
     );
 };
 
-export default TodayReservations;
+export default AllReservations;
