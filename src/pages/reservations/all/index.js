@@ -24,21 +24,21 @@ const records = [
         id: 1,
         age: 32,
         name: 'Burt',
-        company: 'Kaggle',
+        company: <Badge color="soft-secondary" className="mr-1">Negative</Badge>,
         phone: '+1 (823) 532-2427',
     },
     {
         id: 2,
         age: 23,
         name: 'Long',
-        company: 'Magmina',
+        company: <Badge color="soft-secondary" className="mr-1">Negative</Badge>,
         phone: '+1 (813) 583-2089',
     },
     {
         id: 3,
         age: 31,
         name: 'Alvarado',
-        company: 'Translink',
+        company: <Badge color="soft-secondary" className="mr-1">Negative</Badge>,
         phone: '+1 (975) 468-3875',
     },
     {
@@ -449,7 +449,7 @@ const columns = [
         sort: true,
     },
     {
-        dataField: 'company',
+        dataField: 'name',
         text: 'ID number',
         sort: false,
     },
