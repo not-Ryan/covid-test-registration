@@ -434,27 +434,32 @@ const records = [
 const columns = [
     {
         dataField: 'id',
-        text: 'ID',
-        sort: true,
-    },
-    {
-        dataField: 'name',
-        text: 'Name',
-        sort: true,
-    },
-    {
-        dataField: 'phone',
-        text: 'Phone Number',
-        sort: false,
-    },
-    {
-        dataField: 'age',
-        text: 'Age',
+        text: '#',
         sort: true,
     },
     {
         dataField: 'company',
-        text: 'Company',
+        text: 'ID number',
+        sort: false,
+    },
+    {
+        dataField: 'name',
+        text: 'First name',
+        sort: true,
+    },
+    {
+        dataField: 'phone',
+        text: 'Last name',
+        sort: true,
+    },
+    {
+        dataField: 'age',
+        text: 'Birth day',
+        sort: true,
+    },
+    {
+        dataField: 'company',
+        text: 'Covid state',
         sort: false,
     },
 ];
