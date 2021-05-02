@@ -1,5 +1,15 @@
 import React from 'react';
-import { Row, Col, Card, CardBody, Input } from 'reactstrap';
+import {
+    Row,
+    Col,
+    Card,
+    CardBody,
+    Input,
+    UncontrolledDropdown,
+    DropdownToggle,
+    DropdownMenu,
+    DropdownItem,
+} from 'reactstrap';
 import BootstrapTable from 'react-bootstrap-table-next';
 
 import ToolkitProvider, { Search, CSVExport } from 'react-bootstrap-table2-toolkit';
@@ -489,6 +499,27 @@ const sizePerPageRenderer = ({ options, currSizePerPage, onSizePerPageChange }) 
     </React.Fragment>
 );
 
+const CustomToggleList = ({ columns, onColumnToggle, toggles }) => (
+    <UncontrolledDropdown className="mb-3">
+        <DropdownToggle tag="button" className="btn btn-white">
+            Select Columns <i className="uil uil-angle-down font-size-15 ml-1 align-middle"></i>
+        </DropdownToggle>
+        <DropdownMenu>
+            {columns
+                .map((column) => ({
+                    ...column,
+                    toggle: toggles[column.dataField],
+                }))
+                .map((column) => (
+                    <DropdownItem key={column.dataField} onClick={() => onColumnToggle(column.dataField)}>
+                        {column.toggle && <i className="uil uil-check"></i>}
+                        <span className="ml-2">{column.text}</span>
+                    </DropdownItem>
+                ))}
+        </DropdownMenu>
+    </UncontrolledDropdown>
+);
+
 const TableWithRowExpand = () => {
     const { SearchBar } = Search;
     const expandRow = {
@@ -512,14 +543,13 @@ const TableWithRowExpand = () => {
     return (
         <Card>
             <CardBody>
-                {/* <h4 className="header-title mt-0 mb-1">All Reservations</h4> */}
                 <p className="sub-header">Expand row to see more additional details</p>
-                <ToolkitProvider bootstrap4 keyField="id" data={records} columns={columns} search>
+                <ToolkitProvider bootstrap4 keyField="id" data={records} columns={columns} search columnToggle>
                     {(props) => (
                         <React.Fragment>
                             <Row>
                                 <Col>
-                                    <SearchBar {...props.searchProps} />
+                                    <CustomToggleList {...props.columnToggleProps} />
                                 </Col>
                                 <Col className="text-right">
                                     <SearchBar {...props.searchProps} />
@@ -546,26 +576,6 @@ const TableWithRowExpand = () => {
                         </React.Fragment>
                     )}
                 </ToolkitProvider>
-
-                {/* <BootstrapTable
-                    bootstrap4
-                    keyField="id"
-                    bordered={false}
-                    data={records}
-                    columns={columns}
-                    pagination={paginationFactory({
-                        sizePerPage: 15,
-                        sizePerPageRenderer: sizePerPageRenderer,
-                        sizePerPageList: [
-                            { text: '15', value: 15 },
-                            { text: '50', value: 50 },
-                            { text: '100', value: 100 },
-                            { text: 'All', value: records.length },
-                        ],
-                    })}
-                    expandRow={expandRow}
-                    wrapperClasses="table-responsive"
-                /> */}
             </CardBody>
         </Card>
     );
