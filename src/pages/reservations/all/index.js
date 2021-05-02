@@ -511,7 +511,7 @@ const TableWithRowExpand = () => {
     return (
         <Card>
             <CardBody>
-                <h4 className="header-title mt-0 mb-1">All Reservations</h4>
+                {/* <h4 className="header-title mt-0 mb-1">All Reservations</h4> */}
                 <p className="sub-header">Expand row to see more additional details</p>
 
                 <BootstrapTable
