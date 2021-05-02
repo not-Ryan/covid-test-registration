@@ -1,8 +1,19 @@
 import React from 'react';
-import { Row, Col, Card, CardBody, Input } from 'reactstrap';
+import {
+    Row,
+    Col,
+    Card,
+    CardBody,
+    Input,
+    UncontrolledDropdown,
+    DropdownToggle,
+    DropdownMenu,
+    DropdownItem,
+    Badge,
+} from 'reactstrap';
 import BootstrapTable from 'react-bootstrap-table-next';
 
-import ToolkitProvider, { Search, CSVExport } from 'react-bootstrap-table2-toolkit';
+import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 
@@ -13,105 +24,105 @@ const records = [
         id: 1,
         age: 32,
         name: 'Burt',
-        company: 'Kaggle',
+        company: <Badge color="soft-secondary" className="mr-1">Pending</Badge>,
         phone: '+1 (823) 532-2427',
     },
     {
         id: 2,
         age: 23,
         name: 'Long',
-        company: 'Magmina',
+        company: <Badge color="soft-secondary" className="mr-1">Pending</Badge>,
         phone: '+1 (813) 583-2089',
     },
     {
         id: 3,
         age: 31,
         name: 'Alvarado',
-        company: 'Translink',
+        company: <Badge color="soft-danger" className="mr-1">Negative</Badge>,
         phone: '+1 (975) 468-3875',
     },
     {
         id: 4,
         age: 24,
         name: 'Lilia',
-        company: 'Digitalus',
+        company: <Badge color="soft-danger" className="mr-1">Negative</Badge>,
         phone: '+1 (891) 537-3461',
     },
     {
         id: 5,
         age: 25,
         name: 'Amanda',
-        company: 'Bunga',
+        company: <Badge color="soft-danger" className="mr-1">Negative</Badge>,
         phone: '+1 (916) 522-3747',
     },
     {
         id: 6,
         age: 20,
         name: 'Alexandra',
-        company: 'Conjurica',
+        company: <Badge color="soft-danger" className="mr-1">Negative</Badge>,
         phone: '+1 (876) 492-3181',
     },
     {
         id: 7,
         age: 27,
         name: 'Diana',
-        company: 'Extragen',
+        company: <Badge color="success" className="mr-1">Positive</Badge>,
         phone: '+1 (977) 417-3038',
     },
     {
         id: 8,
         age: 26,
         name: 'Goodman',
-        company: 'Aquamate',
+        company: <Badge color="soft-danger" className="mr-1">Negative</Badge>,
         phone: '+1 (930) 545-2289',
     },
     {
         id: 9,
         age: 26,
         name: 'Edith',
-        company: 'Pyrami',
+        company: <Badge color="soft-danger" className="mr-1">Negative</Badge>,
         phone: '+1 (854) 506-3468',
     },
     {
         id: 10,
         age: 29,
         name: 'Juana',
-        company: 'Singavera',
+        company: <Badge color="soft-danger" className="mr-1">Negative</Badge>,
         phone: '+1 (872) 560-2324',
     },
     {
         id: 11,
         age: 21,
         name: 'Fitzgerald',
-        company: 'Dancerity',
+        company: <Badge color="soft-danger" className="mr-1">Negative</Badge>,
         phone: '+1 (813) 573-2507',
     },
     {
         id: 12,
         age: 38,
         name: 'Madden',
-        company: 'Corpulse',
+        company: <Badge color="soft-secondary" className="mr-1">Pending</Badge>,
         phone: '+1 (935) 534-3876',
     },
     {
         id: 13,
         age: 40,
         name: 'Jewell',
-        company: 'Frenex',
+        company: <Badge color="soft-danger" className="mr-1">Negative</Badge>,
         phone: '+1 (886) 516-3262',
     },
     {
         id: 14,
         age: 32,
         name: 'Kerr',
-        company: 'Artiq',
+        company: <Badge color="soft-danger" className="mr-1">Negative</Badge>,
         phone: '+1 (807) 561-3077',
     },
     {
         id: 15,
         age: 20,
         name: 'Washington',
-        company: 'Organica',
+        company: <Badge color="soft-danger" className="mr-1">Negative</Badge>,
         phone: '+1 (948) 458-3517',
     },
     {
@@ -397,7 +408,7 @@ const records = [
     {
         id: 56,
         age: 37,
-        name: 'Duran',
+        name: 'Hugo',
         company: 'Gazak',
         phone: '+1 (991) 446-3820',
     },
@@ -418,7 +429,7 @@ const records = [
     {
         id: 59,
         age: 39,
-        name: 'Pearlie',
+        name: 'John',
         company: 'Progenex',
         phone: '+1 (805) 545-2585',
     },
@@ -438,7 +449,7 @@ const columns = [
         sort: true,
     },
     {
-        dataField: 'company',
+        dataField: 'name',
         text: 'ID number',
         sort: false,
     },
@@ -489,7 +500,29 @@ const sizePerPageRenderer = ({ options, currSizePerPage, onSizePerPageChange }) 
     </React.Fragment>
 );
 
+const CustomToggleList = ({ columns, onColumnToggle, toggles }) => (
+    <UncontrolledDropdown className="mb-3">
+        <DropdownToggle tag="button" className="btn btn-white">
+            Select Columns <i className="uil uil-angle-down font-size-15 ml-1 align-middle"></i>
+        </DropdownToggle>
+        <DropdownMenu>
+            {columns
+                .map((column) => ({
+                    ...column,
+                    toggle: toggles[column.dataField],
+                }))
+                .map((column) => (
+                    <DropdownItem key={column.dataField} onClick={() => onColumnToggle(column.dataField)}>
+                        {column.toggle && <i className="uil uil-check"></i>}
+                        <span className="ml-2">{column.text}</span>
+                    </DropdownItem>
+                ))}
+        </DropdownMenu>
+    </UncontrolledDropdown>
+);
+
 const TableWithRowExpand = () => {
+    const { SearchBar } = Search;
     const expandRow = {
         renderer: (row) => (
             <div>
@@ -511,41 +544,53 @@ const TableWithRowExpand = () => {
     return (
         <Card>
             <CardBody>
-                {/* <h4 className="header-title mt-0 mb-1">All Reservations</h4> */}
                 <p className="sub-header">Expand row to see more additional details</p>
+                <ToolkitProvider bootstrap4 keyField="id" data={records} columns={columns} search columnToggle>
+                    {(props) => (
+                        <React.Fragment>
+                            <Row>
+                                <Col>
+                                    <CustomToggleList {...props.columnToggleProps} />
+                                </Col>
+                                <Col className="text-right">
+                                    <SearchBar {...props.searchProps} />
+                                </Col>
+                            </Row>
 
-                <BootstrapTable
-                    bootstrap4
-                    keyField="id"
-                    bordered={false}
-                    data={records}
-                    columns={columns}
-                    pagination={paginationFactory({
-                        sizePerPage: 15,
-                        sizePerPageRenderer: sizePerPageRenderer,
-                        sizePerPageList: [
-                            { text: '15', value: 15 },
-                            { text: '50', value: 50 },
-                            { text: '100', value: 100 },
-                            { text: 'All', value: records.length },
-                        ],
-                    })}
-                    expandRow={expandRow}
-                    wrapperClasses="table-responsive"
-                />
+                            <BootstrapTable
+                                {...props.baseProps}
+                                bordered={false}
+                                striped
+                                defaultSorted={defaultSorted}
+                                pagination={paginationFactory({
+                                    sizePerPage: 15,
+                                    sizePerPageRenderer: sizePerPageRenderer,
+                                    sizePerPageList: [
+                                        { text: '15', value: 15 },
+                                        { text: '50', value: 50 },
+                                        { text: '100', value: 100 },
+                                        { text: 'All', value: records.length },
+                                    ],
+                                })}
+                                expandRow={expandRow}
+                                wrapperClasses="table-responsive"
+                            />
+                        </React.Fragment>
+                    )}
+                </ToolkitProvider>
             </CardBody>
         </Card>
     );
 };
 
-const AllReservations = () => {
+const TodayReservations = () => {
     return (
         <React.Fragment>
             <Row className="page-title">
                 <Col md={12}>
                     <PageTitle
                         breadCrumbItems={[{ label: 'Reservations', path: '/pages/starter', active: true }]}
-                        title={'All Reservations'}
+                        title={'Today Reservations'}
                     />
                 </Col>
             </Row>
@@ -558,4 +603,4 @@ const AllReservations = () => {
     );
 };
 
-export default AllReservations;
+export default TodayReservations;
