@@ -16,6 +16,7 @@ const Dashboard = React.lazy(() => import('../pages/dashboard'));
 const Locations = React.lazy(() => import('../pages/locations'));
 const AllReservations = React.lazy(() => import('../pages/reservations/all'));
 const TodayReservations = React.lazy(() => import('../pages/reservations/today'));
+const SingleReservation = React.lazy(() => import('../pages/reservations/single/SingleView'));
 // apps
 const CalendarApp = React.lazy(() => import('../pages/apps/Calendar'));
 const EmailInbox = React.lazy(() => import('../pages/apps/Email/Inbox'));
@@ -108,19 +109,26 @@ const reservationsAppRoutes = {
     icon: FeatherIcon.Calendar,
     children: [
         {
-             path: '/reservations/all',
+            path: '/reservations/all',
             name: 'All',
             component: AllReservations,
             route: PrivateRoute,
             roles: ['Admin'],
         },
         {
-             path: '/reservations/today',
+            path: '/reservations/today',
             name: 'Today',
             component: TodayReservations,
             route: PrivateRoute,
             roles: ['Admin'],
         },
+        // {
+        //     path: '/reservations/view:reservationID',
+        //     name: 'Hidden',
+        //     component: SingleReservation,
+        //     route: PrivateRoute,
+        //     roles: ['Admin'],
+        // },
     ],
 };
 
