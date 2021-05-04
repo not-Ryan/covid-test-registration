@@ -365,7 +365,7 @@ const AllReservations = () => {
             <Row>
                 <Link
                     className="btn-default"
-                    to={{ pathname: '/reservation/view/2'}}>
+                    to={{ pathname: '/reservations/view-reservation/2'}}>
                     View
                 </Link>
                 <Col md={12}>
