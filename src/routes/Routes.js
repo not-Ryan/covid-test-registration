@@ -77,7 +77,7 @@ class Routes extends Component {
                                     component={route.component}></route.route>
                             ) : null;
                         })}
-                        <Route path="/reservation/view" route={Route}>
+                        <Route path="/reservation/view/:reservationId" route={Route}>
                             <SingleReservation />
                         </Route>
                     </Switch>
