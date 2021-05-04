@@ -122,13 +122,6 @@ const reservationsAppRoutes = {
             route: PrivateRoute,
             roles: ['Admin'],
         },
-        // {
-        //     path: '/reservations/view:reservationID',
-        //     name: 'Hidden',
-        //     component: SingleReservation,
-        //     route: PrivateRoute,
-        //     roles: ['Admin'],
-        // },
     ],
 };
 
