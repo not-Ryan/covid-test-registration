@@ -24,7 +24,7 @@ import PageTitle from '../../../components/PageTitle';
 const records = [
     {
         id: 1,
-        age: 32,
+        age: <Link className="btn-default" to={{ pathname: '/reservations/view-reservation/5'}}> View</Link>,
         name: 'Burt',
         company: (
             <Badge color="soft-secondary" className="mr-1">
@@ -35,7 +35,7 @@ const records = [
     },
     {
         id: 2,
-        age: 23,
+        age: <Link className="btn-default" to={{ pathname: '/reservations/view-reservation/1'}}> View</Link>,
         name: 'Long',
         company: (
             <Badge color="soft-secondary" className="mr-1">
@@ -46,7 +46,7 @@ const records = [
     },
     {
         id: 3,
-        age: 31,
+        age: <Link className="btn-default" to={{ pathname: '/reservations/view-reservation/10'}}> View</Link>,
         name: 'Alvarado',
         company: (
             <Badge color="soft-danger" className="mr-1">
@@ -57,7 +57,7 @@ const records = [
     },
     {
         id: 4,
-        age: 24,
+        age: <Link className="btn-default" to={{ pathname: '/reservations/view-reservation/2400'}}> View</Link>,
         name: 'Lilia',
         company: (
             <Badge color="soft-danger" className="mr-1">
@@ -363,11 +363,6 @@ const AllReservations = () => {
                 </Col>
             </Row>
             <Row>
-                <Link
-                    className="btn-default"
-                    to={{ pathname: '/reservations/view-reservation/2'}}>
-                    View
-                </Link>
                 <Col md={12}>
                     <TableWithRowExpand />
                 </Col>
