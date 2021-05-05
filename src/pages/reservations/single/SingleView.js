@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Row, Col, Card, CardBody, TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap';
 import classnames from 'classnames';
+import { useParams } from 'react-router-dom';
 
 import PageTitle from '../../../components/PageTitle';
 
@@ -23,6 +24,8 @@ class singleReservation extends Component {
     };
 
     render() {
+        const reservationId = new URLSearchParams(window.location.search).get('id');
+
         const tabContents = [
             {
                 id: '1',
@@ -40,6 +43,8 @@ class singleReservation extends Component {
             },
         ];
 
+        //const thisProduct = productsData.find(prod => prod.id === productId)
+
         return (
             <React.Fragment>
                 <Row className="page-title">
@@ -55,7 +60,10 @@ class singleReservation extends Component {
                         {/* tab pills */}
                         <Card>
                             <CardBody>
-                                <h5 className="header-title mb-3 mt-0">This is where all the information will be. Just you wait.</h5>
+                                <h5 className="header-title mb-3 mt-0">
+                                    This is where all the information will be. Just you wait. Reservation ID:{' '}
+                                    {reservationId}
+                                </h5>
                             </CardBody>
                         </Card>
                     </Col>

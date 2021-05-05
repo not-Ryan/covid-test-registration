@@ -24,7 +24,7 @@ import PageTitle from '../../../components/PageTitle';
 const records = [
     {
         id: 1,
-        age: <Link className="btn-default" to={{ pathname: '/reservations/view-reservation/5'}}> View</Link>,
+        age: <Link className="btn-default" to={`/reservations/view-reservation?id=5`}> View</Link>,
         name: 'Burt',
         company: (
             <Badge color="soft-secondary" className="mr-1">
