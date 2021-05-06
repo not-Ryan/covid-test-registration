@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col, Card, CardBody, Input, Button } from 'reactstrap';
+import { Row, Col, Card, CardBody, Input, Button, Table } from 'reactstrap';
 import ToolkitProvider, { Search, CSVExport } from 'react-bootstrap-table2-toolkit';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 import { Link } from 'react-router-dom';
@@ -29,13 +29,38 @@ class AllTestedPeople extends Component {
             .then((data) => {
                 // Log the data to the console
                 // You would do something with both sets of data here
-                const locationRaw = data[0];
-                this.setState({ allTestedPeople: locationRaw });
+                const testedPeople = data[0];
+
+                this.addViewMoreButton(testedPeople);
+
+                //console.log(testedPeople);
             })
             .catch(function (error) {
                 // if there's an error, log it
                 console.log(error);
             });
+    };
+
+    addViewMoreButton = (testedPeople) => {
+        let newList = [];
+
+        // loop through list to add button
+        for (const person in testedPeople) {
+            if (Object.hasOwnProperty.call(testedPeople, person)) {
+                const record = testedPeople[person];
+                record.action = (
+                    <Link to={`/view-location?id=` + record.id}>
+                        <Button color="primary"  size="md">
+                            View
+                        </Button>
+                    </Link>
+                );
+
+                newList.push(record);
+            }
+        }
+
+        this.setState({ allTestedPeople: testedPeople });
     };
 
     render() {
@@ -73,6 +98,11 @@ class AllTestedPeople extends Component {
             {
                 dataField: 'closing',
                 text: 'Company',
+                sort: false,
+            },
+            {
+                dataField: 'action',
+                text: 'Action',
                 sort: false,
             },
         ];
@@ -113,10 +143,7 @@ class AllTestedPeople extends Component {
                         <Col md={12}>
                             <Card>
                                 <CardBody>
-                                    <h4 className="header-title mt-0 mb-1">Search and Save</h4>
-                                    <p className="sub-header">
-                                        A Table allowing search and export the data in CSV format
-                                    </p>
+                                    <p className="sub-header">A Table showing all tested people</p>
 
                                     <ToolkitProvider
                                         bootstrap4
@@ -141,6 +168,58 @@ class AllTestedPeople extends Component {
                                                 </Row>
 
                                                 <BootstrapTable
+                                                    className="mb-0"
+                                                    hover
+                                                    {...props.baseProps}
+                                                    bordered={false}
+                                                    defaultSorted={defaultSorted}
+                                                    pagination={paginationFactory({
+                                                        sizePerPage: 5,
+                                                        sizePerPageRenderer: sizePerPageRenderer,
+                                                        sizePerPageList: [
+                                                            { text: '5', value: 5 },
+                                                            { text: '10', value: 10 },
+                                                            { text: '25', value: 25 },
+                                                            { text: 'All', value: this.state.allTestedPeople.length },
+                                                        ],
+                                                    })}>
+                                                    <thead>
+                                                        <tr>
+                                                            <th>#</th>
+                                                            <th>Name</th>
+                                                            <th>Address</th>
+                                                            <th>Phone</th>
+                                                            <th>Opening time</th>
+                                                            <th>Closing time</th>
+                                                            <th>Actions</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        {this.state.allTestedPeople.map((record, index) => {
+                                                            return (
+                                                                <tr key={index}>
+                                                                    <th scope="row">{record.id}</th>
+                                                                    <td>{record.name}</td>
+                                                                    <td>{record.address}</td>
+                                                                    <td>{record.phone}</td>
+                                                                    <td>{record.opening}</td>
+                                                                    <td>{record.closing}</td>
+                                                                    <td>
+                                                                        <Link to={`/view-location?id=` + record.id}>
+                                                                            <Button
+                                                                                color="primary"
+                                                                                className="width-xs">
+                                                                                View
+                                                                            </Button>
+                                                                        </Link>
+                                                                    </td>
+                                                                </tr>
+                                                            );
+                                                        })}
+                                                    </tbody>
+                                                </BootstrapTable>
+
+                                                {/* <BootstrapTable
                                                     {...props.baseProps}
                                                     bordered={false}
                                                     defaultSorted={defaultSorted}
@@ -155,7 +234,7 @@ class AllTestedPeople extends Component {
                                                         ],
                                                     })}
                                                     wrapperClasses="table-responsive"
-                                                />
+                                                /> */}
                                             </React.Fragment>
                                         )}
                                     </ToolkitProvider>
