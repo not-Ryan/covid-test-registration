@@ -125,6 +125,28 @@ const reservationsAppRoutes = {
     ],
 };
 
+const testedPeopleAppRoutes = {
+    path: '/reservations',
+    name: 'Tested',
+    icon: FeatherIcon.Users,
+    children: [
+        {
+            path: '/reservations/all',
+            name: 'All',
+            component: AllReservations,
+            route: PrivateRoute,
+            roles: ['Admin'],
+        },
+        {
+            path: '/reservations/today',
+            name: 'Today',
+            component: TodayReservations,
+            route: PrivateRoute,
+            roles: ['Admin'],
+        },
+    ],
+};
+
 const LocationsRoutes = {
     path: '/locations',
     name: 'Locations',
@@ -220,6 +242,7 @@ const taskAppRoutes = {
 
 const appRoutes = [
     reservationsAppRoutes,
+    testedPeopleAppRoutes,
     LocationsRoutes,
     calendarAppRoutes,
     emailAppRoutes,
