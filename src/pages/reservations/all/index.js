@@ -13,7 +13,7 @@ import {
     Button,
 } from 'reactstrap';
 import BootstrapTable from 'react-bootstrap-table-next';
-import { Link, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit';
 import paginationFactory from 'react-bootstrap-table2-paginator';
