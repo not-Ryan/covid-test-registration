@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
-import { Row, Col, Card, CardBody, Table, Button } from 'reactstrap';
+import { Row, Col, Card, CardBody, Input, Button } from 'reactstrap';
+import ToolkitProvider, { Search, CSVExport } from 'react-bootstrap-table2-toolkit';
+import paginationFactory from 'react-bootstrap-table2-paginator';
 import { Link } from 'react-router-dom';
+import BootstrapTable from 'react-bootstrap-table-next';
 import Loader from '../../components/Loader';
 import PageTitle from '../../components/PageTitle';
 
 class AllTestedPeople extends Component {
     state = {
-        allLocations: [],
+        allTestedPeople: [],
     };
 
     componentDidMount() {
@@ -27,7 +30,7 @@ class AllTestedPeople extends Component {
                 // Log the data to the console
                 // You would do something with both sets of data here
                 const locationRaw = data[0];
-                this.setState({ allLocations: locationRaw });
+                this.setState({ allTestedPeople: locationRaw });
             })
             .catch(function (error) {
                 // if there's an error, log it
@@ -36,6 +39,62 @@ class AllTestedPeople extends Component {
     };
 
     render() {
+        const { SearchBar } = Search;
+        const { ExportCSVButton } = CSVExport;
+
+        const defaultSorted = [
+            {
+                dataField: 'id',
+                order: 'asc',
+            },
+        ];
+
+        const columns = [
+            {
+                dataField: 'id',
+                text: 'ID',
+                sort: true,
+            },
+            {
+                dataField: 'name',
+                text: 'Name',
+                sort: true,
+            },
+            {
+                dataField: 'phone',
+                text: 'Phone Number',
+                sort: false,
+            },
+            {
+                dataField: 'address',
+                text: 'Age',
+                sort: true,
+            },
+            {
+                dataField: 'closing',
+                text: 'Company',
+                sort: false,
+            },
+        ];
+
+        const sizePerPageRenderer = ({ options, currSizePerPage, onSizePerPageChange }) => (
+            <React.Fragment>
+                <label className="d-inline mr-1">Show</label>
+                <Input
+                    type="select"
+                    name="select"
+                    id="no-entries"
+                    className="custom-select custom-select-sm d-inline col-1"
+                    defaultValue={currSizePerPage}
+                    onChange={(e) => onSizePerPageChange(e.target.value)}>
+                    {options.map((option, idx) => {
+                        return <option key={idx}>{option.text}</option>;
+                    })}
+                </Input>
+                <label className="d-inline ml-1">entries</label>
+            </React.Fragment>
+        );
+
         return (
             <React.Fragment>
                 <div className="">
@@ -54,42 +113,52 @@ class AllTestedPeople extends Component {
                         <Col md={12}>
                             <Card>
                                 <CardBody>
-                                    <p className="sub-header">Here you will find all the tested people</p>
+                                    <h4 className="header-title mt-0 mb-1">Search and Save</h4>
+                                    <p className="sub-header">
+                                        A Table allowing search and export the data in CSV format
+                                    </p>
 
-                                    <Table className="mb-0" hover>
-                                        <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>Name</th>
-                                                <th>Address</th>
-                                                <th>Phone</th>
-                                                <th>Opening time</th>
-                                                <th>Closing time</th>
-                                                <th>Actions</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {this.state.allLocations.map((record, index) => {
-                                                return (
-                                                    <tr key={index}>
-                                                        <th scope="row">{record.id}</th>
-                                                        <td>{record.name}</td>
-                                                        <td>{record.address}</td>
-                                                        <td>{record.phone}</td>
-                                                        <td>{record.opening}</td>
-                                                        <td>{record.closing}</td>
-                                                        <td>
-                                                            <Link to={`/view-location?id=` + record.id}>
-                                                                <Button color="primary" className="width-xs">
-                                                                    View
-                                                                </Button>
-                                                            </Link>
-                                                        </td>
-                                                    </tr>
-                                                );
-                                            })}
-                                        </tbody>
-                                    </Table>
+                                    <ToolkitProvider
+                                        bootstrap4
+                                        keyField="id"
+                                        data={this.state.allTestedPeople}
+                                        columns={columns}
+                                        search
+                                        exportCSV={{ onlyExportFiltered: true, exportAll: false }}>
+                                        {(props) => (
+                                            <React.Fragment>
+                                                <Row>
+                                                    <Col>
+                                                        <SearchBar {...props.searchProps} />
+                                                    </Col>
+                                                    <Col className="text-right">
+                                                        <ExportCSVButton
+                                                            {...props.csvProps}
+                                                            className="btn btn-primary">
+                                                            Save
+                                                        </ExportCSVButton>
+                                                    </Col>
+                                                </Row>
+
+                                                <BootstrapTable
+                                                    {...props.baseProps}
+                                                    bordered={false}
+                                                    defaultSorted={defaultSorted}
+                                                    pagination={paginationFactory({
+                                                        sizePerPage: 5,
+                                                        sizePerPageRenderer: sizePerPageRenderer,
+                                                        sizePerPageList: [
+                                                            { text: '5', value: 5 },
+                                                            { text: '10', value: 10 },
+                                                            { text: '25', value: 25 },
+                                                            { text: 'All', value: this.state.allTestedPeople.length },
+                                                        ],
+                                                    })}
+                                                    wrapperClasses="table-responsive"
+                                                />
+                                            </React.Fragment>
+                                        )}
+                                    </ToolkitProvider>
                                 </CardBody>
                             </Card>
                         </Col>
