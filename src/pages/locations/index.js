@@ -1,35 +1,15 @@
 import React, { Component } from 'react';
 import { Row, Col, Card, CardBody, Table, Button } from 'reactstrap';
-//import { ChevronDown, Mail, Printer, File, Users, Image, ShoppingBag, Calendar } from 'react-feather';
 
 import { Link } from 'react-router-dom';
 import Loader from '../../components/Loader';
-//import { getLoggedInUser } from '../../helpers/authUtils';
 import PageTitle from '../../components/PageTitle';
-
-const records = [
-    { id: 1, name: 'Carephar 1', address: 'teststraat', phone: '+31 12345678', opening: '8:00', closing: '4:00' },
-    { id: 2, name: 'Carephar 2', address: 'teststraat', phone: '+31 12345678', opening: '8:00', closing: '4:00' },
-    { id: 3, name: 'Carephar 3', address: 'teststraat', phone: '+31 12345678', opening: '8:00', closing: '4:00' },
-    { id: 4, name: 'Carephar 4', address: 'teststraat', phone: '+31 12345678', opening: '8:00', closing: '4:00' },
-    { id: 5, name: 'Carephar 5', address: 'teststraat', phone: '+31 12345678', opening: '8:00', closing: '4:00' },
-    { id: 6, name: 'Carephar 6', address: 'teststraat', phone: '+31 12345678', opening: '8:00', closing: '4:00' },
-];
-
 class Locations extends Component {
     state = {
         allLocations: [],
     };
 
     componentDidMount() {
-        // fetch('https://run.mocky.io/v3/6e21e10e-05fa-4f46-8b88-885b66611d8c')
-        //     .then((res) => res.json())
-        //     .then((data) => {
-        //         this.setState({ allLocations: data });
-
-        //         console.log(this.state.allLocations);
-        //     })
-        //     .catch(console.log);
         this.fetchLocations();
     }
 
@@ -99,7 +79,7 @@ class Locations extends Component {
                                                         <td>{record.opening}</td>
                                                         <td>{record.closing}</td>
                                                         <td>
-                                                            <Link to={`/reservations/view-location?id=` + record.id}>
+                                                            <Link to={`/view-location?id=` + record.id}>
                                                                 <Button color="primary" className="width-xs">
                                                                     View
                                                                 </Button>
