@@ -6,13 +6,15 @@ import { ChevronDown, Mail, Printer, File, Users, Image, ShoppingBag, Calendar }
 import { getLoggedInUser } from '../../helpers/authUtils';
 import Loader from '../../components/Loader';
 import OverviewWidget from '../../components/OverviewWidget';
+import PageTitle from '../../components/PageTitle';
 
 const records = [
-    { id: 1, firstName: 'Greeva', lastName: 'N', username: '@greeva' },
-    { id: 2, firstName: 'Dhyani', lastName: 'B', username: '@dhyani' },
-    { id: 3, firstName: 'Manu', lastName: 'B', username: '@mannat' },
-    { id: 4, firstName: 'Nik', lastName: 'N', username: '@nikn' },
-    { id: 5, firstName: 'Shreyu', lastName: 'Navadiya', username: '@sn' },
+    { id: 1, name: 'Carephar 1', address: 'teststraat', phone: '+31 12345678', Opening: '8:00', Closing: '4:00' },
+    { id: 2, name: 'Carephar 2', address: 'teststraat', phone: '+31 12345678', Opening: '8:00', Closing: '4:00' },
+    { id: 3, name: 'Carephar 3', address: 'teststraat', phone: '+31 12345678', Opening: '8:00', Closing: '4:00' },
+    { id: 4, name: 'Carephar 4', address: 'teststraat', phone: '+31 12345678', Opening: '8:00', Closing: '4:00' },
+    { id: 5, name: 'Carephar 5', address: 'teststraat', phone: '+31 12345678', Opening: '8:00', Closing: '4:00' },
+    { id: 6, name: 'Carephar 6', address: 'teststraat', phone: '+31 12345678', Opening: '8:00', Closing: '4:00' },
 ];
 
 class Locations extends Component {
@@ -35,11 +37,13 @@ class Locations extends Component {
                     {/* preloader */}
                     {this.props.loading && <Loader />}
 
-                    <Row className="page-title align-items-center">
-                        <Col sm={4} xl={6}>
-                            <h4 className="mb-1 mt-0">Locations</h4>
+                    <Row className="page-title">
+                        <Col md={12}>
+                            <PageTitle
+                                breadCrumbItems={[{ label: 'Locations', path: '/pages/starter', active: true }]}
+                                title={'All Locations'}
+                            />
                         </Col>
-                        <Col sm={8} xl={6}></Col>
                     </Row>
 
                     {/* charts */}
@@ -47,18 +51,18 @@ class Locations extends Component {
                         <Col md={12}>
                             <Card>
                                 <CardBody>
-                                    <h4 className="header-title mt-0 mb-1">Hoverable Rows</h4>
-                                    <p className="sub-header">
-                                        Add <code>hover</code> attribute to enable a hover state on table rows
-                                    </p>
+                                    <h4 className="header-title mt-0 mb-1"></h4>
+                                    <p className="sub-header">Here you will find all the Carephar locations</p>
 
-                                    <Table className="mb-0" hover>
+                                    <Table className="mb-0" hover responsive>
                                         <thead>
                                             <tr>
                                                 <th>#</th>
-                                                <th>First Name</th>
-                                                <th>Last Name</th>
-                                                <th>Username</th>
+                                                <th>Name</th>
+                                                <th>Address</th>
+                                                <th>Phone</th>
+                                                <th>Opening time</th>
+                                                <th>Closing time</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -66,9 +70,11 @@ class Locations extends Component {
                                                 return (
                                                     <tr key={index}>
                                                         <th scope="row">{record.id}</th>
-                                                        <td>{record.firstName}</td>
-                                                        <td>{record.lastName}</td>
-                                                        <td>{record.username}</td>
+                                                        <td>{record.name}</td>
+                                                        <td>{record.address}</td>
+                                                        <td>{record.phone}</td>
+                                                        <td>{record.Opening}</td>
+                                                        <td>{record.Closing}</td>
                                                     </tr>
                                                 );
                                             })}
