@@ -61,7 +61,7 @@ class singleReservation extends Component {
                         <Card>
                             <CardBody>
                                 <h5 className="header-title mb-3 mt-0">
-                                    This is where all the information will be. Just you wait. Reservation ID:{' '}
+                                    This is where all the information will be. Just you wait. Location ID:{' '}
                                     {reservationId}
                                 </h5>
                             </CardBody>

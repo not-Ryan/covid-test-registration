@@ -4,7 +4,7 @@ import classnames from 'classnames';
 
 import PageTitle from '../../../components/PageTitle';
 
-class singleReservation extends Component {
+class singleLocation extends Component {
     constructor(props) {
         super(props);
         this.state = { activeTab: '2' };
@@ -50,7 +50,7 @@ class singleReservation extends Component {
                     <Col md={12}>
                         <PageTitle
                             breadCrumbItems={[{ label: 'Reservations', path: '/pages/starter', active: true }]}
-                            title={'Reservation info'}
+                            title={'Location info'}
                         />
                     </Col>
                 </Row>
@@ -72,4 +72,4 @@ class singleReservation extends Component {
     }
 }
 
-export default singleReservation;
+export default singleLocation;
