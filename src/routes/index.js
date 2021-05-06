@@ -16,7 +16,7 @@ const Dashboard = React.lazy(() => import('../pages/dashboard'));
 const Locations = React.lazy(() => import('../pages/locations'));
 const AllReservations = React.lazy(() => import('../pages/reservations/all'));
 const TodayReservations = React.lazy(() => import('../pages/reservations/today'));
-const SingleReservation = React.lazy(() => import('../pages/reservations/single'));
+const AllTestedPeople = React.lazy(() => import('../pages/testedPeople'));
 // apps
 const CalendarApp = React.lazy(() => import('../pages/apps/Calendar'));
 const EmailInbox = React.lazy(() => import('../pages/apps/Email/Inbox'));
@@ -126,19 +126,19 @@ const reservationsAppRoutes = {
 };
 
 const testedPeopleAppRoutes = {
-    path: '/reservations',
+    path: '/tested-people',
     name: 'Tested',
     icon: FeatherIcon.Users,
     children: [
         {
-            path: '/reservations/all',
+            path: '/tested-people/all',
             name: 'All',
-            component: AllReservations,
+            component: AllTestedPeople,
             route: PrivateRoute,
             roles: ['Admin'],
         },
         {
-            path: '/reservations/today',
+            path: '/tested-people/today',
             name: 'Today',
             component: TodayReservations,
             route: PrivateRoute,
