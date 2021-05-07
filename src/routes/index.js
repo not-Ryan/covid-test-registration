@@ -17,6 +17,7 @@ const Locations = React.lazy(() => import('../pages/locations'));
 const AllReservations = React.lazy(() => import('../pages/reservations/all'));
 const TodayReservations = React.lazy(() => import('../pages/reservations/today'));
 const AllTestedPeople = React.lazy(() => import('../pages/testedPeople'));
+const TodayTestedPeople = React.lazy(() => import('../pages/testedPeople/today'));
 // apps
 const CalendarApp = React.lazy(() => import('../pages/apps/Calendar'));
 const EmailInbox = React.lazy(() => import('../pages/apps/Email/Inbox'));
@@ -140,7 +141,7 @@ const testedPeopleAppRoutes = {
         {
             path: '/tested-people/today',
             name: 'Today',
-            component: TodayReservations,
+            component: TodayTestedPeople,
             route: PrivateRoute,
             roles: ['Admin'],
         },

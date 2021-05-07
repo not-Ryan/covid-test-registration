@@ -50,7 +50,7 @@ class singleLocation extends Component {
                     <Col md={12}>
                         <PageTitle
                             breadCrumbItems={[{ label: 'Reservations', path: '/pages/starter', active: true }]}
-                            title={'Location info'}
+                            title={'Tested People Today'}
                         />
                     </Col>
                 </Row>
