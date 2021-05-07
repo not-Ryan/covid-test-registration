@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col, Card, CardBody, Input, Button, Badge } from 'reactstrap';
+import { Row, Col, Card, CardBody, Input, Button, Badge, UncontrolledTooltip } from 'reactstrap';
 import ToolkitProvider, { Search, CSVExport } from 'react-bootstrap-table2-toolkit';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 import { Link } from 'react-router-dom';
@@ -60,6 +60,14 @@ class AllTestedPeople extends Component {
                     </Link>
                 );
 
+                record.paid_price_tag = (
+                    <p id="tooltip-price">
+                      {record.paid_price}
+                        <UncontrolledTooltip placement="top" id="tooltip-price-tooltip" target="tooltip-price">
+                            pin
+                        </UncontrolledTooltip>
+                    </p>
+                );
 
                 // check person result state to add tag styling
                 if (record.test_result == 'true') {
@@ -118,7 +126,7 @@ class AllTestedPeople extends Component {
                 sort: false,
             },
             {
-                dataField: 'paid_price',
+                dataField: 'paid_price_tag',
                 text: 'Paid price',
                 sort: false,
             },
