@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col, Card, CardBody, Input, Button, Table } from 'reactstrap';
+import { Row, Col, Card, CardBody, Input, Button, Badge } from 'reactstrap';
 import ToolkitProvider, { Search, CSVExport } from 'react-bootstrap-table2-toolkit';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 import { Link } from 'react-router-dom';
@@ -13,11 +13,11 @@ class AllTestedPeople extends Component {
     };
 
     componentDidMount() {
-        this.fetchLocations();
+        this.fetchTestedPeople();
     }
 
-    fetchLocations = () => {
-        Promise.all([fetch(`https://run.mocky.io/v3/6e21e10e-05fa-4f46-8b88-885b66611d8c`)])
+    fetchTestedPeople = () => {
+        Promise.all([fetch(`https://run.mocky.io/v3/e44948a1-a757-4808-9bb6-b72bc24f790c`)])
             .then(function (responses) {
                 // Get a JSON object from each of the responses
                 return Promise.all(
@@ -48,12 +48,29 @@ class AllTestedPeople extends Component {
         for (const person in testedPeople) {
             if (Object.hasOwnProperty.call(testedPeople, person)) {
                 const record = testedPeople[person];
-                record.action = (
+                let testResult = 'Negative';
+                let resultTag = 'soft-danger';
+
+                // add custom item to array
+                record.actions = (
                     <Link to={`/view-location?id=` + record.id}>
-                        <Button color="primary"  size="md">
+                        <Button color="primary" size="md">
                             View
                         </Button>
                     </Link>
+                );
+
+
+                // check person result state to add tag styling
+                if (record.test_result == 'true') {
+                    testResult = 'Positive';
+                    resultTag = 'soft-success';
+                }
+
+                record.result_tag = (
+                    <Badge color={resultTag} className="mr-1">
+                        {testResult}
+                    </Badge>
                 );
 
                 newList.push(record);
@@ -81,28 +98,38 @@ class AllTestedPeople extends Component {
                 sort: true,
             },
             {
-                dataField: 'name',
-                text: 'Name',
+                dataField: 'full_name',
+                text: 'Full Name',
                 sort: true,
             },
             {
-                dataField: 'phone',
-                text: 'Phone Number',
+                dataField: 'dob',
+                text: 'Date of birth',
                 sort: false,
             },
             {
                 dataField: 'address',
-                text: 'Age',
+                text: 'Address',
                 sort: true,
             },
             {
-                dataField: 'closing',
-                text: 'Company',
+                dataField: 'location_tested',
+                text: 'Location tested',
                 sort: false,
             },
             {
-                dataField: 'action',
-                text: 'Action',
+                dataField: 'paid_price',
+                text: 'Paid price',
+                sort: false,
+            },
+            {
+                dataField: 'result_tag',
+                text: 'Test result',
+                sort: false,
+            },
+            {
+                dataField: 'actions',
+                text: 'Actions',
                 sort: false,
             },
         ];
@@ -174,67 +201,17 @@ class AllTestedPeople extends Component {
                                                     bordered={false}
                                                     defaultSorted={defaultSorted}
                                                     pagination={paginationFactory({
-                                                        sizePerPage: 5,
+                                                        sizePerPage: 8,
                                                         sizePerPageRenderer: sizePerPageRenderer,
                                                         sizePerPageList: [
-                                                            { text: '5', value: 5 },
-                                                            { text: '10', value: 10 },
-                                                            { text: '25', value: 25 },
-                                                            { text: 'All', value: this.state.allTestedPeople.length },
-                                                        ],
-                                                    })}>
-                                                    <thead>
-                                                        <tr>
-                                                            <th>#</th>
-                                                            <th>Name</th>
-                                                            <th>Address</th>
-                                                            <th>Phone</th>
-                                                            <th>Opening time</th>
-                                                            <th>Closing time</th>
-                                                            <th>Actions</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        {this.state.allTestedPeople.map((record, index) => {
-                                                            return (
-                                                                <tr key={index}>
-                                                                    <th scope="row">{record.id}</th>
-                                                                    <td>{record.name}</td>
-                                                                    <td>{record.address}</td>
-                                                                    <td>{record.phone}</td>
-                                                                    <td>{record.opening}</td>
-                                                                    <td>{record.closing}</td>
-                                                                    <td>
-                                                                        <Link to={`/view-location?id=` + record.id}>
-                                                                            <Button
-                                                                                color="primary"
-                                                                                className="width-xs">
-                                                                                View
-                                                                            </Button>
-                                                                        </Link>
-                                                                    </td>
-                                                                </tr>
-                                                            );
-                                                        })}
-                                                    </tbody>
-                                                </BootstrapTable>
-
-                                                {/* <BootstrapTable
-                                                    {...props.baseProps}
-                                                    bordered={false}
-                                                    defaultSorted={defaultSorted}
-                                                    pagination={paginationFactory({
-                                                        sizePerPage: 5,
-                                                        sizePerPageRenderer: sizePerPageRenderer,
-                                                        sizePerPageList: [
-                                                            { text: '5', value: 5 },
-                                                            { text: '10', value: 10 },
-                                                            { text: '25', value: 25 },
+                                                            { text: '8', value: 8 },
+                                                            { text: '50', value: 50 },
+                                                            { text: '100', value: 100 },
                                                             { text: 'All', value: this.state.allTestedPeople.length },
                                                         ],
                                                     })}
                                                     wrapperClasses="table-responsive"
-                                                /> */}
+                                                />
                                             </React.Fragment>
                                         )}
                                     </ToolkitProvider>
