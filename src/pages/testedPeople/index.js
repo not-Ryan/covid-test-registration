@@ -50,6 +50,8 @@ class AllTestedPeople extends Component {
                 const record = testedPeople[person];
                 let testResult = 'Negative';
                 let resultTag = 'soft-danger';
+                let paidIcon = 'uil uil-money-withdrawal ml-2';
+                let paidIconTooltipTitle = 'cash';
 
                 // add custom item to array
                 record.actions = (
@@ -60,11 +62,17 @@ class AllTestedPeople extends Component {
                     </Link>
                 );
 
+                if (record.test_result == 'true') {
+                    paidIcon = 'uil uil-atm-card ml-2';
+                    paidIconTooltipTitle = 'pin';
+                }
+
                 record.paid_price_tag = (
-                    <p id="tooltip-price">
-                      {record.paid_price}
-                        <UncontrolledTooltip placement="top" id="tooltip-price-tooltip" target="tooltip-price">
-                            pin
+                    <p>
+                        {record.paid_price}
+                        <i className={paidIcon} id={'tooltip-' + record.id}></i>
+                        <UncontrolledTooltip placement="top" id="tooltip-price-tooltip" target={'tooltip-' + record.id}>
+                            {paidIconTooltipTitle}
                         </UncontrolledTooltip>
                     </p>
                 );
