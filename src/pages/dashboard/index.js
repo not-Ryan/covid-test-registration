@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Row, Col, UncontrolledButtonDropdown, DropdownMenu, DropdownItem, DropdownToggle } from 'reactstrap';
-import Flatpickr from 'react-flatpickr'
-import { ChevronDown, Mail, Printer, File, Users, Image, ShoppingBag, Calendar } from 'react-feather';
+import Flatpickr from 'react-flatpickr';
+import { ChevronDown, Mail, Printer, File, Users, Image, ShoppingBag, MapPin, Calendar } from 'react-feather';
 
 import { getLoggedInUser } from '../../helpers/authUtils';
 import Loader from '../../components/Loader';
@@ -16,9 +16,7 @@ import Performers from './Performers';
 import Tasks from './Tasks';
 import Chat from './Chat';
 
-
 class Dashboard extends Component {
-
     constructor(props) {
         super(props);
 
@@ -27,16 +25,15 @@ class Dashboard extends Component {
 
         this.state = {
             user: getLoggedInUser(),
-            filterDate: [oneWeekAgo, new Date()]
+            filterDate: [oneWeekAgo, new Date()],
         };
     }
 
     render() {
-
         return (
             <React.Fragment>
                 <div className="">
-                    { /* preloader */}
+                    {/* preloader */}
                     {this.props.loading && <Loader />}
 
                     <Row className="page-title align-items-center">
@@ -81,10 +78,15 @@ class Dashboard extends Component {
                     {/* charts */}
                     <Row>
                         <Col xl={6}>
-                            <OverviewWidget items={[
-                                { title: '4000', description: 'Reservations today', icon: Calendar },
-                                { title: '48,000', description: 'Reservations all', icon: Calendar },
-                            ]}></OverviewWidget>
+                            <OverviewWidget
+                                items={[
+                                    { title: '967', description: 'Reservations today', icon: Calendar },
+                                    { title: '23,344', description: 'Reservations all', icon: Calendar },
+                                ]}></OverviewWidget>
+                        </Col>
+                        <Col xl={6}>
+                            <OverviewWidget
+                                items={[{ title: '6', description: 'Locations', icon: MapPin }]}></OverviewWidget>
                         </Col>
 
                         {/* <Col xl={6}>
@@ -118,9 +120,8 @@ class Dashboard extends Component {
                     </Row> */}
                 </div>
             </React.Fragment>
-        )
+        );
     }
 }
-
 
 export default Dashboard;
