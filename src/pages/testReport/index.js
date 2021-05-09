@@ -5,11 +5,11 @@ import PageTitle from '../../components/PageTitle';
 
 import logo from '../../assets/images/logo.png';
 
-
 const TestReport = () => {
     const invoiceDetail = {
         customer: 'Greeva Navadiya',
-        notes: 'All accounts are to be paid within 7 days from receipt of invoice. To be paid by cheque or credit card or direct payment online. If account is not paid within 7 days the credits details supplied as confirmation of work undertaken will be charged the agreed quoted fee noted above',
+        notes:
+            'All accounts are to be paid within 7 days from receipt of invoice. To be paid by cheque or credit card or direct payment online. If account is not paid within 7 days the credits details supplied as confirmation of work undertaken will be charged the agreed quoted fee noted above',
         invoice_date: 'Jul 17, 2019',
         due_date: 'Jul 27, 2019',
         invoice_id: '#sh1001',
@@ -50,17 +50,16 @@ const TestReport = () => {
         total: '$4137.75',
     };
 
-
     return (
         <React.Fragment>
             <Row className="page-title d-print-none">
                 <Col md={12}>
                     <PageTitle
                         breadCrumbItems={[
-                            { label: 'Pages', path: '/pages/invoice' },
-                            { label: 'Invoice', path: '/pages/invoice', active: true },
+                            { label: 'Tested People', path: '/tested-people/all' },
+                            { label: 'Test Result', path: '/invoice', active: true },
                         ]}
-                        title={'Invoice'}
+                        title={'Test Result'}
                     />
                 </Col>
             </Row>
@@ -69,20 +68,37 @@ const TestReport = () => {
                 <Col>
                     <Card>
                         <CardBody>
+                            <div className="mb-4">
+                                <div className="text-right d-print-none">
+                                    {/* <Button
+                                        color="primary"
+                                        onClick={(e) => {
+                                            window.print();
+                                        }}>
+                                        <i className="uil uil-print mr-1"></i> Print
+                                    </Button> */}
+                                    <a href="/" className="btn btn-success ml-1">
+                                        Update
+                                    </a>
+                                </div>
+                            </div>
                             <div className="clearfix">
                                 <div className="float-sm-right">
-                                    <img src={logo} alt="" height="48" />
-                                    <h4 className="m-0 d-inline align-middle">Shreyu</h4>
+                                    {/* <img src={logo} alt="" height="48" /> */}
+                                    <h4 className="m-0 d-inline align-middle">Carephar</h4>
                                     <address className="pl-2 mt-2">
-                                        {invoiceDetail.address.line_1}<br />
-                                        {invoiceDetail.address.city}, {invoiceDetail.address.state} {invoiceDetail.address.zip}<br />
+                                        {invoiceDetail.address.line_1}
+                                        <br />
+                                        {invoiceDetail.address.city}, {invoiceDetail.address.state}{' '}
+                                        {invoiceDetail.address.zip}
+                                        <br />
                                         <abbr title="Phone">P:</abbr> {invoiceDetail.address.phone}
                                     </address>
                                 </div>
                                 <div className="float-sm-left">
                                     <h4 className="m-0 d-print-none">Invoice</h4>
                                     <dl className="row mb-2 mt-3">
-                                        <dt className="col-sm-3 font-weight-normal">Invoice Number :</dt>
+                                        <dt className="col-sm-3 font-weight-normal">Test Result :</dt>
                                         <dd className="col-sm-9 font-weight-normal">#sh1001</dd>
 
                                         <dt className="col-sm-3 font-weight-normal">Invoice Date :</dt>
@@ -99,8 +115,11 @@ const TestReport = () => {
                                     <h6 className="font-weight-normal">Invoice For:</h6>
                                     <h6 className="font-size-16">{invoiceDetail.customer}</h6>
                                     <address>
-                                        {invoiceDetail.billing_address.line_1}<br />
-                                        {invoiceDetail.billing_address.city}, {invoiceDetail.billing_address.state} {invoiceDetail.billing_address.zip}<br />
+                                        {invoiceDetail.billing_address.line_1}
+                                        <br />
+                                        {invoiceDetail.billing_address.city}, {invoiceDetail.billing_address.state}{' '}
+                                        {invoiceDetail.billing_address.zip}
+                                        <br />
                                         <abbr title="Phone">P:</abbr> {invoiceDetail.billing_address.phone}
                                     </address>
                                 </Col>
@@ -152,34 +171,28 @@ const TestReport = () => {
                                     <div className="clearfix pt-5">
                                         <h6 className="text-muted">Notes:</h6>
 
-                                        <small className="text-muted">
-                                            {invoiceDetail.notes}
-                                        </small>
+                                        <small className="text-muted">{invoiceDetail.notes}</small>
                                     </div>
                                 </Col>
 
                                 <Col sm={6}>
                                     <div className="float-right mt-4">
-                                        <p><span className="font-weight-medium">Sub-total:</span> <span
-                                            className="float-right">{invoiceDetail.sub_total}</span></p>
-                                        <p><span className="font-weight-medium">Discount (10%):</span> <span
-                                            className="float-right"> &nbsp;&nbsp;&nbsp; {invoiceDetail.discount}</span></p>
+                                        <p>
+                                            <span className="font-weight-medium">Sub-total:</span>{' '}
+                                            <span className="float-right">{invoiceDetail.sub_total}</span>
+                                        </p>
+                                        <p>
+                                            <span className="font-weight-medium">Discount (10%):</span>{' '}
+                                            <span className="float-right">
+                                                {' '}
+                                                &nbsp;&nbsp;&nbsp; {invoiceDetail.discount}
+                                            </span>
+                                        </p>
                                         <h3>{invoiceDetail.total} USD</h3>
                                     </div>
                                     <div className="clearfix"></div>
                                 </Col>
                             </Row>
-
-                            <div className="mt-5 mb-1">
-                                <div className="text-right d-print-none">
-                                    <Button color="primary" onClick={e => {
-                                        window.print();
-                                    }}>
-                                        <i className="uil uil-print mr-1"></i> Print
-                                    </Button>
-                                    <a href="/" className="btn btn-info ml-1">Submit</a>
-                                </div>
-                            </div>
                         </CardBody>
                     </Card>
                 </Col>
