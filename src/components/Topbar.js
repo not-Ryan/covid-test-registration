@@ -91,7 +91,7 @@ class Topbar extends Component {
             { /* logo */}
             <Link to="/" className="navbar-brand mr-0 mr-md-2 logo">
               <span className="logo-lg">
-                <img src={logo} alt="" height="70" />
+                <img src={logo} alt="" height="60" />
               </span>
               <span className="logo-sm">
                 <img src={logo} alt="" height="24" />
