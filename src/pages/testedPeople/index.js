@@ -55,7 +55,7 @@ class AllTestedPeople extends Component {
 
                 // add custom item to array
                 record.actions = (
-                    <Link to={`/view-location?id=` + record.id}>
+                    <Link to={`/test-result?id=` + record.id}>
                         <Button color="primary" size="md">
                             View
                         </Button>
