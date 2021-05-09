@@ -62,7 +62,7 @@ class AllTestedPeople extends Component {
                     </Link>
                 );
 
-                if (record.test_result == 'true') {
+                if (record.test_result === 'true') {
                     paidIcon = 'uil uil-atm-card ml-2';
                     paidIconTooltipTitle = 'pin';
                 }
@@ -78,7 +78,7 @@ class AllTestedPeople extends Component {
                 );
 
                 // check person result state to add tag styling
-                if (record.test_result == 'true') {
+                if (record.test_result === 'true') {
                     testResult = 'Positive';
                     resultTag = 'soft-success';
                 }

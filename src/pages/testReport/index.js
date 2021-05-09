@@ -1,9 +1,9 @@
 import React from 'react';
-import { Row, Col, Card, CardBody, Button } from 'reactstrap';
+import { Row, Col, Card, CardBody } from 'reactstrap';
 
 import PageTitle from '../../components/PageTitle';
 
-import logo from '../../assets/images/logo.png';
+// import logo from '../../assets/images/logo.png';
 
 const TestReport = () => {
     const invoiceDetail = {

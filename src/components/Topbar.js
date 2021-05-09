@@ -5,41 +5,41 @@ import { Container } from 'reactstrap';
 import { Menu, X, Search, Settings, User, HelpCircle, Lock, LogOut } from 'react-feather';
 
 import { showRightSidebar } from '../redux/actions';
-import NotificationDropdown from './NotificationDropdown';
+// import NotificationDropdown from './NotificationDropdown';
 import ProfileDropdown from './ProfileDropdown';
-import LanguageDropdown from './LanguageDropdown';
+// import LanguageDropdown from './LanguageDropdown';
 
 import logo from '../assets/images/carephar_logo.png';
 import profilePic from '../assets/images/users/avatar-7.jpg';
 
 
-const Notifications = [{
-  id: 1,
-  text: 'New user registered',
-  subText: '1 min ago',
-  icon: 'uil uil-user-plus',
-  bgColor: 'primary'
-},
-{
-  id: 2,
-  text: 'Karen Robinson',
-  subText: 'Wow ! this admin looks good and awesome design',
-  icon: 'uil uil-comment-message',
-  bgColor: 'success'
-},
-{
-  id: 3,
-  text: 'Cristina Pride',
-  subText: 'Hi, How are you? What about our next meeting',
-  icon: 'uil uil-comment-message',
-  bgColor: 'danger'
-}, {
-  id: 4,
-  text: 'New user registered',
-  subText: '1 day ago',
-  icon: 'uil uil-user-plus',
-  bgColor: 'info'
-},];
+// const Notifications = [{
+//   id: 1,
+//   text: 'New user registered',
+//   subText: '1 min ago',
+//   icon: 'uil uil-user-plus',
+//   bgColor: 'primary'
+// },
+// {
+//   id: 2,
+//   text: 'Karen Robinson',
+//   subText: 'Wow ! this admin looks good and awesome design',
+//   icon: 'uil uil-comment-message',
+//   bgColor: 'success'
+// },
+// {
+//   id: 3,
+//   text: 'Cristina Pride',
+//   subText: 'Hi, How are you? What about our next meeting',
+//   icon: 'uil uil-comment-message',
+//   bgColor: 'danger'
+// }, {
+//   id: 4,
+//   text: 'New user registered',
+//   subText: '1 day ago',
+//   icon: 'uil uil-user-plus',
+//   bgColor: 'info'
+// },];
 
 const ProfileMenus = [{
   label: 'My Account',
