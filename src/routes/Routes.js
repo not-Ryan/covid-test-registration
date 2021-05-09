@@ -41,6 +41,7 @@ const HorizontalLayout = Loadable({
 
 const SingleReservation = React.lazy(() => import('../pages/reservations/single'));
 const SingleLocation = React.lazy(() => import('../pages/locations/single'));
+const TestResult = React.lazy(() => import('../pages/testReport'));
 
 class Routes extends Component {
     // returns the layout
@@ -80,6 +81,7 @@ class Routes extends Component {
                         })}
                         <Route path="/reservations/view-reservation" route={Route} children={<SingleReservation />}/>
                         <Route path="/view-location" route={Route} children={<SingleLocation />}/>
+                        <Route path="/test-result" route={Route} children={<TestResult />}/>
                     </Switch>
                 </Layout>
             </BrowserRouter>

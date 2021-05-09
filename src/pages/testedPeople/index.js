@@ -197,18 +197,6 @@ class AllTestedPeople extends Component {
                                         exportCSV={{ onlyExportFiltered: true, exportAll: false }}>
                                         {(props) => (
                                             <React.Fragment>
-                                                <Row>
-                                                    <Col>
-                                                        <SearchBar {...props.searchProps} />
-                                                    </Col>
-                                                    <Col className="text-right">
-                                                        <ExportCSVButton
-                                                            {...props.csvProps}
-                                                            className="btn btn-primary">
-                                                            Save
-                                                        </ExportCSVButton>
-                                                    </Col>
-                                                </Row>
 
                                                 <BootstrapTable
                                                     className="mb-0"
