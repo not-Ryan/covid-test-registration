@@ -2,13 +2,10 @@ import React, { Component } from 'react';
 import { Row, Col, Card, CardBody, Nav, NavItem, NavLink, TabContent, TabPane } from 'reactstrap';
 import classNames from 'classnames';
 import PageTitle from '../../components/PageTitle';
+import { Calendar, Info } from 'react-feather';
 
 import UserBox from './patientInfo';
-import Activities from '../other/Profile/Activities';
-import Messages from '../other/Profile/Messages';
-import Projects from '../other/Profile/Projects';
-import Tasks from '../other/Profile/Tasks';
-
+import ReservationInfo from './reservationInfo';
 
 class TestReport extends Component {
     constructor(props) {
@@ -16,18 +13,18 @@ class TestReport extends Component {
 
         this.toggleTab = this.toggleTab.bind(this);
         this.state = {
-            activeTab: '1'
+            activeTab: '1',
         };
     }
 
     /**
      * Toggles tab
-     * @param {*} tab 
+     * @param {*} tab
      */
     toggleTab(tab) {
         if (this.state.activeTab !== tab) {
             this.setState({
-                activeTab: tab
+                activeTab: tab,
             });
         }
     }
@@ -56,50 +53,21 @@ class TestReport extends Component {
                     <Col lg={8}>
                         <Card>
                             <CardBody>
-                                <Nav className="nav nav-pills navtab-bg nav-justified">
-                                    <NavItem>
-                                        <NavLink
-                                            href="#"
-                                            className={classNames({ active: this.state.activeTab === '1' })}
-                                            onClick={() => { this.toggleTab('1'); }}
-                                        >Reservation</NavLink>
-                                    </NavItem>
-                                    <NavItem>
-                                        <NavLink
-                                            href="#"
-                                            className={classNames({ active: this.state.activeTab === '2' })}
-                                            onClick={() => { this.toggleTab('2'); }}
-                                        >Test Information</NavLink>
-                                    </NavItem>
-                                    {/* <NavItem>
-                                        <NavLink
-                                            href="#"
-                                            className={classNames({ active: this.state.activeTab === '3' })}
-                                            onClick={() => { this.toggleTab('3'); }}
-                                        >Projects</NavLink>
-                                    </NavItem>
-                                    <NavItem>
-                                        <NavLink
-                                            href="#"
-                                            className={classNames({ active: this.state.activeTab === '4' })}
-                                            onClick={() => { this.toggleTab('4'); }}
-                                        >Tasks</NavLink>
-                                    </NavItem> */}
-                                </Nav>
-                                <TabContent activeTab={this.state.activeTab}>
-                                    <TabPane tabId="1">
-                                        {/* <Activities /> */}
-                                    </TabPane>
-                                    <TabPane tabId="2">
-                                        {/* <Messages /> */}
-                                    </TabPane>
-                                    <TabPane tabId="3">
-                                        {/* <Projects /> */}
-                                    </TabPane>
-                                    <TabPane tabId="4">
-                                        {/* <Tasks /> */}
-                                    </TabPane>
-                                </TabContent>
+                                <ReservationInfo />
+                            </CardBody>
+                        </Card>
+
+                        <Card>
+                            <CardBody>
+                                <label
+                                    className="font-weight-bold d-inline header-title"
+                                    style={{ verticalAlign: 'center' }}>
+                                    <Info
+                                        className="icon-dual icon-md mr-2"
+                                        style={{ verticalAlign: 'center' }}
+                                        data-feather="hard-drive"></Info>
+                                    Test
+                                </label>
                             </CardBody>
                         </Card>
                     </Col>
