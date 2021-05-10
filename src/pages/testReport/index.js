@@ -6,6 +6,7 @@ import { Calendar, Info } from 'react-feather';
 
 import UserBox from './patientInfo';
 import ReservationInfo from './reservationInfo';
+import TestInfo from './testInfo';
 
 class TestReport extends Component {
     constructor(props) {
@@ -59,15 +60,7 @@ class TestReport extends Component {
 
                         <Card>
                             <CardBody>
-                                <label
-                                    className="font-weight-bold d-inline header-title"
-                                    style={{ verticalAlign: 'center' }}>
-                                    <Info
-                                        className="icon-dual icon-md mr-2"
-                                        style={{ verticalAlign: 'center' }}
-                                        data-feather="hard-drive"></Info>
-                                    Test
-                                </label>
+                                <TestInfo />
                             </CardBody>
                         </Card>
                     </Col>
