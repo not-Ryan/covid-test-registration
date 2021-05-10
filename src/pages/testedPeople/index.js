@@ -55,11 +55,11 @@ class AllTestedPeople extends Component {
 
                 // add custom item to array
                 record.actions = (
-                    <Link to={`/test-result?id=` + record.id}>
+                    // <Link to={`/test-result?id=` + record.id}>
                         <Button color="primary" size="md">
                             View
                         </Button>
-                    </Link>
+                    // </Link>
                 );
 
                 if (record.test_result === 'true') {
@@ -197,6 +197,13 @@ class AllTestedPeople extends Component {
                                         exportCSV={{ onlyExportFiltered: true, exportAll: false }}>
                                         {(props) => (
                                             <React.Fragment>
+                                              <Row>
+                                                    <Col>
+                                                        <SearchBar {...props.searchProps} />
+                                                    </Col>
+                                                    <Col className="text-right">
+                                                    </Col>
+                                                </Row>
 
                                                 <BootstrapTable
                                                     className="mb-0"

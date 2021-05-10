@@ -55,11 +55,11 @@ class TodayTestedPeople extends Component {
 
                 // add custom item to array
                 record.actions = (
-                    <Link to={`/view-location?id=` + record.id}>
+                    // <Link to={`/view-location?id=` + record.id}>
                         <Button color="primary" size="md">
                             View
                         </Button>
-                    </Link>
+                    // </Link>
                 );
 
                 if (record.test_result === 'true') {

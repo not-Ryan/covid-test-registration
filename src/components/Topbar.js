@@ -110,7 +110,7 @@ class Topbar extends Component {
 
 
             <ul className="navbar-nav flex-row ml-auto d-flex list-unstyled topnav-menu float-right mb-0">
-              <li className="d-none d-sm-block">
+              {/* <li className="d-none d-sm-block">
                 <div className="app-search">
                   <form>
                     <div className="input-group">
@@ -119,7 +119,7 @@ class Topbar extends Component {
                     </div>
                   </form>
                 </div>
-              </li>
+              </li> */}
 
               {/* <LanguageDropdown tag="li" /> */}
               {/* <NotificationDropdown notifications={Notifications} /> */}

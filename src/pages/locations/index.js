@@ -65,7 +65,7 @@ class Locations extends Component {
                                                 <th>Phone</th>
                                                 <th>Opening time</th>
                                                 <th>Closing time</th>
-                                                <th>Actions</th>
+                                                {/* <th>Actions</th> */}
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -78,13 +78,13 @@ class Locations extends Component {
                                                         <td>{record.phone}</td>
                                                         <td>{record.opening}</td>
                                                         <td>{record.closing}</td>
-                                                        <td>
+                                                        {/* <td>
                                                             <Link to={`/view-location?id=` + record.id}>
                                                                 <Button color="primary" className="width-xs">
                                                                     View
                                                                 </Button>
                                                             </Link>
-                                                        </td>
+                                                        </td> */}
                                                     </tr>
                                                 );
                                             })}
