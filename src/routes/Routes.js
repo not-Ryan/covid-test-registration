@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Switch } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Loadable from 'react-loadable';
 import { connect } from 'react-redux';
 
@@ -39,8 +39,11 @@ const HorizontalLayout = Loadable({
     loading,
 });
 
-class Routes extends Component {
+const SingleReservation = React.lazy(() => import('../pages/reservations/single'));
+const SingleLocation = React.lazy(() => import('../pages/locations/single'));
+const TestResult = React.lazy(() => import('../pages/testReport'));
 
+class Routes extends Component {
     // returns the layout
     getLayout = () => {
         if (!isUserAuthenticated()) return AuthLayout;
@@ -56,41 +59,41 @@ class Routes extends Component {
                 break;
         }
         return layoutCls;
-    }
+    };
 
     render() {
         const Layout = this.getLayout();
-        
+
         // rendering the router with layout
-        return <BrowserRouter>
-            <Layout {...this.props}>
-                <Switch>
-                    {routes.map((route, index) => {
-                        return (
-                            !route.children ?
+        return (
+            <BrowserRouter>
+                <Layout {...this.props}>
+                    <Switch>
+                        {routes.map((route, index) => {
+                            return !route.children ? (
                                 <route.route
                                     key={index}
                                     path={route.path}
                                     roles={route.roles}
                                     exact={route.exact}
                                     component={route.component}></route.route>
-                                : null
-                        );
-                    })}
-                </Switch>
-            </Layout>
-        </BrowserRouter>
+                            ) : null;
+                        })}
+                        <Route path="/reservations/view-reservation" route={Route} children={<SingleReservation />}/>
+                        <Route path="/view-location" route={Route} children={<SingleLocation />}/>
+                        <Route path="/test-result" route={Route} children={<TestResult />}/>
+                    </Switch>
+                </Layout>
+            </BrowserRouter>
+        );
     }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
     return {
         layout: state.Layout,
         user: state.Auth.user,
     };
 };
 
-export default connect(
-    mapStateToProps,
-    null
-)(Routes);
+export default connect(mapStateToProps, null)(Routes);

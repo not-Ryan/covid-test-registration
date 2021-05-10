@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Row, Col, UncontrolledButtonDropdown, DropdownMenu, DropdownItem, DropdownToggle } from 'reactstrap';
-import Flatpickr from 'react-flatpickr'
-import { ChevronDown, Mail, Printer, File, Users, Image, ShoppingBag } from 'react-feather';
+import Flatpickr from 'react-flatpickr';
+import { ChevronDown, Mail, Printer, File, Users, Image, ShoppingBag, MapPin, Calendar } from 'react-feather';
 
 import { getLoggedInUser } from '../../helpers/authUtils';
 import Loader from '../../components/Loader';
@@ -16,9 +16,7 @@ import Performers from './Performers';
 import Tasks from './Tasks';
 import Chat from './Chat';
 
-
 class Dashboard extends Component {
-
     constructor(props) {
         super(props);
 
@@ -27,16 +25,15 @@ class Dashboard extends Component {
 
         this.state = {
             user: getLoggedInUser(),
-            filterDate: [oneWeekAgo, new Date()]
+            filterDate: [oneWeekAgo, new Date()],
         };
     }
 
     render() {
-
         return (
             <React.Fragment>
                 <div className="">
-                    { /* preloader */}
+                    {/* preloader */}
                     {this.props.loading && <Loader />}
 
                     <Row className="page-title align-items-center">
@@ -44,7 +41,7 @@ class Dashboard extends Component {
                             <h4 className="mb-1 mt-0">Dashboard</h4>
                         </Col>
                         <Col sm={8} xl={6}>
-                            <form className="form-inline float-sm-right mt-3 mt-sm-0">
+                            {/* <form className="form-inline float-sm-right mt-3 mt-sm-0">
                                 <div className="form-group mb-sm-0 mr-2">
                                     <Flatpickr value={this.state.filterDate}
                                         onChange={date => { this.setState({ filterDate: date }) }} options={{ mode: "range" }}
@@ -71,42 +68,46 @@ class Dashboard extends Component {
                                         </DropdownItem>
                                     </DropdownMenu>
                                 </UncontrolledButtonDropdown>
-                            </form>
+                            </form> */}
                         </Col>
                     </Row>
 
                     {/* stats */}
-                    <Statistics></Statistics>
+                    {/* <Statistics></Statistics> */}
 
                     {/* charts */}
                     <Row>
-                        <Col xl={3}>
-                            <OverviewWidget items={[
-                                { title: '121,000', description: 'Total Visitors', icon: Users },
-                                { title: '21,000', description: 'Product Views', icon: Image },
-                                { title: '$21.5', description: 'Revenue Per Visitor', icon: ShoppingBag }
-                            ]}></OverviewWidget>
+                        <Col xl={6}>
+                            <OverviewWidget
+                                items={[
+                                    { title: '967', description: 'Reservations today', icon: Calendar },
+                                    { title: '23,344', description: 'Reservations all', icon: Calendar },
+                                ]}></OverviewWidget>
+                        </Col>
+                        <Col xl={6}>
+                            <OverviewWidget
+                                items={[{ title: '6', description: 'Locations', icon: MapPin }]}></OverviewWidget>
                         </Col>
 
-                        <Col xl={6}>
+                        {/* <Col xl={6}>
                             <RevenueChart />
                         </Col>
                         <Col xl={3}>
                             <TargetChart />
-                        </Col>
+                        </Col> */}
                     </Row>
 
                     {/* charts */}
-                    <Row>
+                    {/* <Row>
                         <Col xl={5}>
                             <SalesChart />
                         </Col>
                         <Col xl={7}>
                             <Orders />
                         </Col>
-                    </Row>
+                    </Row> */}
 
-                    <Row>
+                    {/* <Row>
                         <Col xl={4}>
                             <Performers />
                         </Col>
@@ -116,12 +117,11 @@ class Dashboard extends Component {
                         <Col xl={4}>
                             <Chat />
                         </Col>
-                    </Row>
+                    </Row> */}
                 </div>
             </React.Fragment>
-        )
+        );
     }
 }
-
 
 export default Dashboard;
