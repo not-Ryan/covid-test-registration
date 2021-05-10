@@ -3,12 +3,11 @@ import { Row, Col, Card, CardBody, Nav, NavItem, NavLink, TabContent, TabPane } 
 import classNames from 'classnames';
 import PageTitle from '../../components/PageTitle';
 
-import UserBox from '../other/Profile/UserBox';
+import UserBox from './patientInfo';
 import Activities from '../other/Profile/Activities';
 import Messages from '../other/Profile/Messages';
 import Projects from '../other/Profile/Projects';
 import Tasks from '../other/Profile/Tasks';
-import Files from '../other/Profile/Files';
 
 
 class TestReport extends Component {
@@ -72,7 +71,7 @@ class TestReport extends Component {
                                             onClick={() => { this.toggleTab('2'); }}
                                         >Test Information</NavLink>
                                     </NavItem>
-                                    {/* <NavItem>
+                                    <NavItem>
                                         <NavLink
                                             href="#"
                                             className={classNames({ active: this.state.activeTab === '3' })}
@@ -86,13 +85,6 @@ class TestReport extends Component {
                                             onClick={() => { this.toggleTab('4'); }}
                                         >Tasks</NavLink>
                                     </NavItem>
-                                    <NavItem>
-                                        <NavLink
-                                            href="#"
-                                            className={classNames({ active: this.state.activeTab === '5' })}
-                                            onClick={() => { this.toggleTab('5'); }}
-                                        >Files</NavLink>
-                                    </NavItem> */}
                                 </Nav>
                                 <TabContent activeTab={this.state.activeTab}>
                                     <TabPane tabId="1">
@@ -101,15 +93,12 @@ class TestReport extends Component {
                                     <TabPane tabId="2">
                                         <Messages />
                                     </TabPane>
-                                    {/* <TabPane tabId="3">
+                                    <TabPane tabId="3">
                                         <Projects />
                                     </TabPane>
                                     <TabPane tabId="4">
                                         <Tasks />
                                     </TabPane>
-                                    <TabPane tabId="5">
-                                        <Files />
-                                    </TabPane> */}
                                 </TabContent>
                             </CardBody>
                         </Card>
