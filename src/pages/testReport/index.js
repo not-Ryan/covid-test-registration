@@ -8,26 +8,36 @@ import ReservationInfo from './reservationInfo';
 import TestInfo from './testInfo';
 
 class TestReport extends Component {
-    constructor(props) {
-        super(props);
+    state = {
+        allUserinformation: [],
+    };
 
-        this.toggleTab = this.toggleTab.bind(this);
-        this.state = {
-            activeTab: '1',
-        };
+    componentDidMount() {
+        this.fetchUserInformation();
     }
 
-    /**
-     * Toggles tab
-     * @param {*} tab
-     */
-    toggleTab(tab) {
-        if (this.state.activeTab !== tab) {
-            this.setState({
-                activeTab: tab,
+    fetchUserInformation = () => {
+        Promise.all([fetch(`https://run.mocky.io/v3/e44948a1-a757-4808-9bb6-b72bc24f790c`)])
+            .then(function (responses) {
+                // Get a JSON object from each of the responses
+                return Promise.all(
+                    responses.map(function (response) {
+                        return response.json();
+                    })
+                );
+            })
+            .then((data) => {
+                // Log the data to the console
+                // You would do something with both sets of data here
+                const userInfo = data[0];
+
+                console.log(userInfo);
+            })
+            .catch(function (error) {
+                // if there's an error, log it
+                console.log(error);
             });
-        }
-    }
+    };
 
     render() {
         return (
