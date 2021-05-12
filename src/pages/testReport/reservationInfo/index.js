@@ -17,16 +17,20 @@ class ReservationInfo extends Component {
                     <table className="table table-borderless">
                         <tbody>
                             <tr>
-                                <th scope="row">Date</th>
+                                <th scope="row">reservation_datetime</th>
                                 <td>05/05/2021</td>
                             </tr>
                             <tr>
                                 <th scope="row">Location</th>
-                                <td>Carephar 3</td>
+                                <td>location_id</td>
                             </tr>
                             <tr>
-                                <th scope="row">Paid</th>
-                                <td>150</td>
+                                <th scope="row">Paid amount</th>
+                                <td>amount_paid</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Paid method</th>
+                                <td>payment_method</td>
                             </tr>
                         </tbody>
                     </table>

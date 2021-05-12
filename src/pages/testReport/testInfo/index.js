@@ -17,8 +17,20 @@ class TestInfo extends Component {
                     <table className="table table-borderless">
                         <tbody>
                             <tr>
-                                <th scope="row">Test Status</th>
-                                <td>Negative</td>
+                                <th scope="row">Test tube id</th>
+                                <td>test_tube_id</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Test type</th>
+                                <td> test_type</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Test cost</th>
+                                <td>test_cost</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Test result</th>
+                                <td>test_result</td>
                             </tr>
                         </tbody>
                     </table>
