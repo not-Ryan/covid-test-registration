@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Row, Col, Card, CardBody, Input, Button, Badge, UncontrolledTooltip } from 'reactstrap';
 import ToolkitProvider, { Search, CSVExport } from 'react-bootstrap-table2-toolkit';
 import paginationFactory from 'react-bootstrap-table2-paginator';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import BootstrapTable from 'react-bootstrap-table-next';
 import Loader from '../../../components/Loader';
 import PageTitle from '../../../components/PageTitle';
