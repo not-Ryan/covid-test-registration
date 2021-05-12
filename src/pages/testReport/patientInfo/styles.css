@@ -1,0 +1,10 @@
+.gender-custom-line-height{
+  line-height: 125px;
+}
+.gender-icon{
+  font-size: 50px;
+  padding: 30px;
+  border-radius: 50%;
+  background-color: gray;
+  color: white;
+}

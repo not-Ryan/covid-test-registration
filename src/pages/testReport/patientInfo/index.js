@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, CardBody, Row, Col, Progress } from 'reactstrap';
+import './styles.css'
 
 const PatientInfo = () => {
     return (
@@ -7,17 +8,10 @@ const PatientInfo = () => {
             <CardBody className="profile-user-box">
                 <Row>
                     <Col>
-                        <div className="text-center mt-3 mb-4" style={{ lineHeight: '125px' }}>
-                            {/* <i className="uil uil-venus"></i> */}
+                        <div className="text-center mt-3 mb-4 gender-custom-line-height">
+                            {/* <i className="uil uil-venus gender-icon"></i> */}
                             <i
-                                className="uil uil-mars"
-                                style={{
-                                    fontSize: '50px',
-                                    padding: 30,
-                                    borderRadius: '50%',
-                                    backgroundColor: 'gray',
-                                    color: 'white',
-                                }}></i>
+                                className="uil uil-mars gender-icon"></i>
                             <h5 className="mt-2 mb-0">John Doe</h5>
                         </div>
 
