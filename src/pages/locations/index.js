@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { Row, Col, Card, CardBody, Table, Button } from 'reactstrap';
+import { Row, Col, Card, CardBody, Table, 
+//Button 
+} from 'reactstrap';
 
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import Loader from '../../components/Loader';
 import PageTitle from '../../components/PageTitle';
 class Locations extends Component {
