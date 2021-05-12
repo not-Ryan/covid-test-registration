@@ -1,6 +1,6 @@
 import React from 'react';
-import { Card, CardBody, Row, Col } from 'reactstrap';
-import './styles.css'
+import { Card, CardBody, Row, Col, UncontrolledTooltip } from 'reactstrap';
+import './styles.css';
 
 const PatientInfo = () => {
     return (
@@ -10,8 +10,10 @@ const PatientInfo = () => {
                     <Col>
                         <div className="text-center mt-3 mb-4 gender-custom-line-height">
                             {/* <i className="uil uil-venus gender-icon"></i> */}
-                            <i
-                                className="uil uil-mars gender-icon"></i>
+                            <i className="uil uil-mars gender-icon" id={'tooltip-gender'}></i>
+                            <UncontrolledTooltip placement="right" id="tooltip-gender" target={'tooltip-gender'}>
+                                {'Male'}
+                            </UncontrolledTooltip>
                             <h5 className="mt-2 mb-0">John Doe</h5>
                         </div>
 
