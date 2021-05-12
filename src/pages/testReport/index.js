@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { Row, Col, Card, CardBody, Nav, NavItem, NavLink, TabContent, TabPane } from 'reactstrap';
-import classNames from 'classnames';
+import { Row, Col, Card, CardBody} from 'reactstrap';
+//import classNames from 'classnames';
 import PageTitle from '../../components/PageTitle';
-import { Calendar, Info } from 'react-feather';
 
 import UserBox from './patientInfo';
 import ReservationInfo from './reservationInfo';
