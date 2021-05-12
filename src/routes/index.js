@@ -158,274 +158,274 @@ const LocationsRoutes = {
 };
 // apps
 
-const calendarAppRoutes = {
-    path: '/apps/calendar',
-    name: 'Calendar',
-    header: 'Examples',
-    icon: FeatherIcon.Calendar,
-    component: CalendarApp,
-    route: PrivateRoute,
-    roles: ['Admin'],
-};
+// const calendarAppRoutes = {
+//     path: '/apps/calendar',
+//     name: 'Calendar',
+//     header: 'Examples',
+//     icon: FeatherIcon.Calendar,
+//     component: CalendarApp,
+//     route: PrivateRoute,
+//     roles: ['Admin'],
+// };
 
-const emailAppRoutes = {
-    path: '/apps/email',
-    name: 'Email',
-    icon: FeatherIcon.Inbox,
-    children: [
-        {
-            path: '/apps/email/inbox',
-            name: 'Inbox',
-            component: EmailInbox,
-            route: PrivateRoute,
-            roles: ['Admin'],
-        },
-        {
-            path: '/apps/email/details',
-            name: 'Details',
-            component: EmailDetail,
-            route: PrivateRoute,
-            roles: ['Admin'],
-        },
-        {
-            path: '/apps/email/compose',
-            name: 'Compose',
-            component: EmailCompose,
-            route: PrivateRoute,
-            roles: ['Admin'],
-        },
-    ],
-};
+// const emailAppRoutes = {
+//     path: '/apps/email',
+//     name: 'Email',
+//     icon: FeatherIcon.Inbox,
+//     children: [
+//         {
+//             path: '/apps/email/inbox',
+//             name: 'Inbox',
+//             component: EmailInbox,
+//             route: PrivateRoute,
+//             roles: ['Admin'],
+//         },
+//         {
+//             path: '/apps/email/details',
+//             name: 'Details',
+//             component: EmailDetail,
+//             route: PrivateRoute,
+//             roles: ['Admin'],
+//         },
+//         {
+//             path: '/apps/email/compose',
+//             name: 'Compose',
+//             component: EmailCompose,
+//             route: PrivateRoute,
+//             roles: ['Admin'],
+//         },
+//     ],
+// };
 
-const projectAppRoutes = {
-    path: '/apps/projects',
-    name: 'Projects',
-    icon: FeatherIcon.Briefcase,
-    children: [
-        {
-            path: '/apps/projects/list',
-            name: 'List',
-            component: ProjectList,
-            route: PrivateRoute,
-            roles: ['Admin'],
-        },
-        {
-            path: '/apps/projects/detail',
-            name: 'Detail',
-            component: ProjectDetail,
-            route: PrivateRoute,
-            roles: ['Admin'],
-        },
-    ],
-};
+// const projectAppRoutes = {
+//     path: '/apps/projects',
+//     name: 'Projects',
+//     icon: FeatherIcon.Briefcase,
+//     children: [
+//         {
+//             path: '/apps/projects/list',
+//             name: 'List',
+//             component: ProjectList,
+//             route: PrivateRoute,
+//             roles: ['Admin'],
+//         },
+//         {
+//             path: '/apps/projects/detail',
+//             name: 'Detail',
+//             component: ProjectDetail,
+//             route: PrivateRoute,
+//             roles: ['Admin'],
+//         },
+//     ],
+// };
 
-const taskAppRoutes = {
-    path: '/apps/tasks',
-    name: 'Tasks',
-    icon: FeatherIcon.Bookmark,
-    children: [
-        {
-            path: '/apps/tasks/list',
-            name: 'List',
-            component: TaskList,
-            route: PrivateRoute,
-            roles: ['Admin'],
-        },
-        {
-            path: '/apps/tasks/board',
-            name: 'Board',
-            component: TaskBoard,
-            route: PrivateRoute,
-            roles: ['Admin'],
-        },
-    ],
-};
+// const taskAppRoutes = {
+//     path: '/apps/tasks',
+//     name: 'Tasks',
+//     icon: FeatherIcon.Bookmark,
+//     children: [
+//         {
+//             path: '/apps/tasks/list',
+//             name: 'List',
+//             component: TaskList,
+//             route: PrivateRoute,
+//             roles: ['Admin'],
+//         },
+//         {
+//             path: '/apps/tasks/board',
+//             name: 'Board',
+//             component: TaskBoard,
+//             route: PrivateRoute,
+//             roles: ['Admin'],
+//         },
+//     ],
+// };
 
 const appRoutes = [
     reservationsAppRoutes,
     testedPeopleAppRoutes,
     LocationsRoutes,
-    calendarAppRoutes,
-    emailAppRoutes,
-    projectAppRoutes,
-    taskAppRoutes,
+    // calendarAppRoutes,
+    // emailAppRoutes,
+    // projectAppRoutes,
+    // taskAppRoutes,
 ];
 
 // pages
-const pagesRoutes = {
-    path: '/pages',
-    name: 'Pages',
-    header: 'Custom',
-    icon: FeatherIcon.FileText,
-    children: [
-        {
-            path: '/pages/starter',
-            name: 'Starter',
-            component: Starter,
-            route: PrivateRoute,
-            roles: ['Admin'],
-        },
-        {
-            path: '/pages/profile',
-            name: 'Profile',
-            component: Profile,
-            route: PrivateRoute,
-            roles: ['Admin'],
-        },
-        {
-            path: '/pages/activity',
-            name: 'Activity',
-            component: Activity,
-            route: PrivateRoute,
-            roles: ['Admin'],
-        },
-        {
-            path: '/pages/invoice',
-            name: 'Invoice',
-            component: Invoice,
-            route: PrivateRoute,
-            roles: ['Admin'],
-        },
-        {
-            path: '/pages/pricing',
-            name: 'Pricing',
-            component: Pricing,
-            route: PrivateRoute,
-            roles: ['Admin'],
-        },
-        {
-            path: '/pages/error-404',
-            name: 'Error 404',
-            component: Error404,
-            route: Route,
-        },
-        {
-            path: '/pages/error-500',
-            name: 'Error 500',
-            component: Error500,
-            route: Route,
-        },
-    ],
-};
+// const pagesRoutes = {
+//     path: '/pages',
+//     name: 'Pages',
+//     header: 'Custom',
+//     icon: FeatherIcon.FileText,
+//     children: [
+//         {
+//             path: '/pages/starter',
+//             name: 'Starter',
+//             component: Starter,
+//             route: PrivateRoute,
+//             roles: ['Admin'],
+//         },
+//         {
+//             path: '/pages/profile',
+//             name: 'Profile',
+//             component: Profile,
+//             route: PrivateRoute,
+//             roles: ['Admin'],
+//         },
+//         {
+//             path: '/pages/activity',
+//             name: 'Activity',
+//             component: Activity,
+//             route: PrivateRoute,
+//             roles: ['Admin'],
+//         },
+//         {
+//             path: '/pages/invoice',
+//             name: 'Invoice',
+//             component: Invoice,
+//             route: PrivateRoute,
+//             roles: ['Admin'],
+//         },
+//         {
+//             path: '/pages/pricing',
+//             name: 'Pricing',
+//             component: Pricing,
+//             route: PrivateRoute,
+//             roles: ['Admin'],
+//         },
+//         {
+//             path: '/pages/error-404',
+//             name: 'Error 404',
+//             component: Error404,
+//             route: Route,
+//         },
+//         {
+//             path: '/pages/error-500',
+//             name: 'Error 500',
+//             component: Error500,
+//             route: Route,
+//         },
+//     ],
+// };
 
-// components
-const componentsRoutes = {
-    path: '/ui',
-    name: 'UI Elements',
-    header: 'Components',
-    icon: FeatherIcon.Package,
-    children: [
-        {
-            path: '/ui/bscomponents',
-            name: 'Bootstrap UI',
-            component: BSComponents,
-            route: PrivateRoute,
-            roles: ['Admin'],
-        },
-        {
-            path: '/ui/icons',
-            name: 'Icons',
-            children: [
-                {
-                    path: '/ui/icons/feather',
-                    name: 'Feather Icons',
-                    component: FeatherIcons,
-                    route: PrivateRoute,
-                    roles: ['Admin'],
-                },
-                {
-                    path: '/ui/icons/unicons',
-                    name: 'Unicons Icons',
-                    component: UniconsIcons,
-                    route: PrivateRoute,
-                    roles: ['Admin'],
-                },
-            ],
-        },
-        {
-            path: '/ui/widgets',
-            name: 'Widgets',
-            component: Widgets,
-            route: PrivateRoute,
-            roles: ['Admin'],
-        },
-    ],
-};
+// // components
+// const componentsRoutes = {
+//     path: '/ui',
+//     name: 'UI Elements',
+//     header: 'Components',
+//     icon: FeatherIcon.Package,
+//     children: [
+//         {
+//             path: '/ui/bscomponents',
+//             name: 'Bootstrap UI',
+//             component: BSComponents,
+//             route: PrivateRoute,
+//             roles: ['Admin'],
+//         },
+//         {
+//             path: '/ui/icons',
+//             name: 'Icons',
+//             children: [
+//                 {
+//                     path: '/ui/icons/feather',
+//                     name: 'Feather Icons',
+//                     component: FeatherIcons,
+//                     route: PrivateRoute,
+//                     roles: ['Admin'],
+//                 },
+//                 {
+//                     path: '/ui/icons/unicons',
+//                     name: 'Unicons Icons',
+//                     component: UniconsIcons,
+//                     route: PrivateRoute,
+//                     roles: ['Admin'],
+//                 },
+//             ],
+//         },
+//         {
+//             path: '/ui/widgets',
+//             name: 'Widgets',
+//             component: Widgets,
+//             route: PrivateRoute,
+//             roles: ['Admin'],
+//         },
+//     ],
+// };
 
-// charts
-const chartRoutes = {
-    path: '/charts',
-    name: 'Charts',
-    component: Charts,
-    icon: FeatherIcon.PieChart,
-    roles: ['Admin'],
-    route: PrivateRoute,
-};
+// // charts
+// const chartRoutes = {
+//     path: '/charts',
+//     name: 'Charts',
+//     component: Charts,
+//     icon: FeatherIcon.PieChart,
+//     roles: ['Admin'],
+//     route: PrivateRoute,
+// };
 
-// forms
-const formsRoutes = {
-    path: '/forms',
-    name: 'Forms',
-    icon: FeatherIcon.FileText,
-    children: [
-        {
-            path: '/forms/basic',
-            name: 'Basic Elements',
-            component: BasicForms,
-            route: PrivateRoute,
-        },
-        {
-            path: '/forms/advanced',
-            name: 'Advanced',
-            component: FormAdvanced,
-            route: PrivateRoute,
-        },
-        {
-            path: '/forms/validation',
-            name: 'Validation',
-            component: FormValidation,
-            route: PrivateRoute,
-        },
-        {
-            path: '/forms/wizard',
-            name: 'Wizard',
-            component: FormWizard,
-            route: PrivateRoute,
-        },
-        {
-            path: '/forms/editor',
-            name: 'Editor',
-            component: Editor,
-            route: PrivateRoute,
-        },
-        {
-            path: '/forms/upload',
-            name: 'File Upload',
-            component: FileUpload,
-            route: PrivateRoute,
-        },
-    ],
-};
+// // forms
+// const formsRoutes = {
+//     path: '/forms',
+//     name: 'Forms',
+//     icon: FeatherIcon.FileText,
+//     children: [
+//         {
+//             path: '/forms/basic',
+//             name: 'Basic Elements',
+//             component: BasicForms,
+//             route: PrivateRoute,
+//         },
+//         {
+//             path: '/forms/advanced',
+//             name: 'Advanced',
+//             component: FormAdvanced,
+//             route: PrivateRoute,
+//         },
+//         {
+//             path: '/forms/validation',
+//             name: 'Validation',
+//             component: FormValidation,
+//             route: PrivateRoute,
+//         },
+//         {
+//             path: '/forms/wizard',
+//             name: 'Wizard',
+//             component: FormWizard,
+//             route: PrivateRoute,
+//         },
+//         {
+//             path: '/forms/editor',
+//             name: 'Editor',
+//             component: Editor,
+//             route: PrivateRoute,
+//         },
+//         {
+//             path: '/forms/upload',
+//             name: 'File Upload',
+//             component: FileUpload,
+//             route: PrivateRoute,
+//         },
+//     ],
+// };
 
-const tableRoutes = {
-    path: '/tables',
-    name: 'Tables',
-    icon: FeatherIcon.Grid,
-    children: [
-        {
-            path: '/tables/basic',
-            name: 'Basic',
-            component: BasicTables,
-            route: PrivateRoute,
-        },
-        {
-            path: '/tables/advanced',
-            name: 'Advanced',
-            component: AdvancedTables,
-            route: PrivateRoute,
-        },
-    ],
-};
+// const tableRoutes = {
+//     path: '/tables',
+//     name: 'Tables',
+//     icon: FeatherIcon.Grid,
+//     children: [
+//         {
+//             path: '/tables/basic',
+//             name: 'Basic',
+//             component: BasicTables,
+//             route: PrivateRoute,
+//         },
+//         {
+//             path: '/tables/advanced',
+//             name: 'Advanced',
+//             component: AdvancedTables,
+//             route: PrivateRoute,
+//         },
+//     ],
+// };
 
 // auth
 const authRoutes = {
@@ -485,22 +485,22 @@ const allRoutes = [
     rootRoute,
     dashboardRoutes,
     ...appRoutes,
-    pagesRoutes,
-    componentsRoutes,
-    chartRoutes,
-    formsRoutes,
-    tableRoutes,
+    // pagesRoutes,
+    // componentsRoutes,
+    // chartRoutes,
+    // formsRoutes,
+    // tableRoutes,
     authRoutes,
 ];
 
 const authProtectedRoutes = [
     dashboardRoutes,
     ...appRoutes,
-    pagesRoutes,
-    componentsRoutes,
-    chartRoutes,
-    formsRoutes,
-    tableRoutes,
+    // pagesRoutes,
+    // componentsRoutes,
+    // chartRoutes,
+    // formsRoutes,
+    // tableRoutes,
 ];
 const allFlattenRoutes = flattenRoutes(allRoutes);
 export { allRoutes, authProtectedRoutes, allFlattenRoutes };
