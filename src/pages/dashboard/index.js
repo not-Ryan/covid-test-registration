@@ -29,7 +29,40 @@ class Dashboard extends Component {
         };
     }
 
+    state = {
+        locationsCount: 0,
+    };
+
+    componentDidMount() {
+        this.fetchDashBoardData();
+    }
+
+    fetchDashBoardData = () => {
+        Promise.all([fetch(`http://161.97.164.207/locations`)])
+            .then(function (responses) {
+                // Get a JSON object from each of the responses
+                return Promise.all(
+                    responses.map(function (response) {
+                        return response.json();
+                    })
+                );
+            })
+            .then((data) => {
+                // Log the data to the console
+                // You would do something with both sets of data here
+                const locationRaw = data[0];
+
+                this.setState({ locationsCount: locationRaw.length });
+            })
+            .catch(function (error) {
+                // if there's an error, log it
+                console.log(error);
+            });
+    };
+
     render() {
+        const { locationsCount } = this.state;
+
         return (
             <React.Fragment>
                 <div className="">
@@ -86,7 +119,7 @@ class Dashboard extends Component {
                         </Col>
                         <Col xl={6}>
                             <OverviewWidget
-                                items={[{ title: '6', description: 'Locations', icon: MapPin }]}></OverviewWidget>
+                                items={[{ title: locationsCount, description: 'Locations', icon: MapPin }]}></OverviewWidget>
                         </Col>
 
                         {/* <Col xl={6}>
