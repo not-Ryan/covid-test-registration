@@ -3,7 +3,7 @@ import { Row, Col, Card, CardBody } from 'reactstrap';
 //import classNames from 'classnames';
 import PageTitle from '../../components/PageTitle';
 
-import UserBox from './patientInfo';
+import PatientInfo from './patientInfo';
 import ReservationInfo from './reservationInfo';
 import TestInfo from './testInfo';
 
@@ -60,7 +60,7 @@ class TestReport extends Component {
                 <Row>
                     <Col lg={4}>
                         {/* User information */}
-                        <UserBox />
+                        <PatientInfo />
                     </Col>
 
                     <Col lg={8}>

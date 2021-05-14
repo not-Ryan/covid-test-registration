@@ -8,17 +8,16 @@ const PatientInfo = () => {
             <CardBody className="profile-user-box">
                 <Row>
                     <Col>
-                        <div className="text-center mt-3 mb-4 gender-custom-line-height">
-                            {/* <i className="uil uil-venus gender-icon"></i> */}
+                        {/* <div className="text-center mt-3 mb-4 gender-custom-line-height">
                             <i className="uil uil-mars gender-icon" id={'tooltip-gender'}></i>
                             <UncontrolledTooltip placement="right" id="tooltip-gender" target={'tooltip-gender'}>
                                 {'Male'}
                             </UncontrolledTooltip>
                             <h5 className="mt-2 mb-0">John Doe</h5>
-                        </div>
+                        </div> */}
 
-                        <div className="pt-2 border-top">
-                            <h4 className="mb-2 mt-3 font-size-15 font-weight-bold">Personal Information</h4>
+                        <div className="mb-2">
+                            <h4 className="mb-2 mt-3 font-size-16 font-weight-bold">Personal Information</h4>
                             <div>
                                 <table className="table table-borderless text-muted">
                                     <tbody>
@@ -52,7 +51,7 @@ const PatientInfo = () => {
                         </div>
 
                         <div className="pt-2 border-top">
-                            <h4 className="mb-2 mt-3 font-size-15 font-weight-bold">Contact Information</h4>
+                            <h4 className="mb-2 mt-3 font-size-16 font-weight-bold">Contact Information</h4>
                             <div>
                                 <table className="table table-borderless mb-5 text-muted">
                                     <tbody>
