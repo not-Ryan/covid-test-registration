@@ -35,6 +35,41 @@ class ReservationInfo extends Component {
                         </tbody>
                     </table>
                 </div>
+                <div className="row">
+                    <div className="col-lg-3 col-md-6">
+                        <div className="mt-4">
+                            <p className="mb-2">
+                                <i className="uil-calender text-danger"></i> Start Date
+                            </p>
+                            <h5 className="font-size-16">15 July, 2019</h5>
+                        </div>
+                    </div>
+                    <div className="col-lg-3 col-md-6">
+                        <div className="mt-4">
+                            <p className="mb-2">
+                                <i className="uil-calendar-slash text-danger"></i> Due Date
+                            </p>
+                            <h5 className="font-size-16">15 July, 2019</h5>
+                        </div>
+                    </div>
+                    <div className="col-lg-3 col-md-6">
+                        <div className="mt-4">
+                            <p className="mb-2">
+                                <i className="uil-dollar-alt text-danger"></i> Budget
+                            </p>
+                            <h5 className="font-size-16">$1325</h5>
+                        </div>
+                    </div>
+
+                    <div className="col-lg-3 col-md-6">
+                        <div className="mt-4">
+                            <p className="mb-2">
+                                <i className="uil-user text-danger"></i> Owner
+                            </p>
+                            <h5 className="font-size-16">Rick Perry</h5>
+                        </div>
+                    </div>
+                </div>
             </React.Fragment>
         );
     }
