@@ -37,7 +37,7 @@ class TestInfo extends Component {
                     <div className="col-lg-3 col-md-6">
                         <div className="mt-4">
                             <p className="mb-2">
-                                <i className="uil-euro text-primary" style={iconStyles}></i> Test Cost
+                                <i className="uil-euro-circle text-primary" style={iconStyles}></i> Test cost
                             </p>
                             <h5 className="font-size-16">Euro 89,99</h5>
                         </div>
