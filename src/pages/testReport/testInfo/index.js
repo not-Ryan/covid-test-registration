@@ -17,7 +17,7 @@ class TestInfo extends Component {
                     <div className="col-lg-3 col-md-6">
                         <div className="mt-4">
                             <p className="mb-2">
-                                <i className="uil-calender text-danger"></i> Test Tube ID
+                                <i className="uil-syringe text-primary"></i> Test Tube ID
                             </p>
                             <h5 className="font-size-16">753JSKK</h5>
                         </div>
@@ -25,15 +25,15 @@ class TestInfo extends Component {
                     <div className="col-lg-3 col-md-6">
                         <div className="mt-4">
                             <p className="mb-2">
-                                <i className="uil-calendar-slash text-danger"></i> Test Type
+                                <i className="uil-prescription-bottle text-primary"></i> Test Type
                             </p>
-                            <h5 className="font-size-16">15 July, 2019</h5>
+                            <h5 className="font-size-16">Good type</h5>
                         </div>
                     </div>
                     <div className="col-lg-3 col-md-6">
                         <div className="mt-4">
                             <p className="mb-2">
-                                <i className="uil-dollar-alt text-danger"></i> Test Cost
+                                <i className="uil-euro text-primary"></i> Test Cost
                             </p>
                             <h5 className="font-size-16">Euro 89,99</h5>
                         </div>
@@ -42,13 +42,13 @@ class TestInfo extends Component {
                     <div className="col-lg-3 col-md-6">
                         <div className="mt-4">
                             <p className="mb-2">
-                                <i className="uil-user text-danger"></i> Test Result
+                                <i className="uil-file-medical-alt text-primary"></i> Test Result
                             </p>
                             <h5 className="font-size-16">Negtive</h5>
                         </div>
                     </div>
                 </div>
-                <div className="mt-2">
+                {/* <div className="mt-2">
                     <table className="table table-borderless">
                         <tbody>
                             <tr>
@@ -69,7 +69,7 @@ class TestInfo extends Component {
                             </tr>
                         </tbody>
                     </table>
-                </div>
+                </div> */}
             </React.Fragment>
         );
     }
