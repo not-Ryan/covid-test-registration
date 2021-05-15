@@ -17,7 +17,8 @@ class TestReport extends Component {
     }
 
     fetchUserInformation = () => {
-        Promise.all([fetch(`https://run.mocky.io/v3/00fb586d-17f9-4465-b7ed-2907af12061a`)])
+        // Promise.all([fetch(`https://run.mocky.io/v3/00fb586d-17f9-4465-b7ed-2907af12061a`)])
+        http: Promise.all([fetch(`http://161.97.164.207/customers/100`)])
             .then(function (responses) {
                 // Get a JSON object from each of the responses
                 return Promise.all(
@@ -29,10 +30,8 @@ class TestReport extends Component {
             .then((data) => {
                 // Log the data to the console
                 // You would do something with both sets of data here
-                const userInfo = data[0];
-                this.setState({ allUserinformation: userInfo[0] });
-
-                console.log(this.state.allUserinformation);
+                this.setState({ allUserinformation: data[0] });
+                console.log(data[0]);
             })
             .catch(function (error) {
                 // if there's an error, log it
