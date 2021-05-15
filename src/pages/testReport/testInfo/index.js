@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import { Info } from 'react-feather';
+
+const iconStyles = {
+    fontSize: '22px',
+};
 class TestInfo extends Component {
     render() {
         return (
@@ -17,7 +21,7 @@ class TestInfo extends Component {
                     <div className="col-lg-3 col-md-6">
                         <div className="mt-4">
                             <p className="mb-2">
-                                <i className="uil-syringe text-primary"></i> Test Tube ID
+                                <i className="uil-syringe text-primary" style={iconStyles}></i> Test Tube ID
                             </p>
                             <h5 className="font-size-16">753JSKK</h5>
                         </div>
@@ -25,7 +29,7 @@ class TestInfo extends Component {
                     <div className="col-lg-3 col-md-6">
                         <div className="mt-4">
                             <p className="mb-2">
-                                <i className="uil-prescription-bottle text-primary"></i> Test Type
+                                <i className="uil-prescription-bottle text-primary" style={iconStyles}></i> Test Type
                             </p>
                             <h5 className="font-size-16">Good type</h5>
                         </div>
@@ -33,7 +37,7 @@ class TestInfo extends Component {
                     <div className="col-lg-3 col-md-6">
                         <div className="mt-4">
                             <p className="mb-2">
-                                <i className="uil-euro text-primary"></i> Test Cost
+                                <i className="uil-euro text-primary" style={iconStyles}></i> Test Cost
                             </p>
                             <h5 className="font-size-16">Euro 89,99</h5>
                         </div>
@@ -42,34 +46,12 @@ class TestInfo extends Component {
                     <div className="col-lg-3 col-md-6">
                         <div className="mt-4">
                             <p className="mb-2">
-                                <i className="uil-file-medical-alt text-primary"></i> Test Result
+                                <i className="uil-file-medical-alt text-primary" style={iconStyles}></i> Test Result
                             </p>
                             <h5 className="font-size-16">Negtive</h5>
                         </div>
                     </div>
                 </div>
-                {/* <div className="mt-2">
-                    <table className="table table-borderless">
-                        <tbody>
-                            <tr>
-                                <th scope="row">Test tube id</th>
-                                <td>test_tube_id</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Test type</th>
-                                <td> test_type</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Test cost</th>
-                                <td>test_cost</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Test result</th>
-                                <td>test_result</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div> */}
             </React.Fragment>
         );
     }
