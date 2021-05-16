@@ -17,8 +17,8 @@ class TestReport extends Component {
     }
 
     fetchUserInformation = () => {
-        // Promise.all([fetch(`https://run.mocky.io/v3/00fb586d-17f9-4465-b7ed-2907af12061a`)])
-        http: Promise.all([fetch(`http://161.97.164.207/customers/100`)])
+        //Promise.all([fetch(`https://run.mocky.io/v3/00fb586d-17f9-4465-b7ed-2907af12061a`)])
+        Promise.all([fetch(`http://161.97.164.207/customers/100`)])
             .then(function (responses) {
                 // Get a JSON object from each of the responses
                 return Promise.all(
@@ -31,7 +31,7 @@ class TestReport extends Component {
                 // Log the data to the console
                 // You would do something with both sets of data here
                 this.setState({ allUserinformation: data[0] });
-                console.log(data[0]);
+                //console.log(this.state.allUserinformation);
             })
             .catch(function (error) {
                 // if there's an error, log it
@@ -41,6 +41,7 @@ class TestReport extends Component {
 
     render() {
         const allUserInformation = this.state.allUserinformation;
+        const fullName = allUserInformation.first_name + ' ' + allUserInformation.last_name;
 
         return (
             <React.Fragment>
@@ -49,9 +50,9 @@ class TestReport extends Component {
                         <PageTitle
                             breadCrumbItems={[
                                 { label: 'Tested people', path: '/tested-people/all' },
-                                { label: 'John Doe', path: '/', active: true },
+                                { label: fullName, path: '/', active: true },
                             ]}
-                            title={'John Doe'}
+                            title={fullName}
                         />
                     </Col>
                 </Row>
@@ -59,7 +60,7 @@ class TestReport extends Component {
                 <Row>
                     <Col lg={4}>
                         {/* User information */}
-                        <PatientInfo />
+                        <PatientInfo props={allUserInformation} />
                     </Col>
 
                     <Col lg={8}>

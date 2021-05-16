@@ -2,20 +2,13 @@ import React from 'react';
 import { Card, CardBody, Row, Col, UncontrolledTooltip } from 'reactstrap';
 import './styles.css';
 
-const PatientInfo = () => {
+const PatientInfo = ({props}) => {
+
     return (
         <Card className="">
             <CardBody className="profile-user-box">
                 <Row>
                     <Col>
-                        {/* <div className="text-center mt-3 mb-4 gender-custom-line-height">
-                            <i className="uil uil-mars gender-icon" id={'tooltip-gender'}></i>
-                            <UncontrolledTooltip placement="right" id="tooltip-gender" target={'tooltip-gender'}>
-                                {'Male'}
-                            </UncontrolledTooltip>
-                            <h5 className="mt-2 mb-0">John Doe</h5>
-                        </div> */}
-
                         <div className="mb-2">
                             <h4 className="mb-2 mt-3 font-size-16 font-weight-bold">Personal Information</h4>
                             <div>
@@ -23,27 +16,27 @@ const PatientInfo = () => {
                                     <tbody>
                                         <tr>
                                             <th scope="row">Firstname</th>
-                                            <td>John</td>
+                                            <td>{props.first_name}</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Lastname</th>
-                                            <td>Doe</td>
+                                            <td>{props.last_name}</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Date of birth</th>
-                                            <td>05/05/2021</td>
+                                            <td>{props.date_of_birth}</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Gender</th>
-                                            <td>Male</td>
+                                            <td></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Paspoort ID</th>
-                                            <td>0450469</td>
+                                            <td>{props.passport_number}</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">ID nummer</th>
-                                            <td>SF98347530</td>
+                                            <td></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -57,15 +50,15 @@ const PatientInfo = () => {
                                     <tbody>
                                         <tr>
                                             <th scope="row">Email</th>
-                                            <td>johndoe@gmail.com</td>
+                                            <td>{props.email}</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Phone</th>
-                                            <td>+31 856646456</td>
+                                            <td>{props.phone_number}</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Address</th>
-                                            <td>Teststraat #222</td>
+                                            <td>{props.address}</td>
                                         </tr>
                                     </tbody>
                                 </table>
