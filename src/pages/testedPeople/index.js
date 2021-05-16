@@ -17,7 +17,7 @@ class AllTestedPeople extends Component {
     }
 
     fetchTestedPeople = () => {
-        Promise.all([fetch(`https://run.mocky.io/v3/e44948a1-a757-4808-9bb6-b72bc24f790c`)])
+        Promise.all([fetch(`http://161.97.164.207/customers`)])
             .then(function (responses) {
                 // Get a JSON object from each of the responses
                 return Promise.all(
@@ -55,7 +55,7 @@ class AllTestedPeople extends Component {
 
                 // add custom item to array
                 record.actions = (
-                    <Link to={`/test-result?id=` + record.id}>
+                    <Link to={`/test-result?id=` + record.customer_id}>
                         <Button color="primary" size="md">
                             View
                         </Button>
@@ -109,17 +109,22 @@ class AllTestedPeople extends Component {
 
         const columns = [
             {
-                dataField: 'id',
+                dataField: 'customer_id',
                 text: 'ID',
                 sort: true,
             },
             {
-                dataField: 'full_name',
-                text: 'Full Name',
+                dataField: 'first_name',
+                text: 'First Name',
                 sort: true,
             },
             {
-                dataField: 'dob',
+                dataField: 'last_name',
+                text: 'Last Name',
+                sort: true,
+            },
+            {
+                dataField: 'date_of_birth',
                 text: 'Date of birth',
                 sort: false,
             },
