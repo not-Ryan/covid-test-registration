@@ -102,7 +102,7 @@ class AllTestedPeople extends Component {
 
         const defaultSorted = [
             {
-                dataField: 'id',
+                dataField: 'customer_id',
                 order: 'asc',
             },
         ];
