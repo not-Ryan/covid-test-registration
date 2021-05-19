@@ -14,6 +14,7 @@
     "@fullcalendar/timegrid": "^4.3.0",
     "apexcharts": "^3.8.6",
     "availity-reactstrap-validation": "^2.6.0",
+    "axios": "^0.21.1",
     "bootstrap": "^4.3.1",
     "draft-js": "^0.10.5",
     "draftjs-to-html": "^0.8.4",
@@ -45,7 +46,8 @@
     "reactstrap": "^8.0.1",
     "redux": "^4.0.4",
     "redux-saga": "^1.1.1",
-    "sortablejs": "^1.10.0"
+    "sortablejs": "^1.10.0",
+    "swr": "^0.5.6"
   },
   "scripts": {
     "start": "react-scripts start",

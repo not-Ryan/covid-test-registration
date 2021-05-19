@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect, useState } from 'react';
 import { Row, Col, Card, CardBody, Input, Button, Badge, UncontrolledTooltip } from 'reactstrap';
 import ToolkitProvider, { Search, CSVExport } from 'react-bootstrap-table2-toolkit';
 import paginationFactory from 'react-bootstrap-table2-paginator';
@@ -6,6 +6,22 @@ import { Link } from 'react-router-dom';
 import BootstrapTable from 'react-bootstrap-table-next';
 import Loader from '../../components/Loader';
 import PageTitle from '../../components/PageTitle';
+
+function CustomerAdress({ customerId }) {
+    const [data, setData] = useState(null)
+
+    useEffect(() => {
+        fetch(`http://161.97.164.207/customers/${customerId}`)
+            .then(resp => resp.json())
+            .then(data => setData(data))
+    })
+
+    if (!data) {
+        return <span>Loading...</span>;
+    } else {
+        return <span>{data.name}</span>;
+    }
+}
 
 class AllTestedPeople extends Component {
     state = {
@@ -17,7 +33,7 @@ class AllTestedPeople extends Component {
     }
 
     fetchTestedPeople = () => {
-        Promise.all([fetch(`http://161.97.164.207/customers`)])
+        Promise.all([fetch(`http://161.97.164.207/reservations?offset=0&limit=20&tested=true`)])
             .then(function (responses) {
                 // Get a JSON object from each of the responses
                 return Promise.all(
@@ -129,9 +145,12 @@ class AllTestedPeople extends Component {
                 sort: false,
             },
             {
-                dataField: 'address',
+                dataField: 'customer_id',
                 text: 'Address',
                 sort: true,
+                formatter: (value) => {
+                    return <CustomerAdress key={`adress-${value}`} customerId={value} />
+                },
             },
             {
                 dataField: 'location_tested',
