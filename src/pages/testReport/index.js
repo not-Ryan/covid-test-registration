@@ -18,7 +18,7 @@ class TestReport extends Component {
 
     fetchUserInformation = () => {
         //Promise.all([fetch(`https://run.mocky.io/v3/00fb586d-17f9-4465-b7ed-2907af12061a`)])
-        Promise.all([fetch(`http://161.97.164.207/customers/100`)])
+        Promise.all([fetch(`http://161.97.164.207/customers/1`)])
             .then(function (responses) {
                 // Get a JSON object from each of the responses
                 return Promise.all(
@@ -31,7 +31,7 @@ class TestReport extends Component {
                 // Log the data to the console
                 // You would do something with both sets of data here
                 this.setState({ allUserinformation: data[0] });
-                //console.log(this.state.allUserinformation);
+                //console.log(customerId);
             })
             .catch(function (error) {
                 // if there's an error, log it
@@ -40,6 +40,7 @@ class TestReport extends Component {
     };
 
     render() {
+        //const customerId = new URLSearchParams(window.location.search).get('id');
         const allUserInformation = this.state.allUserinformation;
         const fullName = allUserInformation.first_name + ' ' + allUserInformation.last_name;
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardBody, Row, Col, UncontrolledTooltip } from 'reactstrap';
+import { Card, CardBody, Row, Col } from 'reactstrap';
 import './styles.css';
 
 const PatientInfo = ({props}) => {
