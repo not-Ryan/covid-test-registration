@@ -16,7 +16,7 @@ const Dashboard = React.lazy(() => import('../pages/dashboard'));
 const Locations = React.lazy(() => import('../pages/locations/index'));
 const AllReservations = React.lazy(() => import('../pages/reservations/all'));
 const TodayReservations = React.lazy(() => import('../pages/reservations/today'));
-const AllTestedPeople = React.lazy(() => import('../pages/testedPeople'));
+const AllTestedPeople = React.lazy(() => import('../pages/testedPeople/all'));
 const TodayTestedPeople = React.lazy(() => import('../pages/testedPeople/today'));
 // apps
 const CalendarApp = React.lazy(() => import('../pages/apps/Calendar'));
