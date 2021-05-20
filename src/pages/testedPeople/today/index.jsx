@@ -21,8 +21,18 @@ function FetchCustomerInfo({ customerId, type }) {
     }
 }
 
+function FetchLocationName({ locationId }) {
+    const location = useRequest('http://161.97.164.207/locations/' + locationId );
+
+    if (!location) {
+        return <span>Loading...</span>;
+    } else {
+        return location.location_name;
+    }
+}
+
 export default function TestedPeople() {
-    const testedPeople = useRequest('http://161.97.164.207/reservations?offset=0&limit=20&tested=false');
+    const testedPeople = useRequest('http://161.97.164.207/reservations?offset=0&limit=20&tested=true');
     if (!testedPeople) {
         return null;
     }
@@ -59,6 +69,7 @@ export default function TestedPeople() {
                 record.full_name = <FetchCustomerInfo customerId={record.customer_id} type="full_name" />;
                 record.date_of_birth = <FetchCustomerInfo customerId={record.customer_id} type="date_of_birth" />;
                 record.passport_number = <FetchCustomerInfo customerId={record.customer_id} type="passport_number" />;
+                record.location_name = <FetchLocationName locationId={record.location_id}/>;
 
                 // record.paid_price_tag = (
                 //     <p>
@@ -117,13 +128,18 @@ export default function TestedPeople() {
             sort: true,
         },
         {
-            dataField: 'location_tested',
+            dataField: 'location_name',
             text: 'Location tested',
             sort: false,
         },
         {
+            dataField: 'test_tube_id',
+            text: 'Test tube',
+            sort: false,
+        },
+        {
             dataField: 'payment_method',
-            text: 'Paid price',
+            text: 'Paid method',
             sort: false,
         },
         {
@@ -182,9 +198,9 @@ export default function TestedPeople() {
                                                     <SearchBar {...props.searchProps} />
                                                 </Col>
                                                 <Col className="text-right">
-                                                    <ExportCSVButton {...props.csvProps} className="btn btn-primary">
+                                                    {/* <ExportCSVButton {...props.csvProps} className="btn btn-primary">
                                                         Save
-                                                    </ExportCSVButton>
+                                                    </ExportCSVButton> */}
                                                 </Col>
                                             </Row>
 
@@ -195,10 +211,10 @@ export default function TestedPeople() {
                                                 bordered={false}
                                                 defaultSorted={defaultSorted}
                                                 pagination={paginationFactory({
-                                                    sizePerPage: 8,
+                                                    sizePerPage: 10,
                                                     sizePerPageRenderer: sizePerPageRenderer,
                                                     sizePerPageList: [
-                                                        { text: '8', value: 8 },
+                                                        { text: '10', value: 10 },
                                                         { text: '50', value: 50 },
                                                         { text: '100', value: 100 },
                                                         { text: 'All', value: testedPeople.length },
