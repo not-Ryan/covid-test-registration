@@ -1,14 +1,14 @@
 import React from 'react';
 import { useRequest } from '../../../helpers/axios';
 import { Row, Col, Card, CardBody, Input, Button, Badge, UncontrolledTooltip } from 'reactstrap';
-import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit';
+import ToolkitProvider, { Search, CSVExport } from 'react-bootstrap-table2-toolkit';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 import { Link } from 'react-router-dom';
 import BootstrapTable from 'react-bootstrap-table-next';
 import PageTitle from '../../../components/PageTitle';
 
 export default function TestedPeople() {
-    const testedPeople = useRequest('http://161.97.164.207/reservations?offset=0&limit=20&tested=true');
+    const testedPeople = useRequest('https://run.mocky.io/v3/e44948a1-a757-4808-9bb6-b72bc24f790c');
     if (!testedPeople) {
         return null;
     }
@@ -87,8 +87,6 @@ export default function TestedPeople() {
     return (
         <React.Fragment>
             <div className="">
-                {/* preloader */}
-                {this.props.loading && <Loader />}
 
                 <Row className="page-title">
                     <Col md={12}>
