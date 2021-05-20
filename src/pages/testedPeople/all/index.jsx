@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useRequest } from '../../../helpers/axios';
 import { Row, Col, Card, CardBody, Input, Button, Badge, UncontrolledTooltip } from 'reactstrap';
 import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit';
@@ -13,7 +13,7 @@ function FetchCustomerAdress({ customerId }) {
     if (!customer) {
         return <span>Loading...</span>;
     } else {
-        return <span>{customer.address}</span>;
+        return customer.address;
     }
 }
 
@@ -23,7 +23,7 @@ function FetchCustomerFullName({ customerId }) {
     if (!customer) {
         return <span>Loading...</span>;
     } else {
-        return customer.first_name + '' + customer.last_name;
+        return customer.first_name + ' ' + customer.last_name;
     }
 }
 
@@ -33,7 +33,7 @@ function FetchCustomerDateOfBirth({ customerId }) {
     if (!customer) {
         return <span>Loading...</span>;
     } else {
-        return <span>{customer.date_of_birth}</span>;
+        return customer.date_of_birth;
     }
 }
 
@@ -43,7 +43,7 @@ function FetchLocationName({ locationId }) {
     if (!location) {
         return <span>Loading...</span>;
     } else {
-        return <span>{location.location_name}</span>;
+        return location.location_name;
     }
 }
 
@@ -128,9 +128,6 @@ export default function TestedPeople() {
             dataField: 'full_name',
             text: 'Full name',
             sort: true,
-            // formatter: (value) => {
-            //     return <FetchCustomerFullName key={`full_name-${value}`} customerId={value} />;
-            // },
         },
         {
             dataField: 'customer_id',
@@ -210,10 +207,10 @@ export default function TestedPeople() {
 
                                 <ToolkitProvider
                                     bootstrap4
-                                    keyField="full_name"
+                                    search
+                                    keyField="id"
                                     data={testedPeople}
                                     columns={columns}
-                                    search
                                     exportCSV={{ onlyExportFiltered: true, exportAll: false }}>
                                     {(props) => (
                                         <React.Fragment>

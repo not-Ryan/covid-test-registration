@@ -197,6 +197,8 @@ class TodayTestedPeople extends Component {
                                         exportCSV={{ onlyExportFiltered: true, exportAll: false }}>
                                         {(props) => (
                                             <React.Fragment>
+                                                
+                                            {console.log(props)}
                                                 <Row>
                                                     <Col>
                                                         <SearchBar {...props.searchProps} />
