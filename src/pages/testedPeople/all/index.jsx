@@ -51,6 +51,20 @@ function FetchLocationName({ locationId }) {
     }
 }
 
+function FetchCustomerName({ customerId }) {
+    console.log(customerId);
+    //const customer = useRequest('http://161.97.164.207/customers/' + customerId);
+    // if (!customer) {
+    //     return <span>Loading...</span>;
+    // } else {
+    //     return (
+    //         <span>
+    //             {customer.first_name} {customer.last_name}
+    //         </span>
+    //     );
+    // }
+}
+
 export default function TestedPeople() {
     const { SearchBar } = Search;
 
@@ -62,8 +76,6 @@ export default function TestedPeople() {
     addCustomProps(testedPeople);
 
     function addCustomProps(testedPeople) {
-        let newList = [];
-
         // loop through list to add button
         for (const person in testedPeople) {
             if (Object.hasOwnProperty.call(testedPeople, person)) {
@@ -72,6 +84,7 @@ export default function TestedPeople() {
                 let resultTag = 'soft-danger';
                 let paidIcon = 'uil uil-money-withdrawal ml-2';
                 let paidIconTooltipTitle = 'cash';
+                //FetchCustomerName(record.customer_id);
 
                 // add custom item to array
                 record.actions = (
@@ -91,14 +104,17 @@ export default function TestedPeople() {
                     <p>
                         {record.amount_paid}
                         <i className={paidIcon} id={'tooltip-' + record.reservation_id}></i>
-                        <UncontrolledTooltip placement="top" id="tooltip-price-tooltip" target={'tooltip-' + record.reservation_id}>                           
+                        <UncontrolledTooltip
+                            placement="top"
+                            id="tooltip-price-tooltip"
+                            target={'tooltip-' + record.reservation_id}>
                             {record.payment_method}
                         </UncontrolledTooltip>
                     </p>
                 );
 
                 // // check person result state to add tag styling
-                if (record.test_result === 'true') {
+                if (record.test_result === true) {
                     testResult = 'Positive';
                     resultTag = 'soft-success';
                 }
