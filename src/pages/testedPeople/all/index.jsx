@@ -23,11 +23,7 @@ function FetchCustomerFullName({ customerId }) {
     if (!customer) {
         return <span>Loading...</span>;
     } else {
-        return (
-            <span>
-                {customer.first_name} {customer.last_name}
-            </span>
-        );
+        return customer.first_name + '' + customer.last_name;
     }
 }
 
@@ -51,20 +47,6 @@ function FetchLocationName({ locationId }) {
     }
 }
 
-function FetchCustomerName({ customerId }) {
-    console.log(customerId);
-    //const customer = useRequest('http://161.97.164.207/customers/' + customerId);
-    // if (!customer) {
-    //     return <span>Loading...</span>;
-    // } else {
-    //     return (
-    //         <span>
-    //             {customer.first_name} {customer.last_name}
-    //         </span>
-    //     );
-    // }
-}
-
 export default function TestedPeople() {
     const { SearchBar } = Search;
 
@@ -84,7 +66,6 @@ export default function TestedPeople() {
                 let resultTag = 'soft-danger';
                 let paidIcon = 'uil uil-money-withdrawal ml-2';
                 let paidIconTooltipTitle = 'cash';
-                //FetchCustomerName(record.customer_id);
 
                 // add custom item to array
                 record.actions = (
@@ -99,6 +80,8 @@ export default function TestedPeople() {
                     paidIcon = 'uil uil-atm-card ml-2';
                     paidIconTooltipTitle = 'pin';
                 }
+
+                record.full_name = <FetchCustomerFullName customerId={record.customer_id} />;
 
                 record.paid_price_tag = (
                     <p>
@@ -142,12 +125,12 @@ export default function TestedPeople() {
             sort: true,
         },
         {
-            dataField: 'customer_id',
+            dataField: 'full_name',
             text: 'Full name',
             sort: true,
-            formatter: (value) => {
-                return <FetchCustomerFullName key={`full_name-${value}`} customerId={value} />;
-            },
+            // formatter: (value) => {
+            //     return <FetchCustomerFullName key={`full_name-${value}`} customerId={value} />;
+            // },
         },
         {
             dataField: 'customer_id',
