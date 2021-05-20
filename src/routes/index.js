@@ -13,8 +13,7 @@ const ForgetPassword = React.lazy(() => import('../pages/auth/ForgetPassword'));
 const Confirm = React.lazy(() => import('../pages/auth/Confirm'));
 // dashboard
 const Dashboard = React.lazy(() => import('../pages/dashboard'));
-const Locations = React.lazy(() => import('../pages/locations'));
-const LocationsPage = React.lazy(() => import('../pages/locations/locations'));
+const Locations = React.lazy(() => import('../pages/locations/index'));
 const AllReservations = React.lazy(() => import('../pages/reservations/all'));
 const TodayReservations = React.lazy(() => import('../pages/reservations/today'));
 const AllTestedPeople = React.lazy(() => import('../pages/testedPeople'));
@@ -153,7 +152,7 @@ const LocationsRoutes = {
     path: '/locations',
     name: 'Locations',
     icon: FeatherIcon.MapPin,
-    component: LocationsPage,
+    component: Locations,
     roles: ['Admin'],
     route: PrivateRoute,
 };
