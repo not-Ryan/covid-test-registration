@@ -1,9 +1,9 @@
 import React from 'react';
 import moment from 'moment';
-import { startOfDay,endOfDay } from 'date-fns'
+import { startOfDay, endOfDay } from 'date-fns';
 import { useRequest } from '../../../helpers/axios';
 import { Row, Col, Card, CardBody, Input, Button, Badge, UncontrolledTooltip } from 'reactstrap';
-import ToolkitProvider, { Search, CSVExport } from 'react-bootstrap-table2-toolkit';
+import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 import { Link } from 'react-router-dom';
 import BootstrapTable from 'react-bootstrap-table-next';
@@ -37,19 +37,20 @@ export default function TestedPeople() {
     //get current date
     const myCurrentDate = new Date();
 
-    const startDate = startOfDay(myCurrentDate)
+    const startDate = startOfDay(myCurrentDate);
     const newStartDate = moment(startDate).format('YYYY-MM-DD HH:mm:ss');
 
-    const endDate = endOfDay(myCurrentDate)
+    const endDate = endOfDay(myCurrentDate);
     const newEndDate = moment(endDate).format('YYYY-MM-DD HH:mm:ss');
 
-    const testedPeople = useRequest('http://161.97.164.207/reservations?offset=0&limit=20&location_id=1&tested=true&start=2021-05-17%2000%3A00%3A00&end=2021-05-17%2012%3A06%3A49');
+    const testedPeople = useRequest(
+        'http://161.97.164.207/reservations?offset=0&tested=true&start=' + newStartDate + '&end=' + newEndDate
+    );
     if (!testedPeople) {
         return null;
     }
 
     const { SearchBar } = Search;
-    const { ExportCSVButton } = CSVExport;
 
     addCustomProps(testedPeople);
 
@@ -58,14 +59,11 @@ export default function TestedPeople() {
         for (const person in testedPeople) {
             if (Object.hasOwnProperty.call(testedPeople, person)) {
                 const record = testedPeople[person];
-                let testResult = 'Negative';
-                let resultTag = 'soft-danger';
                 let paidIcon = 'uil uil-money-withdrawal ml-2';
-                let paidIconTooltipTitle = 'cash';
 
                 // add custom item to array
                 record.actions = (
-                    <Link to={`/test-result?id=` + record.customer_id}>
+                    <Link to={`/test-result/` + record.customer_id}>
                         <Button color="primary" size="md">
                             View
                         </Button>
@@ -74,7 +72,10 @@ export default function TestedPeople() {
 
                 if (record.payment_method === 'pin') {
                     paidIcon = 'uil uil-atm-card ml-2';
-                    paidIconTooltipTitle = 'pin';
+                }
+
+                if (record.payment_method === 'factuur') {
+                    paidIcon = 'uil uil-invoice ml-2';
                 }
 
                 record.full_name = <FetchCustomerInfo customerId={record.customer_id} type="full_name" />;
@@ -82,18 +83,18 @@ export default function TestedPeople() {
                 record.passport_number = <FetchCustomerInfo customerId={record.customer_id} type="passport_number" />;
                 record.location_name = <FetchLocationName locationId={record.location_id} />;
 
-                // record.paid_price_tag = (
-                //     <p>
-                //         {record.amount_paid}
-                //         <i className={paidIcon} id={'tooltip-' + record.reservation_id}></i>
-                //         <UncontrolledTooltip
-                //             placement="top"
-                //             id="tooltip-price-tooltip"
-                //             target={'tooltip-' + record.reservation_id}>
-                //             {record.payment_method}
-                //         </UncontrolledTooltip>
-                //     </p>
-                // );
+                record.paid_price_tag = (
+                    <p>
+                        {record.amount_paid}
+                        <i className={paidIcon} id={'tooltip-' + record.reservation_id}></i>
+                        <UncontrolledTooltip
+                            placement="top"
+                            id="tooltip-price-tooltip"
+                            target={'tooltip-' + record.reservation_id}>
+                            {record.payment_method}
+                        </UncontrolledTooltip>
+                    </p>
+                );
 
                 // // check person result state to add tag styling
                 // if (record.test_result === true) {
@@ -149,8 +150,8 @@ export default function TestedPeople() {
             sort: false,
         },
         {
-            dataField: 'payment_method',
-            text: 'Paid method',
+            dataField: 'paid_price_tag',
+            text: 'Paid',
             sort: false,
         },
         {
@@ -207,11 +208,6 @@ export default function TestedPeople() {
                                             <Row>
                                                 <Col>
                                                     <SearchBar {...props.searchProps} />
-                                                </Col>
-                                                <Col className="text-right">
-                                                    {/* <ExportCSVButton {...props.csvProps} className="btn btn-primary">
-                                                        Save
-                                                    </ExportCSVButton> */}
                                                 </Col>
                                             </Row>
 
