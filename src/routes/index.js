@@ -14,7 +14,7 @@ const Confirm = React.lazy(() => import('../pages/auth/Confirm'));
 // dashboard
 const Dashboard = React.lazy(() => import('../pages/dashboard'));
 const Locations = React.lazy(() => import('../pages/locations/index'));
-const AllReservations = React.lazy(() => import('../pages/reservations/all'));
+const AllReservations = React.lazy(() => import('../pages/reservations/all/index'));
 const TodayReservations = React.lazy(() => import('../pages/reservations/today'));
 const AllTestedPeople = React.lazy(() => import('../pages/testedPeople/all'));
 const TodayTestedPeople = React.lazy(() => import('../pages/testedPeople/today/index'));
