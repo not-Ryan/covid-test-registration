@@ -50,7 +50,7 @@ function FetchLocationName({ locationId }) {
 export default function TestedPeople() {
     const { SearchBar } = Search;
 
-    const testedPeople = useRequest('http://161.97.164.207/reservations?offset=0&limit=20&tested=true');
+    const testedPeople = useRequest('http://161.97.164.207/reservations?offset=0&tested=true');
     if (!testedPeople) {
         return null;
     }
@@ -65,7 +65,6 @@ export default function TestedPeople() {
                 let testResult = 'Negative';
                 let resultTag = 'soft-danger';
                 let paidIcon = 'uil uil-money-withdrawal ml-2';
-                let paidIconTooltipTitle = 'cash';
 
                 // add custom item to array
                 record.actions = (
@@ -78,7 +77,10 @@ export default function TestedPeople() {
 
                 if (record.payment_method === 'pin') {
                     paidIcon = 'uil uil-atm-card ml-2';
-                    paidIconTooltipTitle = 'pin';
+                }
+
+                if (record.payment_method === 'factuur') {
+                    paidIcon = 'uil uil-invoice ml-2';
                 }
 
                 record.full_name = <FetchCustomerFullName customerId={record.customer_id} />;
@@ -229,6 +231,7 @@ export default function TestedPeople() {
                                                 defaultSorted={defaultSorted}
                                                 pagination={paginationFactory({
                                                     sizePerPage: 10,
+                                                    showTotal:true,
                                                     sizePerPageRenderer: sizePerPageRenderer,
                                                     sizePerPageList: [
                                                         { text: '10', value: 10 },
