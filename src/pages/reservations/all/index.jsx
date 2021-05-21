@@ -12,75 +12,50 @@ import {
     Badge,
     Button,
 } from 'reactstrap';
+import { useRequest } from '../../../helpers/axios';
 import BootstrapTable from 'react-bootstrap-table-next';
 import { Link } from 'react-router-dom';
-
 import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 import PageTitle from '../../../components/PageTitle';
 
-const records = [
-    {
-        id: 1,
-        age: <Link className="btn-default" to={`/reservations/view-reservation?id=5`}> View</Link>,
-        name: 'Burt',
-        company: (
-            <Badge color="soft-secondary" className="mr-1">
-                Pending
-            </Badge>
-        ),
-        phone: '+5456345623525',
-    },
-    {
-        id: 2,
-        age: <Link className="btn-default" to={{ pathname: '/reservations/view-reservation/1'}}> View</Link>,
-        name: 'Long',
-        company: (
-            <Badge color="soft-secondary" className="mr-1">
-                Pending
-            </Badge>
-        ),
-        phone: '+1 (813) 583-2089',
-    },
-];
-
 const columns = [
     {
-        dataField: 'id',
+        dataField: 'reservation_id',
         text: '#',
         sort: true,
     },
     {
-        dataField: 'name',
-        text: 'ID number',
-        sort: false,
-    },
-    {
-        dataField: 'name',
+        dataField: 'first_name',
         text: 'First name',
         sort: true,
     },
     {
-        dataField: 'phone',
-        text: 'Last name',
+        dataField: 'last_name',
+        text: 'last_name',
         sort: true,
     },
     {
-        dataField: 'age',
-        text: 'Birth day',
+        dataField: 'paspoort_id',
+        text: 'Paspoort ID',
         sort: true,
     },
     {
-        dataField: 'company',
-        text: 'Covid state',
-        sort: false,
+        dataField: 'reservation_datetime',
+        text: 'Reservation time',
+        sort: true,
+    },
+    {
+        dataField: 'test_type',
+        text: 'Test type',
+        sort: true,
     },
 ];
 
 const defaultSorted = [
     {
-        dataField: 'id',
+        dataField: 'reservation_id',
         order: 'asc',
     },
 ];
@@ -124,8 +99,16 @@ const CustomToggleList = ({ columns, onColumnToggle, toggles }) => (
     </UncontrolledDropdown>
 );
 
-const TableWithRowExpand = () => {
+const TableWithRowExpand = (data) => {
+
+    const reservations = useRequest('http://161.97.164.207/reservations?offset=0&limit=20&tested=false');
+    if (!reservations) {
+        return null;
+    }
     const { SearchBar } = Search;
+
+    console.log(reservations);
+    
     const expandRow = {
         renderer: (row) => (
             <div>
@@ -148,7 +131,7 @@ const TableWithRowExpand = () => {
         <Card>
             <CardBody>
                 <p className="sub-header">Expand row to see more additional details</p>
-                <ToolkitProvider bootstrap4 keyField="id" data={records} columns={columns} search columnToggle>
+                <ToolkitProvider bootstrap4 keyField="id" data={reservations} columns={columns} search columnToggle>
                     {(props) => (
                         <React.Fragment>
                             <Row>
@@ -163,7 +146,8 @@ const TableWithRowExpand = () => {
                             <BootstrapTable
                                 {...props.baseProps}
                                 bordered={false}
-                                striped
+                                //striped
+                                hover
                                 defaultSorted={defaultSorted}
                                 pagination={paginationFactory({
                                     sizePerPage: 15,
@@ -172,10 +156,10 @@ const TableWithRowExpand = () => {
                                         { text: '15', value: 15 },
                                         { text: '50', value: 50 },
                                         { text: '100', value: 100 },
-                                        { text: 'All', value: records.length },
+                                        { text: 'All', value: reservations.length },
                                     ],
                                 })}
-                                expandRow={expandRow}
+                                //expandRow={expandRow}
                                 wrapperClasses="table-responsive"
                             />
                         </React.Fragment>
@@ -187,6 +171,8 @@ const TableWithRowExpand = () => {
 };
 
 const AllReservations = () => {
+    
+
     return (
         <React.Fragment>
             <Row className="page-title">
