@@ -20,46 +20,6 @@ import paginationFactory from 'react-bootstrap-table2-paginator';
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 import PageTitle from '../../../components/PageTitle';
 
-const columns = [
-    {
-        dataField: 'reservation_id',
-        text: '#',
-        sort: true,
-    },
-    {
-        dataField: 'first_name',
-        text: 'First name',
-        sort: true,
-    },
-    {
-        dataField: 'last_name',
-        text: 'last_name',
-        sort: true,
-    },
-    {
-        dataField: 'paspoort_id',
-        text: 'Paspoort ID',
-        sort: true,
-    },
-    {
-        dataField: 'reservation_datetime',
-        text: 'Reservation time',
-        sort: true,
-    },
-    {
-        dataField: 'test_type',
-        text: 'Test type',
-        sort: true,
-    },
-];
-
-const defaultSorted = [
-    {
-        dataField: 'reservation_id',
-        order: 'asc',
-    },
-];
-
 const sizePerPageRenderer = ({ options, currSizePerPage, onSizePerPageChange }) => (
     <React.Fragment>
         <label className="d-inline mr-1">Show</label>
@@ -99,33 +59,100 @@ const CustomToggleList = ({ columns, onColumnToggle, toggles }) => (
     </UncontrolledDropdown>
 );
 
-const TableWithRowExpand = (data) => {
+function FetchCustomerInfo({ customerId, type }) {
+    const customer = useRequest('http://161.97.164.207/customers/' + customerId);
 
+    if (!customer) {
+        return <span>Loading...</span>;
+    } else if (type === 'first_name') {
+        return customer.first_name;
+    } else if (type === 'date_of_birth') {
+        return customer.date_of_birth;
+    } else if (type === 'last_name') {
+        return customer.last_name;
+    } else if (type === 'passport_number') {
+        return customer.passport_number;
+    }
+}
+
+const columns = [
+    {
+        dataField: 'reservation_id',
+        text: '#',
+        sort: true,
+    },
+    {
+        dataField: 'first_name',
+        text: 'First name',
+        sort: true,
+    },
+    {
+        dataField: 'last_name',
+        text: 'last_name',
+        sort: true,
+        // formatter: (value) => {
+        //     return <FetchCustomerInfo key={`adress-${value}`} customerId={value} />;
+        // },
+    },
+    {
+        dataField: 'passport_number',
+        text: 'Paspoort ID',
+        sort: true,
+    },
+    {
+        dataField: 'reservation_datetime',
+        text: 'Reservation time',
+        sort: true,
+    },
+    {
+        dataField: 'test_type',
+        text: 'Test type',
+        sort: true,
+    },
+    {
+        dataField: 'actions',
+        text: 'Actions',
+        sort: false,
+    },
+];
+
+const defaultSorted = [
+    {
+        dataField: 'reservation_id',
+        order: 'asc',
+    },
+];
+
+const Table = () => {
     const reservations = useRequest('http://161.97.164.207/reservations?offset=0&limit=20&tested=false');
     if (!reservations) {
         return null;
     }
     const { SearchBar } = Search;
 
-    console.log(reservations);
-    
-    const expandRow = {
-        renderer: (row) => (
-            <div>
-                <p className="mt-2">{`Hello ${row.name}`}</p>
-                <p>You can render anything here, also you can add additional data on every row object</p>
-                <p>expandRow.renderer callback will pass the origin row object to you</p>
-            </div>
-        ),
-        showExpandColumn: true,
-        onlyOneExpanding: true,
-        expandHeaderColumnRenderer: ({ isAnyExpands }) => {
-            return isAnyExpands ? <i className="uil uil-minus"></i> : <i className="uil uil-plus"></i>;
-        },
-        expandColumnRenderer: ({ expanded }) => {
-            return expanded ? <i className="uil uil-minus"></i> : <i className="uil uil-plus"></i>;
-        },
-    };
+    addCustomProps(reservations);
+
+    function addCustomProps(data) {
+        // loop through list to add button
+        for (const person in data) {
+            if (Object.hasOwnProperty.call(data, person)) {
+                const record = data[person];
+
+                // add custom item to array
+                record.first_name = <FetchCustomerInfo customerId={record.customer_id} type="first_name" />;
+                record.last_name = <FetchCustomerInfo customerId={record.customer_id} type="last_name" />;
+                record.passport_number = <FetchCustomerInfo customerId={record.customer_id} type="passport_number" />;
+                record.actions = (
+                    <Link to={`/test-result?id=` + record.customer_id}>
+                        <Button color="primary" size="md">
+                            View
+                        </Button>
+                    </Link>
+                );
+                //console.log(record);
+            }
+        }
+    }
 
     return (
         <Card>
@@ -150,16 +177,15 @@ const TableWithRowExpand = (data) => {
                                 hover
                                 defaultSorted={defaultSorted}
                                 pagination={paginationFactory({
-                                    sizePerPage: 15,
+                                    sizePerPage: 10,
                                     sizePerPageRenderer: sizePerPageRenderer,
                                     sizePerPageList: [
-                                        { text: '15', value: 15 },
+                                        { text: '10', value: 10 },
                                         { text: '50', value: 50 },
                                         { text: '100', value: 100 },
                                         { text: 'All', value: reservations.length },
                                     ],
                                 })}
-                                //expandRow={expandRow}
                                 wrapperClasses="table-responsive"
                             />
                         </React.Fragment>
@@ -171,8 +197,6 @@ const TableWithRowExpand = (data) => {
 };
 
 const AllReservations = () => {
-    
-
     return (
         <React.Fragment>
             <Row className="page-title">
@@ -185,7 +209,7 @@ const AllReservations = () => {
             </Row>
             <Row>
                 <Col md={12}>
-                    <TableWithRowExpand />
+                    <Table />
                 </Col>
             </Row>
         </React.Fragment>

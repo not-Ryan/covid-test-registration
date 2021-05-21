@@ -1,4 +1,6 @@
 import React from 'react';
+import moment from 'moment';
+import { startOfDay,endOfDay } from 'date-fns'
 import { useRequest } from '../../../helpers/axios';
 import { Row, Col, Card, CardBody, Input, Button, Badge, UncontrolledTooltip } from 'reactstrap';
 import ToolkitProvider, { Search, CSVExport } from 'react-bootstrap-table2-toolkit';
@@ -16,13 +18,13 @@ function FetchCustomerInfo({ customerId, type }) {
         return customer.first_name + ' ' + customer.last_name;
     } else if (type === 'date_of_birth') {
         return customer.date_of_birth;
-    }else if (type === 'passport_number') {
+    } else if (type === 'passport_number') {
         return customer.passport_number;
     }
 }
 
 function FetchLocationName({ locationId }) {
-    const location = useRequest('http://161.97.164.207/locations/' + locationId );
+    const location = useRequest('http://161.97.164.207/locations/' + locationId);
 
     if (!location) {
         return <span>Loading...</span>;
@@ -32,7 +34,16 @@ function FetchLocationName({ locationId }) {
 }
 
 export default function TestedPeople() {
-    const testedPeople = useRequest('http://161.97.164.207/reservations?offset=0&limit=20&tested=true');
+    //get current date
+    const myCurrentDate = new Date();
+
+    const startDate = startOfDay(myCurrentDate)
+    const newStartDate = moment(startDate).format('YYYY-MM-DD HH:mm:ss');
+
+    const endDate = endOfDay(myCurrentDate)
+    const newEndDate = moment(endDate).format('YYYY-MM-DD HH:mm:ss');
+
+    const testedPeople = useRequest('http://161.97.164.207/reservations?offset=0&limit=20&location_id=1&tested=true&start=2021-05-17%2000%3A00%3A00&end=2021-05-17%2012%3A06%3A49');
     if (!testedPeople) {
         return null;
     }
@@ -69,7 +80,7 @@ export default function TestedPeople() {
                 record.full_name = <FetchCustomerInfo customerId={record.customer_id} type="full_name" />;
                 record.date_of_birth = <FetchCustomerInfo customerId={record.customer_id} type="date_of_birth" />;
                 record.passport_number = <FetchCustomerInfo customerId={record.customer_id} type="passport_number" />;
-                record.location_name = <FetchLocationName locationId={record.location_id}/>;
+                record.location_name = <FetchLocationName locationId={record.location_id} />;
 
                 // record.paid_price_tag = (
                 //     <p>
