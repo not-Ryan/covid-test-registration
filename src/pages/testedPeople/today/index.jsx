@@ -12,11 +12,11 @@ function FetchCustomerInfo({ customerId, type }) {
 
     if (!customer) {
         return <span>Loading...</span>;
-    } else if (type == 'full_name') {
+    } else if (type === 'full_name') {
         return customer.first_name + ' ' + customer.last_name;
-    } else if (type == 'date_of_birth') {
+    } else if (type === 'date_of_birth') {
         return customer.date_of_birth;
-    }else if (type == 'passport_number') {
+    }else if (type === 'passport_number') {
         return customer.passport_number;
     }
 }

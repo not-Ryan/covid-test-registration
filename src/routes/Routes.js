@@ -39,7 +39,6 @@ const HorizontalLayout = Loadable({
     loading,
 });
 
-const SingleReservation = React.lazy(() => import('../pages/reservations/single'));
 const SingleLocation = React.lazy(() => import('../pages/locations/single'));
 const TestResult = React.lazy(() => import('../pages/testReport/'));
 
@@ -79,7 +78,6 @@ class Routes extends Component {
                                     component={route.component}></route.route>
                             ) : null;
                         })}
-                        <Route path="/reservations/view-reservation" route={Route} children={<SingleReservation />}/>
                         <Route path="/view-location" route={Route} children={<SingleLocation />}/>
                         <Route path="/test-result/:reservationId" route={Route} component={TestReport}/>
                     </Switch>
