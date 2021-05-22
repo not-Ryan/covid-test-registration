@@ -1,19 +1,9 @@
 import React from 'react';
-import {
-    Row,
-    Col,
-    Card,
-    CardBody,
-    Input,
-    UncontrolledDropdown,
-    DropdownToggle,
-    DropdownMenu,
-    DropdownItem,
-    Badge,
-    Button,
-} from 'reactstrap';
+import { Row, Col, Card, CardBody, Input, Button } from 'reactstrap';
 import { useRequest } from '../../../helpers/axios';
+import moment from 'moment';
 import Moment from 'react-moment';
+import { startOfDay, endOfDay } from 'date-fns';
 import BootstrapTable from 'react-bootstrap-table-next';
 import { Link } from 'react-router-dom';
 import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit';
@@ -37,27 +27,6 @@ const sizePerPageRenderer = ({ options, currSizePerPage, onSizePerPageChange }) 
         </Input>
         <label className="d-inline ml-1">entries</label>
     </React.Fragment>
-);
-
-const CustomToggleList = ({ columns, onColumnToggle, toggles }) => (
-    <UncontrolledDropdown className="mb-3">
-        <DropdownToggle tag="button" className="btn btn-white">
-            Select Columns <i className="uil uil-angle-down font-size-15 ml-1 align-middle"></i>
-        </DropdownToggle>
-        <DropdownMenu>
-            {columns
-                .map((column) => ({
-                    ...column,
-                    toggle: toggles[column.dataField],
-                }))
-                .map((column) => (
-                    <DropdownItem key={column.dataField} onClick={() => onColumnToggle(column.dataField)}>
-                        {column.toggle && <i className="uil uil-check"></i>}
-                        <span className="ml-2">{column.text}</span>
-                    </DropdownItem>
-                ))}
-        </DropdownMenu>
-    </UncontrolledDropdown>
 );
 
 function FetchCustomerInfo({ customerId, type }) {
@@ -131,7 +100,18 @@ const defaultSorted = [
 ];
 
 const Table = () => {
-    const reservations = useRequest('http://161.97.164.207/reservations?offset=0&tested=false');
+    //get current date
+    const myCurrentDate = new Date();
+
+    const startDate = startOfDay(myCurrentDate);
+    const newStartDate = moment(startDate).format('YYYY-MM-DD HH:mm:ss');
+
+    const endDate = endOfDay(myCurrentDate);
+    const newEndDate = moment(endDate).format('YYYY-MM-DD HH:mm:ss');
+
+    const reservations = useRequest(
+        'http://161.97.164.207/reservations?offset=0&tested=false&start=' + newStartDate + '&end=' + newEndDate
+    );
     if (!reservations) {
         return null;
     }
@@ -164,7 +144,7 @@ const Table = () => {
     return (
         <Card>
             <CardBody>
-                <p className="sub-header">Expand row to see more additional details</p>
+                <p className="sub-header">A Table showing all tested people.</p>
                 <ToolkitProvider
                     bootstrap4
                     keyField="reservation_id"
@@ -209,14 +189,14 @@ const Table = () => {
     );
 };
 
-const AllReservations = () => {
+const TodayReservations = () => {
     return (
         <React.Fragment>
             <Row className="page-title">
                 <Col md={12}>
                     <PageTitle
-                        breadCrumbItems={[{ label: 'All reservations', path: '/pages/starter', active: true }]}
-                        title={'All Reservations'}
+                        breadCrumbItems={[{ label: 'Today reservations', path: '/pages/starter', active: true }]}
+                        title={'Today Reservations'}
                     />
                 </Col>
             </Row>
@@ -229,4 +209,4 @@ const AllReservations = () => {
     );
 };
 
-export default AllReservations;
+export default TodayReservations;

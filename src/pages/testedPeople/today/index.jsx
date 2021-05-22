@@ -43,9 +43,7 @@ export default function TestedPeople() {
     const endDate = endOfDay(myCurrentDate);
     const newEndDate = moment(endDate).format('YYYY-MM-DD HH:mm:ss');
 
-    const testedPeople = useRequest(
-        'http://161.97.164.207/reservations?offset=0&tested=true&start=' + newStartDate + '&end=' + newEndDate
-    );
+    const testedPeople = useRequest('http://161.97.164.207/reservations?offset=0&tested=true&start=' + newStartDate + '&end=' + newEndDate);
     if (!testedPeople) {
         return null;
     }
