@@ -1,8 +1,13 @@
 import React from 'react';
 import { Card, CardBody, Row, Col } from 'reactstrap';
+import axios, { useRequest } from '../../../helpers/axios';
 import './styles.css';
 
-const PatientInfo = ({props}) => {
+const PatientInfo = ({ props }) => {
+    const customer = useRequest('http://161.97.164.207/customers/' + props);
+    if (!customer) {
+        return null;
+    }
 
     return (
         <Card className="">
@@ -16,27 +21,23 @@ const PatientInfo = ({props}) => {
                                     <tbody>
                                         <tr>
                                             <th scope="row">Firstname</th>
-                                            <td>{props.first_name}</td>
+                                            <td>{customer.first_name}</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Lastname</th>
-                                            <td>{props.last_name}</td>
+                                            <td>{customer.last_name}</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Date of birth</th>
-                                            <td>{props.date_of_birth}</td>
+                                            <td>{customer.date_of_birth}</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Gender</th>
-                                            <td></td>
+                                            <td>{customer.sex}</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Paspoort ID</th>
-                                            <td>{props.passport_number}</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">ID nummer</th>
-                                            <td></td>
+                                            <td>{customer.passport_number}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -50,15 +51,15 @@ const PatientInfo = ({props}) => {
                                     <tbody>
                                         <tr>
                                             <th scope="row">Email</th>
-                                            <td>{props.email}</td>
+                                            <td>{customer.email}</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Phone</th>
-                                            <td>{props.phone_number}</td>
+                                            <td>{customer.phone_number}</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Address</th>
-                                            <td>{props.address}</td>
+                                            <td>{customer.address}</td>
                                         </tr>
                                     </tbody>
                                 </table>

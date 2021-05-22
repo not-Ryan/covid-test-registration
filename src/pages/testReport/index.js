@@ -10,13 +10,12 @@ import TestInfo from './testInfo';
 
 export default function TestReport(reservationId) {
     const resId = Object.values(reservationId);
-
-    const data = useRequest('http://161.97.164.207/reservations/' + resId);
-    if (!data) {
+    const reservation = useRequest('http://161.97.164.207/reservations/' + resId);
+    if (!reservation) {
         return null;
     }
 
-    const allUserInformation = data;
+    const allUserInformation = reservation;
     const fullName = allUserInformation.first_name + ' ' + allUserInformation.last_name;
 
     return (
@@ -36,7 +35,7 @@ export default function TestReport(reservationId) {
             <Row>
                 <Col lg={4}>
                     {/* User information */}
-                    <PatientInfo props={allUserInformation} />
+                    <PatientInfo props={reservation.customer_id} />
                 </Col>
 
                 <Col lg={8}>
