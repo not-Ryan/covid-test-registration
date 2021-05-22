@@ -6,7 +6,7 @@ import axios, { useRequest } from '../../helpers/axios';
 
 import PatientInfo from './patientInfo/index';
 import ReservationInfo from './reservationInfo/index';
-import TestInfo from './testInfo';
+import TestInfo from './testInfo/index';
 
 export default function TestReport(reservationId) {
     const resId = Object.values(reservationId);

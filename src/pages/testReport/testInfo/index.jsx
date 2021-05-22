@@ -1,59 +1,61 @@
-import React from 'react';
-import { useRequest } from '../../../helpers/axios';
-import Moment from 'react-moment';
-import { Calendar } from 'react-feather';
+import React, { Component } from 'react';
+import { Info } from 'react-feather';
+
 const iconStyles = {
     fontSize: '22px',
 };
-const ReservationInfo = ({ props }) => {
-    const location = useRequest('http://161.97.164.207/locations/' + props.location_id);
-    if (!location) {
-        return null;
+const TestInfo = ({ props }) => {
+    let TestResult = '';
+    
+    if (props.test_result) {
+        TestResult = 'Positive';
+    } else {
+        TestResult = 'Negative';
     }
+
     return (
         <React.Fragment>
             <div className="border-bottom pb-3">
                 <label className="font-weight-bold d-inline header-title" style={{ verticalAlign: 'center' }}>
-                    <Calendar
+                    <Info
                         className="icon-dual icon-md mr-2"
                         style={{ verticalAlign: 'center' }}
-                        data-feather="hard-drive"></Calendar>
-                    Reservation
+                        data-feather="hard-drive"></Info>
+                    Test
                 </label>
             </div>
             <div className="row">
                 <div className="col-lg-3 col-md-6">
                     <div className="mt-4">
                         <p className="mb-2">
-                            <i className="uil-calender text-primary" style={iconStyles}></i> Reservation date
+                            <i className="uil-syringe text-primary" style={iconStyles}></i> Test Tube ID
                         </p>
-                        <h5 className="font-size-16"><Moment format="DD/MM/YYYY HH:mm">{props.date_of_birth}</Moment></h5>
+                        <h5 className="font-size-16">{props.test_tube_id}</h5>
                     </div>
                 </div>
                 <div className="col-lg-3 col-md-6">
                     <div className="mt-4">
                         <p className="mb-2">
-                            <i className="uil-location-point text-primary" style={iconStyles}></i> Location
+                            <i className="uil-prescription-bottle text-primary" style={iconStyles}></i> Test Type
                         </p>
-                        <h5 className="font-size-16">{location.location_name}</h5>
+                        <h5 className="font-size-16">{props.test_type}</h5>
                     </div>
                 </div>
                 <div className="col-lg-3 col-md-6">
                     <div className="mt-4">
                         <p className="mb-2">
-                            <i className="uil-euro-circle text-primary" style={iconStyles}></i> Paid amount
+                            <i className="uil-euro-circle text-primary" style={iconStyles}></i> Test cost
                         </p>
-                        <h5 className="font-size-16">Euro {props.amount_paid}</h5>
+                        <h5 className="font-size-16">Euro {props.test_cost}</h5>
                     </div>
                 </div>
 
                 <div className="col-lg-3 col-md-6">
                     <div className="mt-4">
                         <p className="mb-2">
-                            <i className="uil-receipt-alt text-primary mr-1" style={iconStyles}></i>
-                            Paid method
+                            <i className="uil-file-medical-alt text-primary" style={iconStyles}></i> Test Result
                         </p>
-                        <h5 className="font-size-16">{props.payment_method}</h5>
+                        <h5 className="font-size-16">{TestResult}</h5>
                     </div>
                 </div>
             </div>
@@ -61,4 +63,4 @@ const ReservationInfo = ({ props }) => {
     );
 };
 
-export default ReservationInfo;
+export default TestInfo;
