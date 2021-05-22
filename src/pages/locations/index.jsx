@@ -76,11 +76,11 @@ function scheduleFormatter(cell, row, rowIndex) {
 function addActionsButton(cell, row, rowIndex) {
     return (
         <div className="text-left">
-            <Link to={`/test-result/` + row.location_id}>
+            {/* <Link to={`/test-result/` + row.location_id}>
                 <Button color="primary" size="md">
                     View
                 </Button>
-            </Link>
+            </Link> */}
         </div>
     );
 }
