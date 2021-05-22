@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, CardBody, Row, Col } from 'reactstrap';
-import axios, { useRequest } from '../../../helpers/axios';
+import { useRequest } from '../../../helpers/axios';
 import './styles.css';
 
 const PatientInfo = ({ props }) => {

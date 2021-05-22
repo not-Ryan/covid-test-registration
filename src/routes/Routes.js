@@ -40,7 +40,7 @@ const HorizontalLayout = Loadable({
 });
 
 const SingleLocation = React.lazy(() => import('../pages/locations/single'));
-const TestResult = React.lazy(() => import('../pages/testReport/'));
+const TestResult = React.lazy(() => import('../pages/testReport/index'));
 
 class Routes extends Component {
     // returns the layout

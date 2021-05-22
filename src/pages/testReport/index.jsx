@@ -4,8 +4,8 @@ import { Row, Col, Card, CardBody } from 'reactstrap';
 import PageTitle from '../../components/PageTitle';
 import axios, { useRequest } from '../../helpers/axios';
 
-import PatientInfo from './patientInfo';
-import ReservationInfo from './reservationInfo';
+import PatientInfo from './patientInfo/index';
+import ReservationInfo from './reservationInfo/index';
 import TestInfo from './testInfo';
 
 export default function TestReport(reservationId) {
@@ -41,13 +41,13 @@ export default function TestReport(reservationId) {
                 <Col lg={8}>
                     <Card>
                         <CardBody>
-                            <ReservationInfo />
+                            <ReservationInfo props={reservation}/>
                         </CardBody>
                     </Card>
 
                     <Card>
                         <CardBody>
-                            <TestInfo />
+                            <TestInfo props={reservation}/>
                         </CardBody>
                     </Card>
                 </Col>
