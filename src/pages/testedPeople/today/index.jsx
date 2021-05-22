@@ -3,6 +3,7 @@ import moment from 'moment';
 import { startOfDay, endOfDay } from 'date-fns';
 import { useRequest } from '../../../helpers/axios';
 import { Row, Col, Card, CardBody, Input, Button, Badge, UncontrolledTooltip } from 'reactstrap';
+import Moment from 'react-moment';
 import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 import { Link } from 'react-router-dom';
@@ -17,7 +18,7 @@ function FetchCustomerInfo({ customerId, type }) {
     } else if (type === 'full_name') {
         return customer.first_name + ' ' + customer.last_name;
     } else if (type === 'date_of_birth') {
-        return customer.date_of_birth;
+        return <Moment format="DD/MM/YYYY">{customer.date_of_birth}</Moment>;
     } else if (type === 'passport_number') {
         return customer.passport_number;
     }
