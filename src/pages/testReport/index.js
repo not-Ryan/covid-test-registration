@@ -9,8 +9,9 @@ import ReservationInfo from './reservationInfo';
 import TestInfo from './testInfo';
 
 export default function TestReport(reservationId) {
-    console.log(reservationId)
-    const data = useRequest('http://161.97.164.207/customers/1');
+    const resId = Object.values(reservationId);
+
+    const data = useRequest('http://161.97.164.207/reservations/' + resId);
     if (!data) {
         return null;
     }
@@ -24,10 +25,10 @@ export default function TestReport(reservationId) {
                 <Col md={12}>
                     <PageTitle
                         breadCrumbItems={[
-                            { label: 'Tested people', path: '/tested-people/all' },
-                            { label: fullName, path: '/', active: true },
+                            // { label: 'Tested people', path: '/tested-people/all' },
+                            { label: "Test Report", path: '/', active: true },
                         ]}
-                        title={fullName}
+                        // title={fullName}
                     />
                 </Col>
             </Row>
