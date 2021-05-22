@@ -201,7 +201,9 @@ export default function TestedPeople() {
                                     keyField="reservation_id"
                                     data={testedPeople}
                                     columns={columns}
-                                    search
+                                    search={{
+                                        searchFormatted: true,
+                                    }}
                                     exportCSV={{ onlyExportFiltered: true, exportAll: false }}>
                                     {(props) => (
                                         <React.Fragment>

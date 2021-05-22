@@ -109,6 +109,7 @@ export default function TestedPeople() {
                         {testResult}
                     </Badge>
                 );
+                console.log(record);
             }
         }
     }
@@ -144,7 +145,7 @@ export default function TestedPeople() {
             text: 'Address',
             sort: true,
             formatter: (value) => {
-                return <FetchCustomerAdress key={`adress-${value}`} customerId={value} />;
+            return <FetchCustomerAdress key={`adress-${value}`} customerId={value} />;
             },
         },
         {
@@ -209,7 +210,9 @@ export default function TestedPeople() {
 
                                 <ToolkitProvider
                                     bootstrap4
-                                    search
+                                    search={{
+                                        searchFormatted: true,
+                                    }}
                                     keyField="id"
                                     data={testedPeople}
                                     columns={columns}
@@ -231,7 +234,7 @@ export default function TestedPeople() {
                                                 defaultSorted={defaultSorted}
                                                 pagination={paginationFactory({
                                                     sizePerPage: 10,
-                                                    showTotal:true,
+                                                    showTotal: true,
                                                     sizePerPageRenderer: sizePerPageRenderer,
                                                     sizePerPageList: [
                                                         { text: '10', value: 10 },
