@@ -1,6 +1,7 @@
 import React from 'react';
 import { useRequest } from '../../../helpers/axios';
 import { Row, Col, Card, CardBody, Input, Button, Badge, UncontrolledTooltip } from 'reactstrap';
+import Moment from 'react-moment';
 import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 import { Link } from 'react-router-dom';
@@ -33,7 +34,7 @@ function FetchCustomerDateOfBirth({ customerId }) {
     if (!customer) {
         return <span>Loading...</span>;
     } else {
-        return customer.date_of_birth;
+        return <Moment format="DD/MM/YYYY">{customer.date_of_birth}</Moment>;
     }
 }
 
@@ -145,7 +146,7 @@ export default function TestedPeople() {
             text: 'Address',
             sort: true,
             formatter: (value) => {
-            return <FetchCustomerAdress key={`adress-${value}`} customerId={value} />;
+                return <FetchCustomerAdress key={`adress-${value}`} customerId={value} />;
             },
         },
         {
