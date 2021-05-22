@@ -85,6 +85,9 @@ const columns = [
         dataField: 'first_name',
         text: 'First name',
         sort: true,
+        // formatter: (cell, row, rowIndex) => (
+        //     <FetchCustomerInfo key={`first_name-${row.customer_id}`} customerId={row.customer_id} type="first_name"/>
+        // ),
     },
     {
         dataField: 'last_name',
@@ -124,7 +127,7 @@ const defaultSorted = [
 ];
 
 const Table = () => {
-    const reservations = useRequest('http://161.97.164.207/reservations?offset=0&limit=20&tested=false');
+    const reservations = useRequest('http://161.97.164.207/reservations?offset=0&tested=false');
     if (!reservations) {
         return null;
     }
@@ -143,7 +146,7 @@ const Table = () => {
                 record.last_name = <FetchCustomerInfo customerId={record.customer_id} type="last_name" />;
                 record.passport_number = <FetchCustomerInfo customerId={record.customer_id} type="passport_number" />;
                 record.actions = (
-                    <Link to={`/test-result?id=` + record.customer_id}>
+                    <Link to={`/test-result/` + record.customer_id}>
                         <Button color="primary" size="md">
                             View
                         </Button>
@@ -158,13 +161,19 @@ const Table = () => {
         <Card>
             <CardBody>
                 <p className="sub-header">Expand row to see more additional details</p>
-                <ToolkitProvider bootstrap4 keyField="id" data={reservations} columns={columns} search columnToggle>
+                <ToolkitProvider
+                    bootstrap4
+                    keyField="reservation_id"
+                    data={reservations}
+                    columns={columns}
+                    search={{
+                        searchFormatted: true,
+                    }}
+                    columnToggle>
                     {(props) => (
                         <React.Fragment>
                             <Row>
-                                <Col>
-                                    <CustomToggleList {...props.columnToggleProps} />
-                                </Col>
+                                <Col>{/* <CustomToggleList {...props.columnToggleProps} /> */}</Col>
                                 <Col className="text-right">
                                     <SearchBar {...props.searchProps} />
                                 </Col>
