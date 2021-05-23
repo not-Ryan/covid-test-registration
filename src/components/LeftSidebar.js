@@ -39,7 +39,7 @@ const UserProfile = () => {
                         <FeatherIcon.User className="icon-dual icon-xs mr-2" />
                         <span>My Account</span>
                     </Link>
-                    <Link to="/" className="dropdown-item notify-item">
+                    {/* <Link to="/" className="dropdown-item notify-item">
                         <FeatherIcon.Settings className="icon-dual icon-xs mr-2" />
                         <span>Settings</span>
                     </Link>
@@ -50,7 +50,7 @@ const UserProfile = () => {
                     <Link to="/" className="dropdown-item notify-item">
                         <FeatherIcon.Lock className="icon-dual icon-xs mr-2" />
                         <span>Lock Screen</span>
-                    </Link>
+                    </Link> */}
                     <DropdownItem divider />
                     <Link to="/account/logout" className="dropdown-item notify-item">
                         <FeatherIcon.LogOut className="icon-dual icon-xs mr-2" />
