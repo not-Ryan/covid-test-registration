@@ -13,11 +13,11 @@ const ForgetPassword = React.lazy(() => import('../pages/auth/ForgetPassword'));
 const Confirm = React.lazy(() => import('../pages/auth/Confirm'));
 // dashboard
 const Dashboard = React.lazy(() => import('../pages/dashboard'));
-const Locations = React.lazy(() => import('../pages/locations'));
-const AllReservations = React.lazy(() => import('../pages/reservations/all'));
-const TodayReservations = React.lazy(() => import('../pages/reservations/today'));
-const AllTestedPeople = React.lazy(() => import('../pages/testedPeople'));
-const TodayTestedPeople = React.lazy(() => import('../pages/testedPeople/today'));
+const Locations = React.lazy(() => import('../pages/locations/index'));
+const AllReservations = React.lazy(() => import('../pages/reservations/all/index'));
+const TodayReservations = React.lazy(() => import('../pages/reservations/today/index'));
+const AllTestedPeople = React.lazy(() => import('../pages/testedPeople/all'));
+const TodayTestedPeople = React.lazy(() => import('../pages/testedPeople/today/index'));
 // apps
 const CalendarApp = React.lazy(() => import('../pages/apps/Calendar'));
 const EmailInbox = React.lazy(() => import('../pages/apps/Email/Inbox'));
@@ -251,7 +251,7 @@ const appRoutes = [
     // taskAppRoutes,
 ];
 
-// pages
+//pages
 // const pagesRoutes = {
 //     path: '/pages',
 //     name: 'Pages',

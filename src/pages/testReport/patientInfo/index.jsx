@@ -1,50 +1,43 @@
 import React from 'react';
-import { Card, CardBody, Row, Col, UncontrolledTooltip } from 'reactstrap';
+import { Card, CardBody, Row, Col } from 'reactstrap';
+import { useRequest } from '../../../helpers/axios';
 import './styles.css';
 
-const PatientInfo = () => {
+const PatientInfo = ({ props }) => {
+    const customer = useRequest('http://161.97.164.207/customers/' + props);
+    if (!customer) {
+        return null;
+    }
+
     return (
         <Card className="">
             <CardBody className="profile-user-box">
                 <Row>
                     <Col>
-                        <div className="text-center mt-3 mb-4 gender-custom-line-height">
-                            {/* <i className="uil uil-venus gender-icon"></i> */}
-                            <i className="uil uil-mars gender-icon" id={'tooltip-gender'}></i>
-                            <UncontrolledTooltip placement="right" id="tooltip-gender" target={'tooltip-gender'}>
-                                {'Male'}
-                            </UncontrolledTooltip>
-                            <h5 className="mt-2 mb-0">John Doe</h5>
-                        </div>
-
-                        <div className="pt-2 border-top">
-                            <h4 className="mb-2 mt-3 font-size-15 font-weight-bold">Personal Information</h4>
+                        <div className="mb-2">
+                            <h4 className="mb-2 mt-3 font-size-16 font-weight-bold">Personal Information</h4>
                             <div>
                                 <table className="table table-borderless text-muted">
                                     <tbody>
                                         <tr>
                                             <th scope="row">Firstname</th>
-                                            <td>John</td>
+                                            <td>{customer.first_name}</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Lastname</th>
-                                            <td>Doe</td>
+                                            <td>{customer.last_name}</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Date of birth</th>
-                                            <td>05/05/2021</td>
+                                            <td>{customer.date_of_birth}</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Gender</th>
-                                            <td>Male</td>
+                                            <td>{customer.sex}</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Paspoort ID</th>
-                                            <td>0450469</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">ID nummer</th>
-                                            <td>SF98347530</td>
+                                            <td>{customer.passport_number}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -52,21 +45,21 @@ const PatientInfo = () => {
                         </div>
 
                         <div className="pt-2 border-top">
-                            <h4 className="mb-2 mt-3 font-size-15 font-weight-bold">Contact Information</h4>
+                            <h4 className="mb-2 mt-3 font-size-16 font-weight-bold">Contact Information</h4>
                             <div>
                                 <table className="table table-borderless mb-5 text-muted">
                                     <tbody>
                                         <tr>
                                             <th scope="row">Email</th>
-                                            <td>johndoe@gmail.com</td>
+                                            <td>{customer.email}</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Phone</th>
-                                            <td>+31 856646456</td>
+                                            <td>{customer.phone_number}</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Address</th>
-                                            <td>Teststraat #222</td>
+                                            <td>{customer.address}</td>
                                         </tr>
                                     </tbody>
                                 </table>
