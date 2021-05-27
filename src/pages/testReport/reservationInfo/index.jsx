@@ -29,7 +29,11 @@ const ReservationInfo = ({ props }) => {
 
     return (
         <React.Fragment>
-            <UpdateReservationModal modalState={modalState} toggle={toggleModal} />
+            <UpdateReservationModal
+                modalState={modalState}
+                toggle={toggleModal}
+                reservationdId={props.reservation_id}
+            />
             <div className="pb-3">
                 <label className="font-weight-bold d-inline header-title" style={{ verticalAlign: 'center' }}>
                     <Calendar

@@ -1,10 +1,11 @@
 import React from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
-const updateReservationModal = ({ modalState, toggle }) => {
+const updateReservationModal = ({ modalState, toggle, reservationdId }) => {
+    console.log(reservationdId);
     return (
         <Modal isOpen={modalState} toggle={toggle}>
-            <ModalHeader toggle={toggle}>updateReservationModal</ModalHeader>
+            <ModalHeader toggle={toggle}>updateReservationModal {reservationdId}</ModalHeader>
             <ModalBody>
                 <h6>Text in a modal</h6>
                 <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
