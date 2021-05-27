@@ -39,7 +39,7 @@ const ReservationInfo = ({ props }) => {
                     Reservation
                 </label>
                 <div style={{ float: 'right' }}>
-                    <Button className="width-xs" color="outline-primary" onClick={toggleModal}>
+                    <Button className="width-xs" color="primary" onClick={toggleModal}>
                         Update
                     </Button>
                 </div>

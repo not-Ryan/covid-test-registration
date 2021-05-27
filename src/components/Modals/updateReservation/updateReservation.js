@@ -4,7 +4,7 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 const updateReservationModal = ({ modalState, toggle }) => {
     return (
         <Modal isOpen={modalState} toggle={toggle}>
-            <ModalHeader toggle={toggle}>Modal title</ModalHeader>
+            <ModalHeader toggle={toggle}>updateReservationModal</ModalHeader>
             <ModalBody>
                 <h6>Text in a modal</h6>
                 <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>

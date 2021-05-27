@@ -1,11 +1,14 @@
-import React from 'react';
-import { Badge } from 'reactstrap';
+import React, { useState } from 'react';
+import { Badge, Button } from 'reactstrap';
 import { Info } from 'react-feather';
+import UpdateTestResult from '../../../components/Modals/updateTestResult/updateTestResult';
 
 const iconStyles = {
     fontSize: '22px',
 };
+
 const TestInfo = ({ props }) => {
+    const [modalState, setModalState] = useState(false);
     let TestResult = 'Negative';
     let testTubeId = 'Not tested yet.';
     let resultTag = 'soft-danger';
@@ -25,9 +28,14 @@ const TestInfo = ({ props }) => {
         resultTag = 'soft-success';
     }
 
+    const toggleModal = () => {
+        setModalState((state) => !state);
+    };
+
     return (
         <React.Fragment>
-            <div className="border-bottom pb-3">
+            <UpdateTestResult modalState={modalState} toggle={toggleModal} />
+            <div className="pb-3">
                 <label className="font-weight-bold d-inline header-title" style={{ verticalAlign: 'center' }}>
                     <Info
                         className="icon-dual icon-md mr-2"
@@ -35,6 +43,11 @@ const TestInfo = ({ props }) => {
                         data-feather="hard-drive"></Info>
                     Test
                 </label>
+                <div style={{ float: 'right' }}>
+                    <Button className="width-xs" color="primary" onClick={toggleModal}>
+                        Update
+                    </Button>
+                </div>
             </div>
             <div className="row">
                 <div className="col-lg-3 col-md-6">
