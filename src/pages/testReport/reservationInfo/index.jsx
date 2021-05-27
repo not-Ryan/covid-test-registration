@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Row, Col, Card, CardBody, Button } from 'reactstrap';
 import { useRequest } from '../../../helpers/axios';
 import Moment from 'react-moment';
@@ -6,7 +6,10 @@ import { Calendar } from 'react-feather';
 const iconStyles = {
     fontSize: '20px',
 };
+
 const ReservationInfo = ({ props }) => {
+    const [modalState, setModalState] = useState(false);
+
     let paidAmount = 'Not paid yet.';
     let paidMethod = '-';
     const location = useRequest('http://161.97.164.207:8080/locations/' + props.location_id);
@@ -19,6 +22,10 @@ const ReservationInfo = ({ props }) => {
         paidMethod = props.payment_method;
     }
 
+    const toggleModal = () => {
+        setModalState(true);
+    };
+
     return (
         <React.Fragment>
             <div className="pb-3">
@@ -30,7 +37,7 @@ const ReservationInfo = ({ props }) => {
                     Reservation
                 </label>
                 <div style={{ float: 'right' }}>
-                    <Button className="width-xs" color="outline-primary">
+                    <Button className="width-xs" color="outline-primary" onClick={toggleModal}>
                         Update
                     </Button>
                 </div>
