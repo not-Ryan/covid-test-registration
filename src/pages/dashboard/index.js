@@ -31,10 +31,10 @@ export default function Dashboard() {
     const newEndDate = moment(endDate).format('YYYY-MM-DD HH:mm:ss');
 
     const reservationsToday = useRequest(
-        'http://161.97.164.207/reservations?offset=0&tested=false&start=' + newStartDate + '&end=' + newEndDate
+        'http://161.97.164.207:8080/reservations?offset=0&tested=false&start=' + newStartDate + '&end=' + newEndDate
     );
-    const locations = useRequest('http://161.97.164.207/locations/');
-    const reservations = useRequest('http://161.97.164.207/reservations/');
+    const locations = useRequest('http://161.97.164.207:8080/locations/');
+    const reservations = useRequest('http://161.97.164.207:8080/reservations/');
     
     if (!locations) {
         return null;

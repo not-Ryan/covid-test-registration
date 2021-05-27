@@ -8,7 +8,7 @@ const iconStyles = {
 const ReservationInfo = ({ props }) => {
     let paidAmount = 'Not paid yet.';
     let paidMethod = '-';
-    const location = useRequest('http://161.97.164.207/locations/' + props.location_id);
+    const location = useRequest('http://161.97.164.207:8080/locations/' + props.location_id);
     if (!location) {
         return null;
     }

@@ -9,7 +9,7 @@ import BootstrapTable from 'react-bootstrap-table-next';
 import PageTitle from '../../../components/PageTitle';
 
 function FetchCustomerAdress({ customerId }) {
-    const customer = useRequest('http://161.97.164.207/customers/' + customerId);
+    const customer = useRequest('http://161.97.164.207:8080/customers/' + customerId);
 
     if (!customer) {
         return <span>Loading...</span>;
@@ -19,7 +19,7 @@ function FetchCustomerAdress({ customerId }) {
 }
 
 function FetchCustomerFullName({ customerId }) {
-    const customer = useRequest('http://161.97.164.207/customers/' + customerId);
+    const customer = useRequest('http://161.97.164.207:8080/customers/' + customerId);
 
     if (!customer) {
         return <span>Loading...</span>;
@@ -29,7 +29,7 @@ function FetchCustomerFullName({ customerId }) {
 }
 
 function FetchCustomerDateOfBirth({ customerId }) {
-    const customer = useRequest('http://161.97.164.207/customers/' + customerId);
+    const customer = useRequest('http://161.97.164.207:8080/customers/' + customerId);
 
     if (!customer) {
         return <span>Loading...</span>;
@@ -39,7 +39,7 @@ function FetchCustomerDateOfBirth({ customerId }) {
 }
 
 function FetchLocationName({ locationId }) {
-    const location = useRequest('http://161.97.164.207/locations/' + locationId + '?date=2021-05-19');
+    const location = useRequest('http://161.97.164.207:8080/locations/' + locationId + '?date=2021-05-19');
 
     if (!location) {
         return <span>Loading...</span>;
@@ -51,7 +51,7 @@ function FetchLocationName({ locationId }) {
 export default function TestedPeople() {
     const { SearchBar } = Search;
 
-    const testedPeople = useRequest('http://161.97.164.207/reservations?offset=0&tested=true');
+    const testedPeople = useRequest('http://161.97.164.207:8080/reservations?offset=0&tested=true');
     if (!testedPeople) {
         return null;
     }
@@ -69,7 +69,7 @@ export default function TestedPeople() {
 
                 // add custom item to array
                 record.actions = (
-                    <Link to={`/test-result/` + record.customer_id}>
+                    <Link to={`/test-report/` + record.customer_id}>
                         <Button color="primary" size="md">
                             View
                         </Button>

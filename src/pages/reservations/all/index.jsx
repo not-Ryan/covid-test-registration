@@ -61,7 +61,7 @@ const CustomToggleList = ({ columns, onColumnToggle, toggles }) => (
 );
 
 function FetchCustomerInfo({ customerId, type }) {
-    const customer = useRequest('http://161.97.164.207/customers/' + customerId);
+    const customer = useRequest('http://161.97.164.207:8080/customers/' + customerId);
 
     if (!customer) {
         return <span>Loading...</span>;
@@ -131,7 +131,7 @@ const defaultSorted = [
 ];
 
 const Table = () => {
-    const reservations = useRequest('http://161.97.164.207/reservations?offset=0&tested=false');
+    const reservations = useRequest('http://161.97.164.207:8080/reservations?offset=0&tested=false');
     if (!reservations) {
         return null;
     }
@@ -150,7 +150,7 @@ const Table = () => {
                 record.last_name = <FetchCustomerInfo customerId={record.customer_id} type="last_name" />;
                 record.passport_number = <FetchCustomerInfo customerId={record.customer_id} type="passport_number" />;
                 record.actions = (
-                    <Link to={`/test-result/` + record.customer_id}>
+                    <Link to={`/test-report/` + record.customer_id}>
                         <Button color="primary" size="md">
                             View
                         </Button>

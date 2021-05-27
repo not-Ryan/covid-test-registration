@@ -11,7 +11,7 @@ import BootstrapTable from 'react-bootstrap-table-next';
 import PageTitle from '../../../components/PageTitle';
 
 function FetchCustomerInfo({ customerId, type }) {
-    const customer = useRequest('http://161.97.164.207/customers/' + customerId);
+    const customer = useRequest('http://161.97.164.207:8080/customers/' + customerId);
 
     if (!customer) {
         return <span>Loading...</span>;
@@ -25,7 +25,7 @@ function FetchCustomerInfo({ customerId, type }) {
 }
 
 function FetchLocationName({ locationId }) {
-    const location = useRequest('http://161.97.164.207/locations/' + locationId);
+    const location = useRequest('http://161.97.164.207:8080/locations/' + locationId);
 
     if (!location) {
         return <span>Loading...</span>;
@@ -44,7 +44,7 @@ export default function TestedPeople() {
     const endDate = endOfDay(myCurrentDate);
     const newEndDate = moment(endDate).format('YYYY-MM-DD HH:mm:ss');
 
-    const testedPeople = useRequest('http://161.97.164.207/reservations?offset=0&tested=true&start=' + newStartDate + '&end=' + newEndDate);
+    const testedPeople = useRequest('http://161.97.164.207:8080/reservations?offset=0&tested=true&start=' + newStartDate + '&end=' + newEndDate);
     if (!testedPeople) {
         return null;
     }
@@ -62,7 +62,7 @@ export default function TestedPeople() {
 
                 // add custom item to array
                 record.actions = (
-                    <Link to={`/test-result/` + record.customer_id}>
+                    <Link to={`/test-report/` + record.customer_id}>
                         <Button color="primary" size="md">
                             View
                         </Button>

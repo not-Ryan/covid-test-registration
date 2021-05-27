@@ -9,7 +9,7 @@ import TestInfo from './testInfo/index';
 
 export default function TestReport(reservationId) {
     const resId = Object.values(reservationId);
-    const reservation = useRequest('http://161.97.164.207/reservations/' + resId);
+    const reservation = useRequest('http://161.97.164.207:8080/reservations/' + resId);
     if (!reservation) {
         return null;
     }

@@ -4,7 +4,7 @@ import { useRequest } from '../../../helpers/axios';
 import './styles.css';
 
 const PatientInfo = ({ props }) => {
-    const customer = useRequest('http://161.97.164.207/customers/' + props);
+    const customer = useRequest('http://161.97.164.207:8080/customers/' + props);
     if (!customer) {
         return null;
     }

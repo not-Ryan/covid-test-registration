@@ -27,7 +27,7 @@ const sizePerPageRenderer = ({ options, currSizePerPage, onSizePerPageChange }) 
 );
 
 function FetchCustomerInfo({ customerId, type }) {
-    const customer = useRequest('http://161.97.164.207/customers/' + customerId);
+    const customer = useRequest('http://161.97.164.207:8080/customers/' + customerId);
 
     if (!customer) {
         return <span>Loading...</span>;
@@ -118,7 +118,7 @@ const defaultSorted = [
 ];
 
 const Table = () => {
-    const locations = useRequest('http://161.97.164.207/locations');
+    const locations = useRequest('http://161.97.164.207:8080/locations');
     if (!locations) {
         return null;
     }
