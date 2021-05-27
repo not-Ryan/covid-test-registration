@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Row, Col, Card, CardBody } from 'reactstrap';
-//import classNames from 'classnames';
 import PageTitle from '../../components/PageTitle';
 import axios, { useRequest } from '../../helpers/axios';
 

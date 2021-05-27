@@ -1,7 +1,6 @@
 import React from 'react';
 import { useRequest } from '../../../helpers/axios';
 import Moment from 'react-moment';
-import { Badge } from 'reactstrap';
 import { Calendar } from 'react-feather';
 const iconStyles = {
     fontSize: '20px',
@@ -18,7 +17,7 @@ const ReservationInfo = ({ props }) => {
         paidAmount = 'Euro' + props.amount_paid;
         paidMethod = props.payment_method;
     }
-    
+
     return (
         <React.Fragment>
             <div className="border-bottom pb-3">
