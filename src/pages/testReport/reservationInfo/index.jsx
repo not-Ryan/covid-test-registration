@@ -19,7 +19,7 @@ const ReservationInfo = ({ props }) => {
     }
 
     if (props.amount_paid) {
-        paidAmount = 'Euro' + props.amount_paid;
+        paidAmount = 'Euro ' + props.amount_paid;
         paidMethod = props.payment_method;
     }
 
