@@ -1,23 +1,34 @@
 import React from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import Select from 'react-select';
 
 const updateTestResultModal = ({ modalState, toggle, reservationdId }) => {
+
+    const submitData = (props) => {
+        console.log(props);
+    };
+
     return (
-        <Modal isOpen={modalState} toggle={toggle}>
+        <Modal isOpen={modalState} toggle={toggle} centered>
             <ModalHeader toggle={toggle}>Update Test Result</ModalHeader>
             <ModalBody>
-                <h6>Text in a modal</h6>
-                <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
-                <hr />
-                <h6>Overflowing text to show scroll behavior</h6>
-                <p>
-                    Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas
-                    eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-                </p>
+                <p className="mb-1 font-weight-bold">Test Result</p>
+                <Select
+                    className="react-select"
+                    classNamePrefix="react-select"
+                    options={[
+                        { value: 0, label: 'Negative' },
+                        { value: 1, label: 'Positive' },
+                    ]}
+                    //defaultValue={false}
+                ></Select>
             </ModalBody>
             <ModalFooter>
                 <Button color="secondary" className="ml-1" onClick={toggle}>
                     Cancel
+                </Button>
+                <Button color="success" className="ml-1" onClick={submitData}>
+                    Submit
                 </Button>
             </ModalFooter>
         </Modal>
