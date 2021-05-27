@@ -1,15 +1,24 @@
 import React from 'react';
 import { useRequest } from '../../../helpers/axios';
 import Moment from 'react-moment';
+import { Badge } from 'reactstrap';
 import { Calendar } from 'react-feather';
 const iconStyles = {
-    fontSize: '22px',
+    fontSize: '20px',
 };
 const ReservationInfo = ({ props }) => {
+    let paidAmount = 'Not paid yet.';
+    let paidMethod = '-';
     const location = useRequest('http://161.97.164.207/locations/' + props.location_id);
     if (!location) {
         return null;
     }
+
+    if (props.amount_paid) {
+        paidAmount = 'Euro' + props.amount_paid;
+        paidMethod = props.payment_method;
+    }
+    
     return (
         <React.Fragment>
             <div className="border-bottom pb-3">
@@ -27,7 +36,9 @@ const ReservationInfo = ({ props }) => {
                         <p className="mb-2">
                             <i className="uil-calender text-primary" style={iconStyles}></i> Reservation date
                         </p>
-                        <h5 className="font-size-16"><Moment format="DD/MM/YYYY HH:mm">{props.date_of_birth}</Moment></h5>
+                        <h5 className="font-size-14">
+                            <Moment format="DD/MM/YYYY HH:mm">{props.date_of_birth}</Moment>
+                        </h5>
                     </div>
                 </div>
                 <div className="col-lg-3 col-md-6">
@@ -35,7 +46,7 @@ const ReservationInfo = ({ props }) => {
                         <p className="mb-2">
                             <i className="uil-location-point text-primary" style={iconStyles}></i> Location
                         </p>
-                        <h5 className="font-size-16">{location.location_name}</h5>
+                        <h5 className="font-size-14 text-capitalize">{location.location_name}</h5>
                     </div>
                 </div>
                 <div className="col-lg-3 col-md-6">
@@ -43,7 +54,7 @@ const ReservationInfo = ({ props }) => {
                         <p className="mb-2">
                             <i className="uil-euro-circle text-primary" style={iconStyles}></i> Paid amount
                         </p>
-                        <h5 className="font-size-16">Euro {props.amount_paid}</h5>
+                        <h5 className="font-size-14">{paidAmount}</h5>
                     </div>
                 </div>
 
@@ -53,7 +64,12 @@ const ReservationInfo = ({ props }) => {
                             <i className="uil-receipt-alt text-primary mr-1" style={iconStyles}></i>
                             Paid method
                         </p>
-                        <h5 className="font-size-16">{props.payment_method}</h5>
+                        <h5 className="font-size-14 text-capitalize">
+                            {paidMethod}
+                            {/* <Badge color="soft-success" className="mr-1">
+                                {paidMethod}
+                            </Badge> */}
+                        </h5>
                     </div>
                 </div>
             </div>
