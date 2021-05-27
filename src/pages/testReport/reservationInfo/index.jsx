@@ -1,4 +1,5 @@
 import React from 'react';
+import { Row, Col, Card, CardBody, Button } from 'reactstrap';
 import { useRequest } from '../../../helpers/axios';
 import Moment from 'react-moment';
 import { Calendar } from 'react-feather';
@@ -20,7 +21,7 @@ const ReservationInfo = ({ props }) => {
 
     return (
         <React.Fragment>
-            <div className="border-bottom pb-3">
+            <div className="pb-3">
                 <label className="font-weight-bold d-inline header-title" style={{ verticalAlign: 'center' }}>
                     <Calendar
                         className="icon-dual icon-md mr-2"
@@ -28,6 +29,11 @@ const ReservationInfo = ({ props }) => {
                         data-feather="hard-drive"></Calendar>
                     Reservation
                 </label>
+                <div style={{ float: 'right' }}>
+                    <Button className="width-xs" color="outline-primary">
+                        Update
+                    </Button>
+                </div>
             </div>
             <div className="row">
                 <div className="col-lg-3 col-md-6">
