@@ -69,7 +69,7 @@ export default function TestedPeople() {
 
                 // add custom item to array
                 record.actions = (
-                    <Link to={`/test-report/` + record.customer_id}>
+                    <Link to={`/tested-people/test-report/` + record.customer_id}>
                         <Button color="primary" size="md">
                             View
                         </Button>

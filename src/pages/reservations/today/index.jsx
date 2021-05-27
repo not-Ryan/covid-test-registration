@@ -130,7 +130,7 @@ const Table = () => {
                 record.last_name = <FetchCustomerInfo customerId={record.customer_id} type="last_name" />;
                 record.passport_number = <FetchCustomerInfo customerId={record.customer_id} type="passport_number" />;
                 record.actions = (
-                    <Link to={`/test-report/` + record.customer_id}>
+                    <Link to={`/reservation/test-report/` + record.customer_id}>
                         <Button color="primary" size="md">
                             View
                         </Button>

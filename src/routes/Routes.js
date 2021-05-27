@@ -79,7 +79,8 @@ class Routes extends Component {
                             ) : null;
                         })}
                         <Route path="/view-location" route={Route} children={<SingleLocation />}/>
-                        <Route path="/test-report/:reservationId" route={Route} component={TestReport}/>
+                        <Route path="/tested-people/test-report/:reservationId" route={Route} component={TestReport}/>
+                        <Route path="/reservation/test-report/:reservationId" route={Route} component={TestReport}/>
                     </Switch>
                 </Layout>
             </BrowserRouter>
