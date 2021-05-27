@@ -24,7 +24,7 @@ export default function TestReport(reservationId) {
                     <PageTitle
                         breadCrumbItems={[
                             // { label: 'Tested people', path: '/tested-people/all' },
-                            { label: "Test Report", path: '/', active: true },
+                            { label: 'Test Report', path: '/', active: true },
                         ]}
                         // title={fullName}
                     />
@@ -39,14 +39,14 @@ export default function TestReport(reservationId) {
 
                 <Col lg={8}>
                     <Card>
-                        <CardBody>
-                            <ReservationInfo props={reservation}/>
+                        <CardBody style={{ height: 258 }}>
+                            <ReservationInfo props={reservation} />
                         </CardBody>
                     </Card>
 
                     <Card>
-                        <CardBody>
-                            <TestInfo props={reservation}/>
+                        <CardBody style={{ height: 258 }}>
+                            <TestInfo props={reservation} />
                         </CardBody>
                     </Card>
                 </Col>
