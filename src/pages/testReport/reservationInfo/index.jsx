@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Row, Col, Card, CardBody, Button } from 'reactstrap';
+import { Button } from 'reactstrap';
 import { useRequest } from '../../../helpers/axios';
 import Moment from 'react-moment';
+import UpdateReservationModal from '../../../components/Modals/updateReservation/updateReservation';
 import { Calendar } from 'react-feather';
 const iconStyles = {
     fontSize: '20px',
@@ -23,11 +24,12 @@ const ReservationInfo = ({ props }) => {
     }
 
     const toggleModal = () => {
-        setModalState(true);
+        setModalState((state) => !state);
     };
 
     return (
         <React.Fragment>
+            <UpdateReservationModal modalState={modalState} toggle={toggleModal} />
             <div className="pb-3">
                 <label className="font-weight-bold d-inline header-title" style={{ verticalAlign: 'center' }}>
                     <Calendar
