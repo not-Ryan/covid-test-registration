@@ -34,7 +34,7 @@ const TestInfo = ({ props }) => {
 
     return (
         <React.Fragment>
-            <UpdateTestResult modalState={modalState} toggle={toggleModal} />
+            <UpdateTestResult modalState={modalState} toggle={toggleModal} reservationdId={props.reservation_id} />
             <div className="pb-3">
                 <label className="font-weight-bold d-inline header-title" style={{ verticalAlign: 'center' }}>
                     <Info

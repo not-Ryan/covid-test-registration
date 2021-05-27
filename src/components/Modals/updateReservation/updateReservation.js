@@ -6,8 +6,6 @@ import {
     ModalBody,
     ModalFooter,
     Progress,
-    FormGroup,
-    CustomInput,
     Row,
     Col,
 } from 'reactstrap';
@@ -18,7 +16,7 @@ const updateReservationModal = ({ modalState, toggle, reservationdId }) => {
     console.log(reservationdId);
     return (
         <Modal isOpen={modalState} toggle={toggle} centered>
-            <ModalHeader toggle={toggle}>Reservation update</ModalHeader>
+            <ModalHeader toggle={toggle}>Update Reservation</ModalHeader>
             <ModalBody>
                 <Wizard
                     render={({ step, steps }) => (
