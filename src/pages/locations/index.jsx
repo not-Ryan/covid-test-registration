@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Row, Col, Card, CardBody, Input, Button } from 'reactstrap';
 import { useRequest } from '../../helpers/axios';
+import axios from 'axios';
 import BootstrapTable from 'react-bootstrap-table-next';
 import { Link } from 'react-router-dom';
 import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit';
@@ -26,21 +27,21 @@ const sizePerPageRenderer = ({ options, currSizePerPage, onSizePerPageChange }) 
     </React.Fragment>
 );
 
-function FetchCustomerInfo({ customerId, type }) {
-    const customer = useRequest('http://161.97.164.207:8080/customers/' + customerId);
+// function FetchCustomerInfo({ customerId, type }) {
+//     const customer = useRequest('http://161.97.164.207:8080/customers/' + customerId);
 
-    if (!customer) {
-        return <span>Loading...</span>;
-    } else if (type === 'first_name') {
-        return customer.first_name;
-    } else if (type === 'date_of_birth') {
-        return customer.date_of_birth;
-    } else if (type === 'last_name') {
-        return customer.last_name;
-    } else if (type === 'passport_number') {
-        return customer.passport_number;
-    }
-}
+//     if (!customer) {
+//         return <span>Loading...</span>;
+//     } else if (type === 'first_name') {
+//         return customer.first_name;
+//     } else if (type === 'date_of_birth') {
+//         return customer.date_of_birth;
+//     } else if (type === 'last_name') {
+//         return customer.last_name;
+//     } else if (type === 'passport_number') {
+//         return customer.passport_number;
+//     }
+// }
 
 function scheduleFormatter(cell, row, rowIndex) {
     let schedule = [];
@@ -118,10 +119,27 @@ const defaultSorted = [
 ];
 
 const Table = () => {
-    const locations = useRequest('http://161.97.164.207:8080/locations');
+    const locations = useRequest('http://161.97.164.207/locations');
     if (!locations) {
         return null;
     }
+    
+    const getLocations = (access_token) => {
+        axios
+            .get(`http://161.97.164.207/locations`, {
+                headers: {
+                    Authorization: 'Bearer ' + access_token,
+                },
+            })
+            .then((response) => {
+                let locationsResponse = response.data;
+                console.log(locationsResponse);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
+
     const { SearchBar } = Search;
 
     return (
