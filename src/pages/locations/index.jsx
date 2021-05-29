@@ -123,22 +123,6 @@ const Table = () => {
     if (!locations) {
         return null;
     }
-    
-    const getLocations = (access_token) => {
-        axios
-            .get(`http://161.97.164.207/locations`, {
-                headers: {
-                    Authorization: 'Bearer ' + access_token,
-                },
-            })
-            .then((response) => {
-                let locationsResponse = response.data;
-                console.log(locationsResponse);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    };
 
     const { SearchBar } = Search;
 
